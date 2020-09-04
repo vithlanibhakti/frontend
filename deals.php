@@ -4,6 +4,8 @@ include("config.php");
 include("header.php");
 if(isset($_POST["add_to_cart"]))
 {
+	if($email != "guest")
+	{
 	if(isset($_SESSION["shopping_cart"]))
 	{
 		$item_array_id = array_column($_SESSION["shopping_cart"], "p_id");
@@ -33,7 +35,20 @@ if(isset($_POST["add_to_cart"]))
 			'item_quantity'		=>	$_POST["quantity"]
 		);
 		$_SESSION["shopping_cart"][0] = $item_array;
+	}	
 	}
+else{
+	echo "<script>var response = confirm('Do you want to login as guest?');
+						if ( response == true )
+									{
+										window.location = 'login.php';
+									}else{
+									alert('For order you have to login');
+									}
+							</script>";
+}
+
+
 }
 
 if(isset($_GET["action"]))

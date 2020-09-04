@@ -1,5 +1,40 @@
-<?php include("header.php"); ?>
-    <div class="main-content-holder">
+<?php
+include("header.php");
+include("config.php");
+//echo "<script>alert('$email');</script>";
+$fetch="SELECT  `id`,`username`,`mobile`,`addressline1`,`addressline2` FROM `users` WHERE username='$email' ";
+$result = mysqli_query($con,$fetch);
+
+if($result === FALSE)
+{
+die("Query Failed!".mysqli_error().$result);
+}
+while($row=mysqli_fetch_assoc($result))
+	{
+$uid=$row['id'];
+$username=$row['username'];
+$mobile=$row['mobile'];
+$addressline1=$row['addressline1'];
+$addressline2=$row['addressline2'];
+//echo "<script>alert('$uid')</script>"; 
+
+$fetch="SELECT * FROM shipping WHERE id = (SELECT MAX(id) FROM shipping WHERE uid = '$uid')";
+$result = mysqli_query($con,$fetch);
+
+if($result === FALSE)
+{
+die("Query Failed!".mysqli_error().$result);
+}
+while($row=mysqli_fetch_assoc($result))
+{
+$method=$row['method'];
+$city=$row['city'];
+//echo "<script>alert('$city')</script>"; 
+
+        }
+    }
+  ?>
+    <div class="main-content-holder"><br><br>
         <div class="mt-5 mb-5 col-lg-10 col-md-12 offset-lg-1">
             <div class="m-0 page-heading mb-4 row">
                 <div class="col-lg-3 col-sm-12"><span>My <strong>Account</strong></span></div>
@@ -8,19 +43,33 @@
             <div class="m-0 row">
                 <div class="col-lg-3 col-sm-12">
                     <div class="account-list-item-holder">
-                        <div>Profile Edit</div><i class="fas fa-chevron-right"></i></div>
-                    <div class="account-list-item-holder-active">
-                        <div>Shipping Details</div><i class="fas fa-chevron-right"></i></div>
-                    <div class="account-list-item-holder">
-                        <div>Change Password</div><i class="fas fa-chevron-right"></i></div>
-                    <div class="account-list-item-holder">
-                        <div>Saved Carts</div><i class="fas fa-chevron-right"></i></div>
-                    <div class="account-list-item-holder">
-                        <div>Past Orders</div><i class="fas fa-chevron-right"></i></div>
-                    <div class="account-list-item-holder">
-                        <div>Track My Order</div><i class="fas fa-chevron-right"></i></div>
-                    <div class="account-list-item-holder">
-                        <div>Utility Bill Payments</div><i class="fas fa-chevron-right"></i></div>
+                    <div>   <a href="profile.php">Profile Edit <i class="fas fa-chevron-right"></i></div>
+                    </a></div>
+                <div class="account-list-item-holder">
+                    <a href="shippingdetails.php">
+                        <div>Shipping Details <i class="fas fa-chevron-right"></i></div>
+                    </a></div>
+                <div class="account-list-item-holder">
+                    <a href="changepassword.php">
+                        <div>Change Password
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+
+                    </a></div>
+                <!-- <div class="account-list-item-holder">
+                    <div>Saved Carts<i class="fas fa-chevron-right"></i></div>
+                </div>
+                <div class="account-list-item-holder">
+                    <div>Past Orders<i class="fas fa-chevron-right"></i></div>
+                </div> -->
+                <div class="account-list-item-holder">
+                    <a href="trackorderprofile.php">
+                        <div>Track My Order<i class="fas fa-chevron-right"></i></div>
+                    </a></div>
+                <div class="account-list-item-holder">
+                    <a href="utilityPayment.php">
+                        <div>Utility Bill Payments <i class="fas fa-chevron-right"></i></div>
+                    </a></div>
                 </div>
                 <div class="col-lg-9 col-sm-12">
                     <div class="account-content-holder">
@@ -31,16 +80,19 @@
                         </div>
                         <div class="m-0 row-cols-5 table-row mb-2 mt-2 align-items-center row">
                             <div class="col-md-3">
-                                <div class="showDetails">user Lanka</div>
-                                <div class="dontShowDetails"><input id="fullName" name="fullName" placeholder="Full Name" type="text" class="form-control" value=""><span class="error-span"></span></div>
+                                <div class="showDetails"><?php echo $username; ?></div>
+                                <div class="dontShowDetails"><input id="fullName" name="fullName" placeholder="Full Name" type="text" class="form-control" value="<?php echo $username;?>"><span class="error-span"></span></div>
                             </div>
                             <div class="col-md-4">
-                                <div class="showDetails"><label class="label-styles"><b>Primary</b></label>&nbsp;&nbsp;<label class="label-styles"><b>Default</b></label><br>3,<br>4,Jalaram,<br>Moratuwa </div>
+                                <div class="showDetails"><label class="label-styles"><b>Primary</b></label>&nbsp;&nbsp;<label class="label-styles"><b>Default</b></label><br><?php echo $addressline1; ?><br><?php echo $addressline2; ?><br><?php echo $city; ?> </div>
                                 <div class="dontShowDetails">
-                                    <div class="dropdown"><button aria-haspopup="true" aria-expanded="false" type="button" class="dropdown-toggle btn btn-"></button></div><span class="error-span"></span><br><input maxlength="100" id="addressLine1" name="addressLine1" placeholder="House No or Lane *"
-                                        type="text" class="form-control" value=""><span class="error-span"></span><br><input maxlength="100" id="addressLine2" name="addressLine2" placeholder="Street Name *" type="text" class="form-control" value="">
+                                    <div class="dropdown"><button aria-haspopup="true" aria-expanded="false" type="button" class="dropdown-toggle btn btn-"></button></div><span class="error-span"></span><br>
+                                    <input maxlength="100" id="addressLine1" name="addressLine1" placeholder="House No or Lane *"
+                                        type="text" class="form-control" value="<?php echo $addressline1; ?>">
+                                        <span class="error-span"></span><br>
+                                        <input maxlength="100" id="addressLine2" name="addressLine2" placeholder="Street Name *" type="text" class="form-control" value="<?php echo $addressline2; ?>">
                                     <span
-                                        class="error-span"></span><br><input maxlength="100" id="city" name="city" placeholder="City *" type="text" class="form-control" value=""><span class="error-span"></span><br>
+                                        class="error-span"></span><br><input maxlength="100" id="city" name="city" placeholder="City *" type="text" class="form-control" value="<?php echo $city; ?>"><span class="error-span"></span><br>
                                         <div class="custom-control custom-checkbox"><input name="checkbox" id="is_default" type="checkbox" class="custom-control-input" value="agreed"><label for="is_default" class="custom-control-label white">Set Default</label></div>
                                 </div>
                             </div>

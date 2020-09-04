@@ -4,6 +4,8 @@ include("config.php");
 include("header.php");
 if(isset($_POST["add_to_cart"]))
 {
+	if($email != "guest")
+	{
 	if(isset($_SESSION["shopping_cart"]))
 	{
 		$item_array_id = array_column($_SESSION["shopping_cart"], "p_id");
@@ -27,12 +29,26 @@ if(isset($_POST["add_to_cart"]))
 	else
 	{
 		$item_array = array(
-			'p_id'			=>	$_GET["p_id"],
-			'p_name'			=>	$_POST["hidden_name"],
+			'item_id'			=>	$_GET["p_id"],
+			'item_name'			=>	$_POST["hidden_name"],
+			'item_price'		=>	$_POST["hidden_price"],
 			'item_quantity'		=>	$_POST["quantity"]
 		);
 		$_SESSION["shopping_cart"][0] = $item_array;
+	}	
 	}
+else{
+	echo "<script>var response = confirm('Do you want to login as guest?');
+						if ( response == true )
+									{
+										window.location = 'login.php';
+									}else{
+									alert('For order you have to login');
+									}
+							</script>";
+}
+
+
 }
 
 if(isset($_GET["action"]))
@@ -45,13 +61,13 @@ if(isset($_GET["action"]))
 			{
 				unset($_SESSION["shopping_cart"][$keys]);
 				echo '<script>alert("Item Removed")</script>';
-				echo '<script>window.location="home.php"</script>';
+				echo '<script>window.location="deals.php"</script>';
 			}
 		}
 	}
 }
 
-?> 
+?>
 <br><br><br><br><br><br><br><br>
 <div style="clear:both"></div>
 			<br />

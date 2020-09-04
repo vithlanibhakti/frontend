@@ -17,7 +17,7 @@ $password=$row['password'];
 
 ?>
 <form id="updateform" method="post" name="update" action="updatepwd.php">
-    <div class="main-content-holder">
+    <div class="main-content-holder"><br><br>
         <div class="mt-5 mb-5 col-lg-10 col-md-12 offset-lg-1">
             <div class="m-0 page-heading mb-4 row">
                 <div class="col-lg-3 col-sm-12"><span>My <strong>Account</strong></span></div>
@@ -26,19 +26,34 @@ $password=$row['password'];
             <div class="m-0 row">
                 <div class="col-lg-3 col-sm-12">
                     <div class="account-list-item-holder">
-                        <div>Profile Edit</div><i class="fas fa-chevron-right"></i></div>
-                    <div class="account-list-item-holder">
-                        <div>Shipping Details</div><i class="fas fa-chevron-right"></i></div>
-                    <div class="account-list-item-holder-active">
-                        <div>Change Password</div><i class="fas fa-chevron-right"></i></div>
-                    <div class="account-list-item-holder">
-                        <div>Saved Carts</div><i class="fas fa-chevron-right"></i></div>
-                    <div class="account-list-item-holder">
-                        <div>Past Orders</div><i class="fas fa-chevron-right"></i></div>
-                    <div class="account-list-item-holder">
-                        <div>Track My Order</div><i class="fas fa-chevron-right"></i></div>
-                    <div class="account-list-item-holder">
-                        <div>Utility Bill Payments</div><i class="fas fa-chevron-right"></i></div>
+                    <a href="profile.php">
+                        <div>Profile Edit <i class="fas fa-chevron-right"></i></div>
+                    </a></div>
+                <div class="account-list-item-holder">
+                    <a href="shippingdetails.php">
+                        <div>Shipping Details <i class="fas fa-chevron-right"></i></div>
+                    </a></div>
+                <div class="account-list-item-holder">
+                    <a href="changepassword.php">
+                        <div>Change Password
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+
+                    </a></div>
+                <!-- <div class="account-list-item-holder">
+                    <div>Saved Carts<i class="fas fa-chevron-right"></i></div>
+                </div>
+                <div class="account-list-item-holder">
+                    <div>Past Orders<i class="fas fa-chevron-right"></i></div>
+                </div> -->
+                <div class="account-list-item-holder">
+                    <a href="trackorderprofile.php">
+                        <div>Track My Order<i class="fas fa-chevron-right"></i></div>
+                    </a></div>
+                <div class="account-list-item-holder">
+                    <a href="utilityPayment.php">
+                        <div>Utility Bill Payments <i class="fas fa-chevron-right"></i></div>
+                    </a></div>
                 </div>
                 
                 <div class="col-lg-9 col-sm-12">

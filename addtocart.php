@@ -1,9 +1,14 @@
 <?php
 session_start();
 include("config.php");
+if(isset($_SESSION["email"]))
+{
 $email = $_SESSION['email'];
 //echo "<script>alert('$email');</script>";
-
+}
+else{
+    $email = "guest";
+}
 $fetch="SELECT  `id`,`username`,`mobile`,`addressline1`,`addressline2` FROM `users` WHERE email='$email' ";
 $result = mysqli_query($con,$fetch);
 
@@ -41,6 +46,8 @@ include("config.php");
 //echo "<script>alert('$email');</script>";
 if(isset($_POST["add_to_cart"]))
 {
+	if($email != "guest")
+	{
 	if(isset($_SESSION["shopping_cart"]))
 	{
 		$item_array_id = array_column($_SESSION["shopping_cart"], "p_id");
@@ -64,12 +71,26 @@ if(isset($_POST["add_to_cart"]))
 	else
 	{
 		$item_array = array(
-			'p_id'			=>	$_GET["p_id"],
-			'p_name'			=>	$_POST["hidden_name"],
+			'item_id'			=>	$_GET["p_id"],
+			'item_name'			=>	$_POST["hidden_name"],
+			'item_price'		=>	$_POST["hidden_price"],
 			'item_quantity'		=>	$_POST["quantity"]
 		);
 		$_SESSION["shopping_cart"][0] = $item_array;
+	}	
 	}
+else{
+	echo "<script>var response = confirm('Do you want to login as guest?');
+						if ( response == true )
+									{
+										window.location = 'login.php';
+									}else{
+									alert('For order you have to login');
+									}
+							</script>";
+}
+
+
 }
 
 if(isset($_GET["action"]))
@@ -82,7 +103,7 @@ if(isset($_GET["action"]))
 			{
 				unset($_SESSION["shopping_cart"][$keys]);
 				echo '<script>alert("Item Removed")</script>';
-				echo '<script>window.location="cart.php"</script>';
+				echo '<script>window.location="addtocart.php"</script>';
 			}
 		}
 	}
@@ -305,7 +326,7 @@ if(isset($_GET["action"]))
                                             style="flex: 1 1 0%; text-align: center;"><?php echo $values["item_quantity"]; ?></span><i
                                             class="fa fa-plus product-btn" aria-hidden="true"></i></div>
                                     <div class="product-labels" style="align-items: center;">
-                                    <a href="deals.php?action=delete&p_id=<?php echo $values["item_id"]; ?>">
+                                    <a href="addtocart.php?action=delete&p_id=<?php echo $values["item_id"]; ?>">
                                     <span class="text-danger"><i class="fa fa-times product-btn product-remove" aria-hidden="true" id="21719"></i></span></a>
                                     
                                 </div>
@@ -314,13 +335,16 @@ if(isset($_GET["action"]))
                                           $total = $total + ($values["item_quantity"] * $values["item_price"]);    
 
                                         }
+
                         }
                           ?>
                                 
                                 
                                 <hr>
                             </div>
-                            
+                            <?php if(!empty($_SESSION["shopping_cart"]))
+                            {
+                                ?>
                             <div class="product-summary product-summary-top">
                                 <div class="product-summary-line row">
                                     <div class="col"><span>Item Count</span></div>
@@ -373,9 +397,10 @@ else
                                     <div class="input-group-append"><button class="new-btn  
   new-btn-primary new-btn-sm   no-left-radius" type="button"> Save</button></div>
                                 </div>
-                               
+
                         
                             </div>
+                            <?php } ?>
                             <div class="product-summary-line"><button class="new-btn  
   new-btn-secondary   bnt-proceed margin-bottom" type="button"> Continue Shopping</button></div>
                             <div class="product-summary-line"><button class="new-btn  
