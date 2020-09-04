@@ -57,7 +57,7 @@ $(document).ready(function() {
         
 			var category_id = this.value;
 
-debugger;
+//debugger;
          //   alert(category_id);
 			$.ajax({
 				url: "get_subcat.php",

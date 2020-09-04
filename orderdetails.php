@@ -51,7 +51,7 @@ if(isset($_GET["action"]))
 	}
 }
 
-?>
+?> 
 <br><br><br><br><br><br><br><br>
 <div style="clear:both"></div>
 			<br />

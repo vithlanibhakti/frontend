@@ -27,7 +27,7 @@ $(document).ready(function() {
    var getValue=$(this).val();
   //  alert(getValue);
 
-debugger;
+//debugger;
   $.ajax({
 				url: "getdata.php",
 				type: "POST",

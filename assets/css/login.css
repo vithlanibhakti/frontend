@@ -4,7 +4,7 @@
     background-size: cover;
     background-position: 50%;
     background-repeat: no-repeat;
-    background-image: url(img/tri1.png);
+    background-image: url(/frontend/img/tri1.png);
     position: absolute
 }
 
@@ -108,27 +108,13 @@ button {
     border-radius: 0;
 }
 
-@media screen and (max-width:425px) {
-    .landing-page-area {
-        background-position: top;
-        background-image: url(img/tri1.png);
-    }
-}
-
-@media screen and (max-width:375px) {
-    .landing-page-area {
-        background-position: top;
-        background-image: url(img/tri1.png);
-    }
-}
-
 .login-registration-page-area {
     width: 100%;
     height: 100%;
     background-size: cover;
     background-position: 50%;
     background-repeat: no-repeat;
-    background-image: url(img/login.png);
+    background-image: url(/frontend/img/login.png);
     filter: blur(30px);
     -webkit-filter: blur(30px);
     position: absolute
@@ -1469,10 +1455,12 @@ input-group {
     }
 }
 
+
+/* 
 @font-face {
     font-family: foco;
     src: url(/static/media/Foco-Regular.4c219844.ttf)
-}
+} */
 
 @font-face {
     font-family: foco-bold;

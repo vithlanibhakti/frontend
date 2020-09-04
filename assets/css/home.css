@@ -110,7 +110,7 @@ div {
     background-size: cover;
     background-position: 50%;
     background-repeat: no-repeat;
-    background-image: url(img/tri1.png);
+    background-image: url(/frontend/img/tri1.png);
     position: absolute;
 }
 
