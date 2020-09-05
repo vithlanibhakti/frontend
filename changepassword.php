@@ -12,7 +12,7 @@ while($row=mysqli_fetch_assoc($result))
 	{
 $password=$row['password'];
 //echo "<script>alert('$password');</script>";
-        }
+}
 
 
 ?>

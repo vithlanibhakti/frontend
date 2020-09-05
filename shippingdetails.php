@@ -21,6 +21,7 @@ $addressline2=$row['addressline2'];
 $fetch="SELECT * FROM shipping WHERE id = (SELECT MAX(id) FROM shipping WHERE uid = '$uid')";
 $result = mysqli_query($con,$fetch);
 
+
 if($result === FALSE)
 {
 die("Query Failed!".mysqli_error().$result);
@@ -33,7 +34,7 @@ $city=$row['city'];
 
         }
     }
-  ?>
+  ?><br>
     <div class="main-content-holder"><br><br>
         <div class="mt-5 mb-5 col-lg-10 col-md-12 offset-lg-1">
             <div class="m-0 page-heading mb-4 row">
@@ -43,7 +44,8 @@ $city=$row['city'];
             <div class="m-0 row">
                 <div class="col-lg-3 col-sm-12">
                     <div class="account-list-item-holder">
-                    <div>   <a href="profile.php">Profile Edit <i class="fas fa-chevron-right"></i></div>
+                    <div> 
+                          <a href="profile.php">Profile Edit <i class="fas fa-chevron-right"></i></div>
                     </a></div>
                 <div class="account-list-item-holder">
                     <a href="shippingdetails.php">
@@ -84,7 +86,8 @@ $city=$row['city'];
                                 <div class="dontShowDetails"><input id="fullName" name="fullName" placeholder="Full Name" type="text" class="form-control" value="<?php echo $username;?>"><span class="error-span"></span></div>
                             </div>
                             <div class="col-md-4">
-                                <div class="showDetails"><label class="label-styles"><b>Primary</b></label>&nbsp;&nbsp;<label class="label-styles"><b>Default</b></label><br><?php echo $addressline1; ?><br><?php echo $addressline2; ?><br><?php echo $city; ?> </div>
+                                <div class="showDetails"><label class="label-styles"><b>Primary</b></label>&nbsp;&nbsp;
+                                <label class="label-styles"><b>Default</b></label><br><?php echo $addressline1; ?><br><?php echo $addressline2; ?><br><?php echo $city; ?> </div>
                                 <div class="dontShowDetails">
                                     <div class="dropdown"><button aria-haspopup="true" aria-expanded="false" type="button" class="dropdown-toggle btn btn-"></button></div><span class="error-span"></span><br>
                                     <input maxlength="100" id="addressLine1" name="addressLine1" placeholder="House No or Lane *"
@@ -92,12 +95,55 @@ $city=$row['city'];
                                         <span class="error-span"></span><br>
                                         <input maxlength="100" id="addressLine2" name="addressLine2" placeholder="Street Name *" type="text" class="form-control" value="<?php echo $addressline2; ?>">
                                     <span
-                                        class="error-span"></span><br><input maxlength="100" id="city" name="city" placeholder="City *" type="text" class="form-control" value="<?php echo $city; ?>"><span class="error-span"></span><br>
+                                        class="error-span"></span><br>
+                                        <!-- <input maxlength="100" id="city" name="city" placeholder="City *" type="text" class="form-control" value="<?php echo $city; ?>"> -->
+                     
+
+    <?php
+$fetch="SELECT `city` FROM `users` WHERE username='$email' ";
+$result = mysqli_query($con,$fetch);
+
+if($result === FALSE)
+{
+die("Query Failed!".mysqli_error().$result);
+}
+while($row=mysqli_fetch_assoc($result))
+	{
+$cityy=$row['city'];//echo "<script>alert('$uid')</script>"; 
+    }
+$sql_currency = "SELECT * FROM city";
+$result_currency = mysqli_query($con,$sql_currency);
+echo "<select id='city'  name='city' class='form-control' required>";
+
+$selectedValue = ""; // assign that value to this variable
+while ($row_currency = mysqli_fetch_array($result_currency)) {
+    $output = "";
+    $selected = "";
+    if($row_currency['city'] == $cityy){
+        $selected = "selected";
+      }else{
+        $selected = "";
+      }
+      $output = '<option value="'.$row_currency['city'].'" '.$selected.'>'.$row_currency['city'].' </option>';
+
+        //Echo output
+        echo $output; 
+    
+}
+echo "</select>";
+echo "</td>";
+?>
+                   <span class="error-span"></span><br>
                                         <div class="custom-control custom-checkbox"><input name="checkbox" id="is_default" type="checkbox" class="custom-control-input" value="agreed"><label for="is_default" class="custom-control-label white">Set Default</label></div>
                                 </div>
                             </div>
-                            <div class="btn-right-styles col-md-5"><button class="new-btn  
-  new-btn-secondary new-btn-sm  ml-2" type="button"> Edit</button><button class="new-btn  
+                            <div class="btn-right-styles col-md-5">
+                                <!-- <button class="new-btn new-btn-secondary new-btn-sm  ml-2" type="button"> Edit</button> -->
+                                <a href="javascript:;" class="new-btn new-btn-secondary new-btn-sm  ml-2"
+                                    onclick="this.href='editshipping.php?fullName=' + document.getElementById('fullName').value+'&addressLine1='+ document.getElementById('addressLine1').value+'&addressLine2='+ document.getElementById('addressLine2').value+'&city='+ document.getElementById('city').value">Edit</a>
+
+  
+  <button class="new-btn  
    new-btn-sm  ml-2" type="button"> Remove</button></div>
                         </div>
                         <div class="m-0 row-cols-5 table-row mb-2 mt-2 align-items-center btn-right-styles row"><button class="new-btn  

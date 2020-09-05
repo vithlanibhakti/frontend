@@ -38,11 +38,11 @@ $lastName = $_GET["lastName"];
 //   echo $lastName;
 //  echo "<br>";
  
- $dob = $_GET["dob"];
+ //$dob = $_GET["dob"];
 //  echo $dob;
 
 
-  $sql =  "UPDATE `users` SET `firstName` = '$firstName', `lastName` = '$lastName', `mobile` = '$phoneNumber', `dob` = '$dob', `updated_at` = NULL, `optionalphone` = '$contactNumber' WHERE `users`.`email` = '$email';";
+  $sql =  "UPDATE `users` SET `firstName` = '$firstName', `lastName` = '$lastName', `mobile` = '$phoneNumber', `updated_at` = NULL, `optionalphone` = '$contactNumber' WHERE `users`.`email` = '$email';";
   $result = mysqli_query($con,$sql);
 
   if ($result === TRUE) {
