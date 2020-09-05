@@ -92,6 +92,10 @@ $city=$row['state'];
     <link rel="stylesheet" href="assets/css/homepage.css">
 </head>
 <style>
+.navbar-toggler{
+    align : right;
+    width :100%;
+}
     .nav-container {
     display: grid;
 

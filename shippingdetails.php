@@ -139,15 +139,18 @@ echo "</td>";
                             </div>
                             <div class="btn-right-styles col-md-5">
                                 <!-- <button class="new-btn new-btn-secondary new-btn-sm  ml-2" type="button"> Edit</button> -->
-                                <a href="javascript:;" class="new-btn new-btn-secondary new-btn-sm  ml-2"
+            
+<!--   
+  <button class="new-btn  
+   new-btn-sm  ml-2" type="button"> Remove</button> -->
+</div>
+                        </div>
+                        <div class="m-0 row-cols-5 table-row mb-2 mt-2 align-items-center btn-right-styles row">
+                        <a href="javascript:;" class="new-btn new-btn-primary"
                                     onclick="this.href='editshipping.php?fullName=' + document.getElementById('fullName').value+'&addressLine1='+ document.getElementById('addressLine1').value+'&addressLine2='+ document.getElementById('addressLine2').value+'&city='+ document.getElementById('city').value">Edit</a>
 
-  
-  <button class="new-btn  
-   new-btn-sm  ml-2" type="button"> Remove</button></div>
-                        </div>
-                        <div class="m-0 row-cols-5 table-row mb-2 mt-2 align-items-center btn-right-styles row"><button class="new-btn  
-  new-btn-primary " type="button"> Add New Address</button></div>
+                            <!-- <button class="new-btn new-btn-primary " type="button"> Add New Address</button> -->
+</div>
                     </div>
                 </div>
             </div>

@@ -83,7 +83,7 @@ if(isset($_GET["action"]))
 
 <?php  
 $idc=$_GET['id'];
-//echo $idc;
+
 ?>
 <html lang="en">
 
@@ -177,27 +177,44 @@ body{margin:0;font-family:-apple-system,BlinkMacSystemFont,segoe ui,roboto,oxyge
                     <div class="col-md-3 col-12"><span class="category-title"> Shop by <strong>Category</strong></span>
                         <hr>
                         <div class="category-container mb-1">
-                            <div class="mb-1 category-item"><span>Popcorn &amp; Popping Corn</span><i class="fas fa-angle-right"></i></div>
-                            <div class="mb-1 category-item"><span>Snack-Crisps &amp; Chips</span><i class="fas fa-angle-right"></i></div>
-                            <div class="mb-1 category-item"><span>Snack-Nuts,Peas &amp; Mixes</span><i class="fas fa-angle-right"></i></div>
-                        </div><span class="category-title"><strong>Brands</strong></span>
+                     
+                        <?php 
+                        include 'config.php';
+                        //echo "<script>alert('$idc')</script>";                        
+                                    $result1 = mysqli_query($con,"SELECT  `category_name`,`sub_id` FROM `sub_categorys` WHERE `category_id`=$idc;");                                    
+                                    while($row1 = mysqli_fetch_array($result1)) 
+                                    {
+                                        $category_name= $row1['category_name'];   
+                                        $sub_id= $row1['sub_id'];   
+                                      
+                     ?>
+                            <div class="mb-1 category-item">
+                            <span>         <?php echo $category_name; ?></span>
+                            <i class="fas fa-angle-right"></i></div>
+                            <?php } ?>
+
+                        </div><span class="category-title"><strong>Brands</strong>
+                        </span>
+                           
                         <hr>
                         <div class="category-brand-container mb-3 mt-3 pl-1">
+                        
+                        <?php 
+                        include 'config.php';
+                        //echo "<script>alert('$idc')</script>";                        
+                                    $result1 = mysqli_query($con,"SELECT  `brand_name` FROM `brands` WHERE `category_id`=$idc;");                                    
+                                    while($row1 = mysqli_fetch_array($result1)) 
+                                    {
+                                        $brand_name= $row1['brand_name'];   
+                                      
+                     ?>
                             <div class="custom-controls-stacked">
-                                <div class="custom-control custom-radio mb-2"><input name="rdoBrands" id="_b_all" type="radio" class="custom-control-input" value="0" checked=""><label for="_b_all" class="custom-control-label">All</label></div>
+                                <div class="custom-control custom-radio mb-2">
+                                <input name="rdoBrands" id="ARUNALU" type="radio" class="custom-control-input" value="652">
+                                <label for="ARUNALU" class="custom-control-label"><?php echo $brand_name;?></label>
+                                </div>
                             </div>
-                            <div class="custom-controls-stacked">
-                                <div class="custom-control custom-radio mb-2"><input name="rdoBrands" id="ARUNALU" type="radio" class="custom-control-input" value="652"><label for="ARUNALU" class="custom-control-label">Arunalu</label></div>
-                            </div>
-                            <div class="custom-controls-stacked">
-                                <div class="custom-control custom-radio mb-2"><input name="rdoBrands" id="BLACK&amp;GOLD" type="radio" class="custom-control-input" value="3344"><label for="BLACK&amp;GOLD" class="custom-control-label">Black&amp;gold</label></div>
-                            </div>
-                            <div class="custom-controls-stacked">
-                                <div class="custom-control custom-radio mb-2"><input name="rdoBrands" id="CANNON" type="radio" class="custom-control-input" value="2913"><label for="CANNON" class="custom-control-label">Cannon</label></div>
-                            </div>
-                            <div class="custom-controls-stacked">
-                                <div class="custom-control custom-radio mb-2"><input name="rdoBrands" id="CORNITOS" type="radio" class="custom-control-input" value="261"><label for="CORNITOS" class="custom-control-label">Cornitos</label></div>
-                            </div>
+                                    <?php } ?>
                         </div><span class="category-title"><strong>Price</strong></span>
                         <hr>
                         <div class="mt-5">
@@ -217,14 +234,14 @@ body{margin:0;font-family:-apple-system,BlinkMacSystemFont,segoe ui,roboto,oxyge
                         <div class="m-0 row-cols-2 row-cols-xs-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-4 row">
                         <?php 
                         include 'config.php';
-                        
+                        //echo "<script>alert('$idc')</script>";                        
                                     $result1 = mysqli_query($con,"SELECT  `p_id`,`p_name`, `p_image` FROM `products` WHERE `category_id`=$idc;");                                    
                                     while($row1 = mysqli_fetch_array($result1)) 
                                     {
                                         $p_name= $row1['p_name'];   
                                         $p_id= $row1['p_id'];   
                                         $p_image= $row1['p_image'];   
-                                        
+                                        //echo "<script>alert('$p_name')</script>";    
                                         $result2 = mysqli_query($con,"SELECT  `product_id`, `sell_price` FROM `product_to_store` where `product_id` = $p_id ;");                                    
                                         while($row2 = mysqli_fetch_array($result2)) 
                                         {

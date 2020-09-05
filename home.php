@@ -170,10 +170,9 @@ if(isset($_GET["action"]))
                                             $sell_price= $row2['sell_price'];   
                                             //  echo $sell_price."<br>"; 
                                               $product_id= $row2['product_id'];   
-                                        
-                                              // echo $product_id."<br>"; 
+                                            // echo $product_id."<br>"; 
                                         ?>
-                                     <form method="post" action="home.php?action=add&p_id=<?php echo $row["p_id"]; ?>">   
+        <form method="post" action="home.php?action=add&p_id=<?php echo $row["p_id"]; ?>">   
         <div class="col" style="padding-bottom: 15px;">
                                         <div class="product-card-container">
                                             <div class="row">
