@@ -4,6 +4,8 @@ include("config.php");
 include("header.php");
 if(isset($_POST["add_to_cart"]))
 {
+	if($email != "guest")
+	{
 	if(isset($_SESSION["shopping_cart"]))
 	{
 		$item_array_id = array_column($_SESSION["shopping_cart"], "p_id");
@@ -33,7 +35,20 @@ if(isset($_POST["add_to_cart"]))
 			'item_quantity'		=>	$_POST["quantity"]
 		);
 		$_SESSION["shopping_cart"][0] = $item_array;
+	}	
 	}
+else{
+	echo "<script>var response = confirm('Do you want to login as guest?');
+						if ( response == true )
+									{
+										window.location = 'login.php';
+									}else{
+									alert('For order you have to login');
+									}
+							</script>";
+}
+
+
 }
 
 if(isset($_GET["action"]))
@@ -53,7 +68,6 @@ if(isset($_GET["action"]))
 }
 
 ?>
-
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -155,25 +169,26 @@ if(isset($_GET["action"]))
                             </div>
                             <div class="product-container">
                                 <div class="m-0 row-cols-2 row-cols-xs-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-5 row">
-                                <?php 
-                        include 'config.php';
-                        
-                                    $result1 = mysqli_query($con,"SELECT  `p_id`,`p_name`, `p_image` FROM `adminproducts` LIMIT 0,6");        
-                                    while($row1 = mysqli_fetch_array($result1)) 
-                                    {
-                                        $p_name= $row1['p_name'];   
-                                        $p_id= $row1['p_id'];   
-                                        $p_image= $row1['p_image'];   
+                                <?php
+				$query = "SELECT * FROM adminproducts ORDER BY p_id ASC LIMIT 6";
+				$result = mysqli_query($con, $query);
+				if(mysqli_num_rows($result) > 0)
+				{
+					while($row = mysqli_fetch_array($result))
+					{
+                        $p_id= $row['p_id'];   
+                        $p_name= $row['p_name'];   
+                        $p_image= $row['p_image'];   
                                         $result2 = mysqli_query($con,"SELECT  `product_id`, `sell_price` FROM `admin_product_to_store` where `product_id` = $p_id  LIMIT 6");                                    
                                         while($row2 = mysqli_fetch_array($result2)) 
                                         {
                                             $sell_price= $row2['sell_price'];   
-                                            //  echo $sell_price."<br>"; 
+                                   //          echo $sell_price."<br>"; 
                                               $product_id= $row2['product_id'];   
-                                            // echo $product_id."<br>"; 
-                                        ?>
-        <form method="post" action="home.php?action=add&p_id=<?php echo $row["p_id"]; ?>">   
-        <div class="col" style="padding-bottom: 15px;">
+                                              // echo $product_id."<br>"; 
+				?>
+<form method="post" action="home.php?action=add&p_id=<?php echo $row["p_id"]; ?>">
+<div class="col" style="padding-bottom: 15px;">
                                         <div class="product-card-container">
                                             <div class="row">
                                                 <div class="product-card-image-container col-md-12">
@@ -206,19 +221,16 @@ if(isset($_GET["action"]))
 <input type="submit" name="add_to_cart" style="margin-top:5px;" class="product-card-button-add btn btn-primary btn-block" value="Add to Cart" />
 
                                                 </div>
-                                        </form>
-                                            </div>
-                                        </div>
-                                    </div>
-
-<?php
-                                        }
-
-
-                                    }
-                        
-                        ?>
-                                    
+                          	</div>
+                              </div>
+				</form>    
+</div>
+			<?php
+                    }
+                }
+                }
+                
+            ?>                            
                                     
                                 </div>
                                 <div class="switcher-main-button-holder row">
@@ -228,7 +240,8 @@ if(isset($_GET["action"]))
 
 
                                             <div class="input-group-append">
-                                                <div class="input-group-text append"><i class="fas fa-angle-right"></i></div>
+                                                <div class="input-group-text append">
+                                                <i class="fas fa-angle-right"></i></div>
                                             </div>
                                         </div>
                                     </div>
@@ -250,43 +263,64 @@ if(isset($_GET["action"]))
                             <div class="row" style="margin: 0px; padding-bottom: 1.5625rem;">
                                 <div class="col-md-10 col-12 offset-md-1">
                                     <div class="m-0 row-cols-2 row-cols-xs-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-5 row">
-                                    <?php 
-                        include 'config.php';
-                        
-                                    $result1 = mysqli_query($con,"SELECT  `p_id`,`p_name`, `p_image` FROM `bestsellers` LIMIT 0,6");        
-                                    while($row1 = mysqli_fetch_array($result1)) 
-                                    {
-                                        $p_name= $row1['p_name'];   
-                                        $p_id= $row1['p_id'];   
-                                        $p_image= $row1['p_image'];   
+                                    <?php
+				$query = "SELECT  `p_id`,`p_name`, `p_image` FROM `bestsellers` LIMIT 6";        
+				$result = mysqli_query($con, $query);
+				if(mysqli_num_rows($result) > 0)
+				{
+					while($row = mysqli_fetch_array($result))
+					{
+                        $p_id= $row['p_id'];   
+                        $p_name= $row['p_name'];   
+                        $p_image= $row['p_image'];   
                                         $result2 = mysqli_query($con,"SELECT  `product_id`, `sell_price` FROM `bestsellers_product` where `product_id` = $p_id  LIMIT 6");                                    
                                         while($row2 = mysqli_fetch_array($result2)) 
                                         {
                                             $sell_price= $row2['sell_price'];   
-                                            //  echo $sell_price."<br>"; 
+                                   //          echo $sell_price."<br>"; 
                                               $product_id= $row2['product_id'];   
-                                        
                                               // echo $product_id."<br>"; 
-                                        ?>
-
-
-                                        <div class="col" style="padding-bottom: 15px;">
-                                            <div class="product-card-container">
-                                                <div class="row">
-                                                    <div class="product-card-image-container col-md-12">
-                                                    <img class="img-fluid" src="<?php  echo $p_image; ?>"></div>
-                                                    <div class="product-card-name col-md-12"><?php  echo $p_name; ?></div>
-                                                    <div class="product-card-price-container col-md-12">
-                                                        <div class="product-card-final-price"><?php  echo $sell_price; ?></div>
+				?>
+<form method="post" action="home.php?action=add&p_id=<?php echo $row["p_id"]; ?>">
+<div class="col" style="padding-bottom: 15px;">
+                                        <div class="product-card-container">
+                                            <div class="row">
+                                                <div class="product-card-image-container col-md-12">
+                                                <img class="img-fluid" src="<?php echo $p_image; ?>">
+                                                    <div class="product-card-promotion-badge">
+                                                        <div class="product-card-promotion-badge-nexus">
+                                                            <!-- <img class="img-fluid" src="/static/media/Nexus.0af60875.png"> -->
+                                                        </div>
+                                                        <div class="product-card-promotion-badge-single-line">
+                                                        
+                                                        </div>
                                                     </div>
-                                                    <div class="product-card-button-container col-md-12">
-                                                        <button type="button" class="product-card-button-add btn btn-primary btn-block" onclick="display()">
-                                                        <i class="fas fa-shopping-cart"></i>Add to Cart</button></div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                       <?php }}
-                                        ?>
+                                                <div class="product-card-name col-md-12"><?php echo $p_name; ?></div>
+                                                <div class="product-card-price-container col-md-12">
+                                                    <div class="product-card-original-price"><?php echo $sell_price; ?></div>
+                                                    <div class="product-card-final-price">Rs 138.00 / Unit</div>
+                                                </div>
+                                                <div class="product-card-button-container col-md-12">
+                                                    <!-- <button type="button" onclick="display()" class="product-card-button-add btn btn-primary btn-block">
+                                                    <i class="fas fa-shopping-cart"></i>Add to Cart</button> -->
+                                                    <input type="text" name="quantity" value="1" class="form-control" />
+
+<input type="hidden" name="hidden_name" value="<?php echo $row["p_name"]; ?>" />
+<input type="hidden" name="hidden_price" value="<?php echo $row2["sell_price"]; ?>" />
+<input type="submit" name="add_to_cart" style="margin-top:5px;" class="product-card-button-add btn btn-primary btn-block" value="Add to Cart" />
+
+                                                </div>
+                          	</div>
+                              </div>
+				</form>    
+</div>
+			<?php
+                    }
+                }
+                }
+                
+            ?>
                                     </div>
                                 </div>
                             </div>
@@ -385,40 +419,68 @@ if(isset($_GET["action"]))
                     </div>
                     <div class="col-md-10 col-12 offset-md-1">
                         <div class="m-0 row-cols-2 row-cols-xs-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-5 row">
-                        <?php 
-                        include 'config.php';
-                        
-                                    $result1 = mysqli_query($con,"SELECT  `p_id`,`p_name`, `p_image` FROM `featureproducts` LIMIT 0,8");        
-                                    while($row1 = mysqli_fetch_array($result1)) 
-                                    {
-                                        $p_name= $row1['p_name'];   
-                                        $p_id= $row1['p_id'];   
-                                        $p_image= $row1['p_image'];   
-                                        $result2 = mysqli_query($con,"SELECT  `product_id`, `sell_price` FROM `feature_product_to_storeayments` where `product_id` = $p_id  LIMIT 0,8");                                    
+                        <?php
+				$query ="SELECT  `p_id`,`p_name`, `p_image` FROM `featureproducts` LIMIT 8";  
+				$result = mysqli_query($con, $query);
+				if(mysqli_num_rows($result) > 0)
+				{
+					while($row = mysqli_fetch_array($result))
+					{
+                        $p_id= $row['p_id'];   
+                        $p_name= $row['p_name'];   
+                        $p_image= $row['p_image'];   
+                                        $result2 = mysqli_query($con,"SELECT  `product_id`, `sell_price` FROM `feature_product_to_storeayments` where `product_id` = $p_id  LIMIT 8");      
                                         while($row2 = mysqli_fetch_array($result2)) 
                                         {
                                             $sell_price= $row2['sell_price'];   
-                                            //  echo $sell_price."<br>"; 
+                                   //          echo $sell_price."<br>"; 
                                               $product_id= $row2['product_id'];   
                                               // echo $product_id."<br>"; 
-                                        ?>
-
+				?>
+<form method="post" action="home.php?action=add&p_id=<?php echo $row["p_id"]; ?>">
 <div class="col" style="padding-bottom: 15px;">
-                                <div class="product-card-container">
-                                    <div class="row">
-                                        <div class="product-card-image-container col-md-12">
-                                        <img class="img-fluid" src="<?php echo $p_image; ?>"></div>
-                                        <div class="product-card-name col-md-12"><?php echo $p_name; ?></div>
-                                        <div class="product-card-price-container col-md-12">
-                                            <div class="product-card-final-price"><?php echo $sell_price; ?></div>
-                                        </div>
-                                        <div class="product-card-button-container col-md-12">
-                                            <button type="button" class="product-card-button-add btn btn-primary btn-block" onclick="display()>
-                                            <i class="fas fa-shopping-cart"></i>Add to Cart</button></div>
-                                    </div>
-                                </div>
-                            </div>
-                                        <?php }} ?>
+                                        <div class="product-card-container">
+                                            <div class="row">
+                                                <div class="product-card-image-container col-md-12">
+                                                <img class="img-fluid" src="<?php echo $p_image; ?>">
+                                                    <div class="product-card-promotion-badge">
+                                                        <div class="product-card-promotion-badge-nexus">
+                                                            <!-- <img class="img-fluid" src="/static/media/Nexus.0af60875.png"> -->
+                                                        </div>
+                                                        <div class="product-card-promotion-badge-single-line">
+                                                            <div class="product-card-promotion-badge-percentage">29</div>
+                                                            <div>
+                                                                <div class="product-card-promotion-badge-suffix">%</div>
+                                                                <div class="product-card-promotion-badge-suffix">Off</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="product-card-name col-md-12"><?php echo $p_name; ?></div>
+                                                <div class="product-card-price-container col-md-12">
+                                                    <div class="product-card-original-price"><?php echo $sell_price; ?></div>
+                                                    <div class="product-card-final-price">Rs 138.00 / Unit</div>
+                                                </div>
+                                                <div class="product-card-button-container col-md-12">
+                                                    <!-- <button type="button" onclick="display()" class="product-card-button-add btn btn-primary btn-block">
+                                                    <i class="fas fa-shopping-cart"></i>Add to Cart</button> -->
+                                                    <input type="text" name="quantity" value="1" class="form-control" />
+
+<input type="hidden" name="hidden_name" value="<?php echo $row["p_name"]; ?>" />
+<input type="hidden" name="hidden_price" value="<?php echo $row2["sell_price"]; ?>" />
+<input type="submit" name="add_to_cart" style="margin-top:5px;" class="product-card-button-add btn btn-primary btn-block" value="Add to Cart" />
+
+                                                </div>
+                          	</div>
+                              </div>
+				</form>    
+</div>
+			<?php
+                    }
+                }
+                }
+                
+            ?>
                         </div>
                     </div>
                     <div class="row" style="margin: 0px;">

@@ -61,7 +61,7 @@ if(isset($_GET["action"]))
 			{
 				unset($_SESSION["shopping_cart"][$keys]);
 				echo '<script>alert("Item Removed")</script>';
-				echo '<script>window.location="deals.php"</script>';
+				echo '<script>window.location="cart.php"</script>';
 			}
 		}
 	}
@@ -116,7 +116,9 @@ if(isset($_GET["action"]))
                                 <div id="discount-column" style="color: rgb(90, 188, 58);">Rs. 0.00</div>
                                 <div id="total-column">Rs. <?php echo number_format($values["item_quantity"] * $values["item_price"], 2);?></div>
                                 <div><a href="cart.php?action=delete&p_id=<?php echo $values["item_id"]; ?>">
-                                <span class="text-danger"><i class="fa fa-times cart-item-remove-btn" aria-hidden="true" id="69049"></i></span></a>
+                                <span class="text-danger">
+                                <i class="fa fa-times cart-item-remove-btn" aria-hidden="true" >
+                                </i></span></a>
                                     </div>
                             </div>
                         
