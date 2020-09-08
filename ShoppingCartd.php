@@ -1,12 +1,12 @@
 <?php
 require_once "DBController.php";
 
-class ShoppingCart extends DBController
+class ShoppingCartd extends DBController
 {
 
     function getAllProduct()
     {
-        $query = "SELECT adminproducts.p_id,adminproducts.p_image,adminproducts.p_code,adminproducts.p_name,p2s.quantity_in_stock, p2s.sell_price as sell_price, p2s.purchase_price as purchase_price FROM adminproducts LEFT JOIN admin_product_to_store p2s ON (adminproducts.p_id = p2s.product_id) GROUP BY adminproducts.p_id HAVING quantity_in_stock != ''";
+        $query = "SELECT products.p_id,products.p_image,products.p_code,products.p_name,p2s.quantity_in_stock, p2s.sell_price as sell_price, p2s.purchase_price as purchase_price FROM products LEFT JOIN product_to_store p2s ON (products.p_id = p2s.product_id) GROUP BY products.p_id HAVING quantity_in_stock != ''";
         
         $productResult = $this->getDBResult($query);
         return $productResult;
@@ -15,7 +15,7 @@ class ShoppingCart extends DBController
     function getMemberCartItem($member_id)
     {
         
-        $query = "SELECT adminproducts.*,admin_product_to_store.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM adminproducts, tbl_cart,admin_product_to_store WHERE adminproducts.p_id = tbl_cart.product_id AND adminproducts.p_id = admin_product_to_store.product_id AND  tbl_cart.member_id = ? ";
+        $query = "SELECT products.*,product_to_store.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM products, tbl_cart,product_to_store WHERE products.p_id = tbl_cart.product_id AND products.p_id = product_to_store.product_id AND  tbl_cart.member_id = ? ";
         
         $params = array(
             array(
@@ -30,7 +30,7 @@ class ShoppingCart extends DBController
 
     function getProductByCode($product_code)
     {
-        $query = "SELECT * FROM adminproducts WHERE p_code=?";
+        $query = "SELECT * FROM products WHERE p_code=?";
         
         $params = array(
             array(

@@ -531,27 +531,27 @@ $c = $c +1;
                         <div class="wrapper">
                         <!-- <div class="tile1-cat" style="background: url(&quot;<?php echo $image0; ?>&quot;);"></div> -->
                         <div class="tile1-cat" style="background: url(&quot;<?php echo $image0; ?>&quot;);">
-    <a href='dynamic.php?id=<?php echo $id0;?>' style="display:block;width:100px;height:20px;">&nbsp;</a>
+    <a href='qtydynamic.php?id=<?php echo $id0;?>' style="display:block;width:100px;height:20px;">&nbsp;</a>
 </div>
 
                             <div class="">
                                 <div class="slide">
-                                <a href='dynamic.php?id=<?php echo $id1;?>'><img src="<?php echo $image1; ?>"  style="width: 100%; height: auto;">
+                                <a href='qtydynamic.php?id=<?php echo $id1;?>'><img src="<?php echo $image1; ?>"  style="width: 100%; height: auto;">
                             </div>
                             </div></a>
                             <div class="nested ">
                                 <div class="to-bottom tile3-cat">
-                                <a href='dynamic.php?id=<?php echo $id2;?>'><img src="<?php echo $image2; ?>"  style="width: 100%; height: auto;">
+                                <a href='qtydynamic.php?id=<?php echo $id2;?>'><img src="<?php echo $image2; ?>"  style="width: 100%; height: auto;">
                                 </div></a>
                                 <div class="to-bottom tile4-cat">
-                                <a href='dynamic.php?id=<?php echo $id3;?>'><img src="<?php echo $image3; ?>"  style="width: 100%; height: auto;"></div>
+                                <a href='qtydynamic.php?id=<?php echo $id3;?>'><img src="<?php echo $image3; ?>"  style="width: 100%; height: auto;"></div>
                             </div></a>
                             <div class="nested">
                                 <div class="to-bottom tile5-cat">
-                                <a href='dynamic.php?id=<?php echo $id4;?>'><img src="<?php echo $image4; ?>"  style="width: 100%; height: auto;"></a></div>
+                                <a href='qtydynamic.php?id=<?php echo $id4;?>'><img src="<?php echo $image4; ?>"  style="width: 100%; height: auto;"></a></div>
                                 
                                 <div class="to-bottom tile6-cat">
-                                <a href='dynamic.php?id=<?php echo $id5;?>'><img src="<?php echo $image5; ?>"  style="width: 100%; height: auto;"></a></div>
+                                <a href='qtydynamic.php?id=<?php echo $id5;?>'><img src="<?php echo $image5; ?>"  style="width: 100%; height: auto;"></a></div>
                                 </div>
                         </div>
                     </div>

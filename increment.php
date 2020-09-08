@@ -15,11 +15,11 @@ $result1 = mysqli_query($con,"SELECT  `product_id`,`id` FROM `tbl_cart` WHERE `i
                 $ar = [$product_id];
                 $str= implode(', ', $ar);
 //                echo "<script>alert('implod ==' + '$str')</script>";
-                $resul1 = mysqli_query($con,"SELECT  `alert_quantity` FROM `admin_product_to_store` WHERE `product_id`=$str;");
+                $resul1 = mysqli_query($con,"SELECT  `quantity_in_stock` FROM `admin_product_to_store` WHERE `product_id`=$str;");
                 while($row = mysqli_fetch_array($resul1))
                 {
-                    $alert_quantity= $row['alert_quantity'];
-                    echo $alert_quantity;
+                    $quantity_in_stock= $row['quantity_in_stock'];
+                    echo $quantity_in_stock;
                  //   $aar = [$alert_quantity];
                 }
             }

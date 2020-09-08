@@ -1,7 +1,21 @@
 <?php
 require_once "ShoppingCart.php";
 
-$member_id = 2; // you can your integerate authentication module here to get logged in member
+require_once "config.php";
+					    $fetch="SELECT  `id`,`username` FROM `users` WHERE username='$email' ";
+                        $result = mysqli_query($con,$fetch);
+
+                        if($result === FALSE)
+                        {
+                        die("Query Failed!".mysqli_error().$result);
+                        }
+                        while($row=mysqli_fetch_assoc($result))
+                            {
+                        $uid=$row['id'];
+                        //echo "<script>alert('$uid')</script>"; 
+                            }
+$member_id = $uid; // you can your integerate authentication module here to get logged in member
+
 
 $shoppingCart = new ShoppingCart();
  

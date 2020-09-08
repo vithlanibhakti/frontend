@@ -189,7 +189,7 @@ body{margin:0;font-family:-apple-system,BlinkMacSystemFont,segoe ui,roboto,oxyge
                                       
                      ?>
                             <div class="mb-1 category-item">
-                            <span><a href='subdynamic.php?id=<?php echo $sub_id;?>&proid=<?php echo $idc; ?>'>      <?php echo $category_name; ?></a></span>
+                            <span><a href='subdynamic.php?id=<?php echo $sub_id;?>&proid=<?php echo $idc; ?>''>      <?php echo $category_name; ?></a></span>
                             <i class="fas fa-angle-right"></i></div>
                             <?php } ?>
 

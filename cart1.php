@@ -219,14 +219,17 @@ function increment_quantity(cart_id, sell_price) {
 			//	alert("Updated");
 				//alert(dataResult);
         var inputQuantityElement = $("#input-quantity-"+cart_id);
-         alert("stock" +dataResult);
-         alert("cr" +inputQuantityElement.val());
+       //alert("stock" +dataResult);
+       //alert("cr" +inputQuantityElement.val());
     if($(inputQuantityElement).val() < dataResult)
     {
-        alert("d");
+   //     alert("d");
     var newQuantity = parseInt($(inputQuantityElement).val()) + 1;
     var newPrice = newQuantity * sell_price;
     save_to_db(cart_id, newQuantity, newPrice);
+    }
+    else{
+        alert("out of stock");
     }
 			}
 			

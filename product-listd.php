@@ -26,7 +26,7 @@
     
     <?php
     
-    $query = "SELECT adminproducts.p_id,adminproducts.p_image,adminproducts.p_code,adminproducts.p_name,p2s.quantity_in_stock, p2s.sell_price as sell_price, p2s.purchase_price as purchase_price FROM adminproducts LEFT JOIN admin_product_to_store p2s ON (adminproducts.p_id = p2s.product_id) GROUP BY adminproducts.p_id HAVING quantity_in_stock != '' ";
+    $query = "SELECT products.*,p2s.quantity_in_stock, p2s.sell_price as sell_price, p2s.purchase_price as purchase_price FROM products LEFT JOIN product_to_store p2s ON (products.p_id = p2s.product_id) GROUP BY products.p_id HAVING quantity_in_stock != ''";
     $product_array = $shoppingCart->getAllProduct($query);
 	
     if (! empty($product_array)) {
@@ -35,7 +35,7 @@
 			  
             ?>
     
-        <form method="post" action="qty.php?action=add&code=<?php echo $product_array[$key]["p_code"]; ?>" onsubmit="myFunction()">
+        <form method="post" action="qtydynamic.php?action=add&code=<?php echo $product_array[$key]["p_code"]; ?>" onsubmit="myFunction()">
         <div class="col" style="padding-bottom: 15px;">
                         <div class="product-card-container">
                                        <div class="row">
