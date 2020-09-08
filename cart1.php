@@ -219,8 +219,8 @@ function increment_quantity(cart_id, sell_price) {
 			//	alert("Updated");
 				//alert(dataResult);
         var inputQuantityElement = $("#input-quantity-"+cart_id);
-         alert(dataResult);
-         alert(inputQuantityElement.val());
+         alert("stock" +dataResult);
+         alert("cr" +inputQuantityElement.val());
     if($(inputQuantityElement).val() < dataResult)
     {
         alert("d");
@@ -475,10 +475,10 @@ else{
     <?php include("footer.html"); ?>
 </BODY>
 </HTML>
-  <!-- <script>
+   <script>
 $(document).ready(function() {
     setTimeout(function(){
    window.location.reload(1);
 }, 3000);
 });
-</script> -->
+</script> 
