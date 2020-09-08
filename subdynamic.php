@@ -1,4 +1,3 @@
-
 <?php 
 include("config.php");
 include("header.php");
@@ -83,7 +82,7 @@ if(isset($_GET["action"]))
 
 <?php  
 $idc=$_GET['id'];
-
+$idp=$_GET['proid'];
 ?>
 <html lang="en">
 
@@ -181,7 +180,7 @@ body{margin:0;font-family:-apple-system,BlinkMacSystemFont,segoe ui,roboto,oxyge
                         <?php 
                         include 'config.php';
                         //echo "<script>alert('$idc')</script>";                        
-                                    $result1 = mysqli_query($con,"SELECT  `category_name`,`sub_id` FROM `sub_categorys` WHERE `category_id`=$idc;");                                    
+                                    $result1 = mysqli_query($con,"SELECT  `category_name`,`sub_id` FROM `sub_categorys` WHERE `category_id`=$idp;");                                    
                                     while($row1 = mysqli_fetch_array($result1)) 
                                     {
                                         $category_name= $row1['category_name'];   
@@ -189,7 +188,7 @@ body{margin:0;font-family:-apple-system,BlinkMacSystemFont,segoe ui,roboto,oxyge
                                       
                      ?>
                             <div class="mb-1 category-item">
-                            <span><a href='subdynamic.php?id=<?php echo $sub_id;?>&proid=<?php echo $idc; ?>'>      <?php echo $category_name; ?></a></span>
+                            <span>         <?php echo $category_name; ?></span>
                             <i class="fas fa-angle-right"></i></div>
                             <?php } ?>
 
@@ -202,7 +201,7 @@ body{margin:0;font-family:-apple-system,BlinkMacSystemFont,segoe ui,roboto,oxyge
                         <?php 
                         include 'config.php';
                         //echo "<script>alert('$idc')</script>";                        
-                                    $result1 = mysqli_query($con,"SELECT  `brand_name` FROM `brands` WHERE `category_id`=$idc;");                                    
+                                    $result1 = mysqli_query($con,"SELECT  `brand_name` FROM `brands` WHERE `category_id`=$idp;");                                    
                                     while($row1 = mysqli_fetch_array($result1)) 
                                     {
                                         $brand_name= $row1['brand_name'];   
@@ -235,7 +234,7 @@ body{margin:0;font-family:-apple-system,BlinkMacSystemFont,segoe ui,roboto,oxyge
                         <?php 
                         include 'config.php';
                         //echo "<script>alert('$idc')</script>";                        
-                                    $result1 = mysqli_query($con,"SELECT  `p_id`,`p_name`, `p_image` FROM `products` WHERE `category_id`=$idc;");                                    
+                                    $result1 = mysqli_query($con,"SELECT  `p_id`,`p_name`, `p_image` FROM `products` WHERE `sub_id`=$idc;");                                    
                                     while($row1 = mysqli_fetch_array($result1)) 
                                     {
                                         $p_name= $row1['p_name'];   

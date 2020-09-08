@@ -236,10 +236,8 @@ if(isset($_GET["action"]))
                                 <div class="switcher-main-button-holder row">
                                     <div class="input-group">
                                         <div class="btn-full">
-                                        <a href="deals.php" class="btn-inside new-btn-sm ">View All Nexus Deals</a>
-
-
-                                            <div class="input-group-append">
+                                        <a href="qty.php" class="btn-inside new-btn-sm ">View All Nexus Deals</a>
+                           <div class="input-group-append">
                                                 <div class="input-group-text append">
                                                 <i class="fas fa-angle-right"></i></div>
                                             </div>

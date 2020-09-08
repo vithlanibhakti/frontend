@@ -86,7 +86,7 @@ if(isset($_GET["action"]))
                                 <div class="m-0 row-cols-2 row-cols-xs-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-5 row">
     
                                 <?php
-				$query ="SELECT  `p_id`,`p_name`, `p_image` FROM `featureproducts` LIMIT 6";  
+				$query ="SELECT  `p_id`,`p_name`, `p_image` FROM `featureproducts` LIMIT 8";  
 				$result = mysqli_query($con, $query);
 				if(mysqli_num_rows($result) > 0)
 				{
@@ -95,7 +95,7 @@ if(isset($_GET["action"]))
                         $p_id= $row['p_id'];   
                         $p_name= $row['p_name'];   
                         $p_image= $row['p_image'];   
-                                        $result2 = mysqli_query($con,"SELECT  `product_id`, `sell_price` FROM `feature_product_to_storeayments` where `product_id` = $p_id  LIMIT 6");                                    
+                                        $result2 = mysqli_query($con,"SELECT  `product_id`, `sell_price` FROM `feature_product_to_storeayments` where `product_id` = $p_id  LIMIT 8");      
                                         while($row2 = mysqli_fetch_array($result2)) 
                                         {
                                             $sell_price= $row2['sell_price'];   

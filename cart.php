@@ -129,11 +129,8 @@ if(isset($_GET["action"]))
                 }
                 }
 					?>
-					
 
-
-
-                    </div>
+    </div>
                     <div class="product-cart-summary">
                     <?php
 					if(!empty($_SESSION["shopping_cart"]))
