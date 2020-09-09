@@ -309,7 +309,7 @@ if (! empty($cartItem)) {
         foreach ($product_array as $key => $value) {
             ?>
     
-        <form method="post" action="feature.php?action=add&code=<?php echo $product_array[$key]["p_code"]; ?>" onsubmit="myFunction()">
+        <form method="post" action="home.php?action=add&code=<?php echo $product_array[$key]["p_code"]; ?>" onsubmit="myFunction()">
 <div class="col" style="padding-bottom: 15px;">
                                         <div class="product-card-container">
                                             <div class="row">

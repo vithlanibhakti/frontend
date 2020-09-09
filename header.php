@@ -108,6 +108,253 @@ $city=$row['state'];
 </style>
 
 
+<?php
+require_once "DBController.php";
+class ShoppingCartc extends DBController
+{
+    function getMemberCartItem($member_id)
+    {
+
+        $query = "SELECT adminproducts.*,admin_product_to_store.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM adminproducts, tbl_cart,admin_product_to_store WHERE adminproducts.p_id = tbl_cart.product_id AND adminproducts.p_id = admin_product_to_store.product_id AND  tbl_cart.member_id = ? ";
+        $query = "SELECT products.*,product_to_store.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM products, tbl_cart,product_to_store WHERE products.p_id = tbl_cart.product_id AND products.p_id = product_to_store.product_id AND  tbl_cart.member_id = ? ";
+        $query = "SELECT bestsellers.*,bestsellers_product.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM bestsellers, tbl_cart,bestsellers_product WHERE bestsellers.p_id = tbl_cart.product_id AND bestsellers.p_id = bestsellers_product.product_id AND  tbl_cart.member_id = ? ";
+        $query = "SELECT featureproducts.*,feature_product_to_storeayments.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM featureproducts, tbl_cart,feature_product_to_storeayments WHERE featureproducts.p_id = tbl_cart.product_id AND featureproducts.p_id = feature_product_to_storeayments.product_id AND  tbl_cart.member_id = ? ";
+        $params = array(
+            array(
+                "param_type" => "i",
+                "param_value" => $member_id
+            )
+        );
+
+        $cartResult = $this->getDBResult($query, $params);
+        return $cartResult;
+
+        $query = "SELECT products.*,product_to_store.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM products, tbl_cart,product_to_store WHERE products.p_id = tbl_cart.product_id AND products.p_id = product_to_store.product_id AND  tbl_cart.member_id = ? ";
+        // $params = array(
+        //     array(
+        //         "param_type" => "i",
+        //         "param_value" => $member_id
+        //     )
+        // );
+
+        // $cartResult = $this->getDBResult($query, $params);
+        // return $cartResult;
+
+    }
+}
+?>
+<?php
+
+require_once "header.php";
+require_once "config.php";
+					    $fetch="SELECT  `id`,`username` FROM `users` WHERE username='$email' ";
+                        $result = mysqli_query($con,$fetch);
+
+                        if($result === FALSE)
+                        {
+                        die("Query Failed!".mysqli_error().$result);
+                        }
+                        while($row=mysqli_fetch_assoc($result))
+                            {
+                        $uid=$row['id'];
+                        //echo "<script>alert('$uid')</script>";
+                            }
+
+                            if($email == "guest")
+                            {
+$uid =0;                                
+                            }
+$member_id = $uid; // you can your integerate authentication module here to get logged in member
+
+$shoppingCart = new ShoppingCartc();
+?>
+<?php
+include 'config.php';
+$result1 = mysqli_query($con,"SELECT  `product_id`,`id` FROM `tbl_cart` WHERE `member_id`=$member_id;");
+            while($row1 = mysqli_fetch_array($result1))
+            {
+                $product_id= $row1['product_id'];
+                $c_id= $row1['id'];
+  //              echo "<script>alert('productid ==' + '$product_id')</script>";
+
+                $ar = [$product_id];
+                $str= implode(', ', $ar);
+//                echo "<script>alert('implod ==' + '$str')</script>";
+                $resul1 = mysqli_query($con,"SELECT  `alert_quantity` FROM `admin_product_to_store` WHERE `product_id`=$str;");
+                while($row = mysqli_fetch_array($resul1))
+                {
+                    $alert_quantity= $row['alert_quantity'];
+                    $aar = [$alert_quantity];
+                }
+            }
+            
+?>
+<html lang="en">
+<head>
+
+<link rel="stylesheet" href="assets/css/productcart.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+debugger;
+function increment_quantity(cart_id, sell_price) {
+
+    $.ajax({
+			url: "increment.php",
+			type: "POST",
+			data:{
+				cart_id: cart_id,
+                sell_price : sell_price
+			},
+			success: function(dataResult){
+			//	alert("Updated");
+				//alert(dataResult);
+        var inputQuantityElement = $("#input-quantity-"+cart_id);
+       //alert("stock" +dataResult);
+       //alert("cr" +inputQuantityElement.val());
+    if($(inputQuantityElement).val() < dataResult)
+    {
+   //     alert("d");
+    var newQuantity = parseInt($(inputQuantityElement).val()) + 1;
+    var newPrice = newQuantity * sell_price;
+    save_to_db(cart_id, newQuantity, newPrice);
+    }
+    else{
+        alert("out of stock");
+    }
+			}
+			
+		});
+
+//     //alert(cart_id);
+//     var inputQuantityElement = $("#input-quantity-"+cart_id);
+//     var val = "<?php echo $alert_quantity ?>";
+// //alert(val);
+// if($(inputQuantityElement).val() <= val)
+// {
+//     var newQuantity = parseInt($(inputQuantityElement).val())+1;
+//     var newPrice = newQuantity * sell_price;
+//     save_to_db(cart_id, newQuantity, newPrice);
+// }
+}
+
+function decrement_quantity(cart_id, sell_price) {
+    var inputQuantityElement = $("#input-quantity-"+cart_id);
+    if($(inputQuantityElement).val() > 1)
+    {
+    var newQuantity = parseInt($(inputQuantityElement).val()) - 1;
+    var newPrice = newQuantity * sell_price;
+    save_to_db(cart_id, newQuantity, newPrice);
+    }
+}
+
+function save_to_db(cart_id, new_quantity, newPrice) {
+	var inputQuantityElement = $("#input-quantity-"+cart_id);
+	var priceElement = $("#cart-price-"+cart_id);
+    $.ajax({
+		url : "update_cart_quantity.php",
+		data : "cart_id="+cart_id+"&new_quantity="+new_quantity,
+		type : 'post',
+		success : function(response) {
+			$(inputQuantityElement).val(new_quantity);
+            $(priceElement).text("$"+newPrice);
+            var totalQuantity = 0;
+            $("input[id*='input-quantity-']").each(function() {
+                var cart_quantity = $(this).val();
+                totalQuantity = parseInt(totalQuantity) + parseInt(cart_quantity);
+            });
+            $("#total-quantity").text(totalQuantity);
+            var totalItemPrice = 0;
+            $("div[id*='cart-price-']").each(function() {
+                var cart_price = $(this).text().replace("$","");
+                totalItemPrice = parseInt(totalItemPrice) + parseInt(cart_price);
+            });
+            $("#total-price").text(totalItemPrice);
+		}
+	});
+}
+</script>
+
+</HEAD>
+<BODY>
+
+<?php
+$cartItem = $shoppingCart->getMemberCartItem($member_id);
+if (! empty($cartItem)) {
+    $item_quantity = 0;
+    $item_price = 0;
+    if (! empty($cartItem)) {
+        foreach ($cartItem as $item) {
+
+            $item_quantity = $item_quantity + $item["quantity"];
+            $item_price = $item_price + ($item["sell_price"] * $item["quantity"]);
+
+
+        }
+    }
+}
+?>
+
+<div class="product-cart-summary">
+<?php
+					    $fetch="SELECT  `id`,`username` FROM `users` WHERE username='$email' ";
+                        $result = mysqli_query($con,$fetch);
+
+                        if($result === FALSE)
+                        {
+                        die("Query Failed!".mysqli_error().$result);
+                        }
+                        while($row=mysqli_fetch_assoc($result))
+                            {
+                        $uid=$row['id'];
+                        //echo "<script>alert('$uid')</script>";
+
+                            $fetch="SELECT * FROM shipping WHERE id = (SELECT MAX(id) FROM shipping WHERE uid = '$uid')";
+                        $result = mysqli_query($con,$fetch);
+
+                        if($result === FALSE)
+                        {
+                        die("Query Failed!".mysqli_error().$result);
+                        }
+                        while($row=mysqli_fetch_assoc($result))
+                        {
+                        $method=$row['method'];
+
+                        }
+
+
+if( $email !== "guest")
+{
+if($method == "pickup" )
+{
+$d=0;
+}
+else
+{
+    $d=150;
+}
+}
+else{
+    $d=0;
+}
+
+?>
+<?php if (! empty($cartItem))
+{
+?>                  <?php }
+
+                    ?>
+                        <!-- <div class="summary-checkout-button" >Proceed to Checkout</div> -->
+                    </div>
+                <?php } ?>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+
 
     <div id="root">
         <div style="overflow: hidden;">
@@ -179,6 +426,7 @@ $city=$row['state'];
                         </div>
 
                     </div>
+                    
                     </nav>
                 </div>
                 <div class="default-header-navbar">
@@ -222,30 +470,7 @@ $city=$row['state'];
                                             </div>
                                         </div>
                                     </nav>
-
-
-
-                                    <?php
-					if(!empty($_SESSION["shopping_cart"]))
-					{
-
-$a= count($_SESSION['shopping_cart']);
-//echo "<script>alert('$a')</script>"; 
-
-						$total = 0;
-						foreach($_SESSION["shopping_cart"] as $keys => $values)
-						{
-					?>
-                                    <?php
-							$total = $total + ($values["item_quantity"] * $values["item_price"]);
-						}
-//echo number_format($total, 2); 
-                    }
-                    else{
-                        $a=0;
-                        $total =0;
-                    }
-					?>
+                                    
                                 <?php 
 if (! empty($cartItem)) {
 ?>
@@ -260,7 +485,7 @@ if (! empty($cartItem)) {
                                                 }
                                                 else
                                                 { ?>
-                                                                        <span id="total-quantity"><?php echo $item_quantity; ?></span>
+                                                                       <span id="total-quantity"><?php echo $item_quantity; ?></span>
                                                                         <?php }
                                                 ?>
 
@@ -410,43 +635,6 @@ $result = mysqli_query($con,"SELECT * FROM categorys");
                                         </ul>
                                         <li id="dep_id_2">Beverages <span><i class="fa fa-angle-right"></i></span></li>
                                         <ul id="sub_dep_id_2" style="display: none;">
-                                            <a href="/product/1/2">
-                                                <li class="cat_item_" data-cat-id="all"><strong>All Beverages</strong>
-                                                </li>
-                                            </a>
-                                            <a href="/product/2/2/25">
-                                                <li>Juices &amp; Carbonates</li>
-                                            </a>
-                                            <a href="/product/2/2/41">
-                                                <li>Malt Drink</li>
-                                            </a>
-                                            <a href="/product/2/2/88">
-                                                <li>Sports &amp; Energy Drinks</li>
-                                            </a>
-                                            <a href="/product/2/2/126">
-                                                <li>Milk &amp; Creamers</li>
-                                            </a>
-                                            <a href="/product/2/2/172">
-                                                <li>RTD Beverages</li>
-                                            </a>
-                                            <a href="/product/2/2/183">
-                                                <li>Water</li>
-                                            </a>
-                                            <a href="/product/2/2/191">
-                                                <li>Coffee</li>
-                                            </a>
-                                            <a href="/product/2/2/195">
-                                                <li>Tea</li>
-                                            </a>
-                                            <a href="/product/2/2/200">
-                                                <li>Chocolate Drink</li>
-                                            </a>
-                                            <a href="/product/2/2/217">
-                                                <li>Non Alcoholic Beers and Wines</li>
-                                            </a>
-                                            <a href="/product/2/2/223">
-                                                <li>Concentrated Fruit Drinks</li>
-                                            </a>
                                         </ul>
                                         <li id="dep_id_3">Chilled <span><i class="fa fa-angle-right"></i></span></li>
                                         <ul id="sub_dep_id_3" style="display: none;">
@@ -480,33 +668,7 @@ $result = mysqli_query($con,"SELECT * FROM categorys");
                                                 <li class="cat_item_" data-cat-id="all"><strong>All Frozen Food</strong>
                                                 </li>
                                             </a>
-                                            <a href="/product/2/5/28">
-                                                <li>Frozen RTC Ready Meals</li>
-                                            </a>
-                                            <a href="/product/2/5/46">
-                                                <li>Frozen Cheese</li>
-                                            </a>
-                                            <a href="/product/2/5/107">
-                                                <li>Frozen Raw</li>
-                                            </a>
-                                            <a href="/product/2/5/127">
-                                                <li>Frozen RTC Snacks</li>
-                                            </a>
-                                            <a href="/product/2/5/150">
-                                                <li>Processed/Preserved Meat</li>
-                                            </a>
-                                            <a href="/product/2/5/153">
-                                                <li>Desserts</li>
-                                            </a>
-                                            <a href="/product/2/5/166">
-                                                <li>Processed/Preserved Vegetable &amp; Fru</li>
-                                            </a>
-                                            <a href="/product/2/5/190">
-                                                <li>Processed/Preserved Fish</li>
-                                            </a>
-                                            <a href="/product/2/5/230">
-                                                <li>Ice Cubes</li>
-                                            </a>
+                                            
                                         </ul>
                                         <li id="dep_id_7">Grocery <span><i class="fa fa-angle-right"></i></span></li>
                                         <ul id="sub_dep_id_7" style="display: none;">
@@ -514,75 +676,7 @@ $result = mysqli_query($con,"SELECT * FROM categorys");
                                                 <li class="cat_item_" data-cat-id="all"><strong>All Grocery</strong>
                                                 </li>
                                             </a>
-                                            <a href="/product/2/7/31">
-                                                <li>Pulses</li>
-                                            </a>
-                                            <a href="/product/2/7/56">
-                                                <li>Soups</li>
-                                            </a>
-                                            <a href="/product/2/7/57">
-                                                <li>Pasta &amp; Noodles</li>
-                                            </a>
-                                            <a href="/product/2/7/74">
-                                                <li>Desserts</li>
-                                            </a>
-                                            <a href="/product/2/7/78">
-                                                <li>Snacks</li>
-                                            </a>
-                                            <a href="/product/2/7/104">
-                                                <li>Processed/Preserved Meat</li>
-                                            </a>
-                                            <a href="/product/2/7/111">
-                                                <li>Seasoning &amp; Coconut Cream</li>
-                                            </a>
-                                            <a href="/product/2/7/113">
-                                                <li>Cereals</li>
-                                            </a>
-                                            <a href="/product/2/7/115">
-                                                <li>Spreads</li>
-                                            </a>
-                                            <a href="/product/2/7/123">
-                                                <li>FOW</li>
-                                            </a>
-                                            <a href="/product/2/7/130">
-                                                <li>Oils/Fats</li>
-                                            </a>
-                                            <a href="/product/2/7/131">
-                                                <li>Meal Accompaniments</li>
-                                            </a>
-                                            <a href="/product/2/7/137">
-                                                <li>Sauce</li>
-                                            </a>
-                                            <a href="/product/2/7/154">
-                                                <li>Processed Cheese</li>
-                                            </a>
-                                            <a href="/product/2/7/155">
-                                                <li>Flour</li>
-                                            </a>
-                                            <a href="/product/2/7/158">
-                                                <li>Processed / Preserved Vegetables</li>
-                                            </a>
-                                            <a href="/product/2/7/171">
-                                                <li>Biscuits</li>
-                                            </a>
-                                            <a href="/product/2/7/179">
-                                                <li>Sugar</li>
-                                            </a>
-                                            <a href="/product/2/7/210">
-                                                <li>Eggs</li>
-                                            </a>
-                                            <a href="/product/2/7/228">
-                                                <li>Confectionery</li>
-                                            </a>
-                                            <a href="/product/2/7/233">
-                                                <li>Processed/Preserved Fruits</li>
-                                            </a>
-                                            <a href="/product/2/7/242">
-                                                <li>Bakery</li>
-                                            </a>
-                                            <a href="/product/2/7/251">
-                                                <li>Processed/Preserved Fish</li>
-                                            </a>
+                                            
                                         </ul>
                                         <li id="dep_id_8">Homeware <span><i class="fa fa-angle-right"></i></span></li>
                                         <ul id="sub_dep_id_8" style="display: none;">
@@ -590,30 +684,7 @@ $result = mysqli_query($con,"SELECT * FROM categorys");
                                                 <li class="cat_item_" data-cat-id="all"><strong>All Homeware</strong>
                                                 </li>
                                             </a>
-                                            <a href="/product/2/8/10">
-                                                <li>Electrical/Electronic</li>
-                                            </a>
-                                            <a href="/product/2/8/24">
-                                                <li>Tools</li>
-                                            </a>
-                                            <a href="/product/2/8/69">
-                                                <li>Stationary/Books</li>
-                                            </a>
-                                            <a href="/product/2/8/151">
-                                                <li>Kitchenware</li>
-                                            </a>
-                                            <a href="/product/2/8/173">
-                                                <li>Plastic ware</li>
-                                            </a>
-                                            <a href="/product/2/8/187">
-                                                <li>Textile</li>
-                                            </a>
-                                            <a href="/product/2/8/239">
-                                                <li>General Needs</li>
-                                            </a>
-                                            <a href="/product/2/8/241">
-                                                <li>Kitchen Needs</li>
-                                            </a>
+                                            
                                         </ul>
                                         <li id="dep_id_9">Household <span><i class="fa fa-angle-right"></i></span></li>
                                         <ul id="sub_dep_id_9" style="display: none;">
@@ -621,66 +692,7 @@ $result = mysqli_query($con,"SELECT * FROM categorys");
                                                 <li class="cat_item_" data-cat-id="all"><strong>All Household</strong>
                                                 </li>
                                             </a>
-                                            <a href="/product/2/9/3">
-                                                <li>Party Ware</li>
-                                            </a>
-                                            <a href="/product/2/9/5">
-                                                <li>Car Care</li>
-                                            </a>
-                                            <a href="/product/2/9/20">
-                                                <li>Cosmetics</li>
-                                            </a>
-                                            <a href="/product/2/9/27">
-                                                <li>Baby Needs</li>
-                                            </a>
-                                            <a href="/product/2/9/33">
-                                                <li>Paper Goods</li>
-                                            </a>
-                                            <a href="/product/2/9/58">
-                                                <li>Pet Care</li>
-                                            </a>
-                                            <a href="/product/2/9/75">
-                                                <li>Facial Care</li>
-                                            </a>
-                                            <a href="/product/2/9/92">
-                                                <li>Baby Foods</li>
-                                            </a>
-                                            <a href="/product/2/9/95">
-                                                <li>Hand &amp; Body Care</li>
-                                            </a>
-                                            <a href="/product/2/9/97">
-                                                <li>Cleaning Durables</li>
-                                            </a>
-                                            <a href="/product/2/9/121">
-                                                <li>Disposable Table Ware</li>
-                                            </a>
-                                            <a href="/product/2/9/124">
-                                                <li>Cleaning Consumables</li>
-                                            </a>
-                                            <a href="/product/2/9/132">
-                                                <li>General Needs</li>
-                                            </a>
-                                            <a href="/product/2/9/146">
-                                                <li>Hair Care</li>
-                                            </a>
-                                            <a href="/product/2/9/185">
-                                                <li>Personal Hygiene</li>
-                                            </a>
-                                            <a href="/product/2/9/211">
-                                                <li>Men's Toiletries</li>
-                                            </a>
-                                            <a href="/product/2/9/219">
-                                                <li>Pest Control</li>
-                                            </a>
-                                            <a href="/product/2/9/222">
-                                                <li>Laundry Care</li>
-                                            </a>
-                                            <a href="/product/2/9/224">
-                                                <li>Oral Care</li>
-                                            </a>
-                                            <a href="/product/2/9/232">
-                                                <li>Female Fragrance</li>
-                                            </a>
+                                            
                                         </ul>
                                         <li id="dep_id_11">Tobacco <span><i class="fa fa-angle-right"></i></span></li>
                                         <ul id="sub_dep_id_11" style="display: none;">
@@ -780,4 +792,5 @@ $result = mysqli_query($con,"SELECT * FROM categorys");
 
             });
         });
-        </script>
+
+</script> 
