@@ -48,7 +48,8 @@ class ShoppingCartd extends DBController
         //echo $idc;  
                 
         $query = "SELECT featureproducts.*,p2s.quantity_in_stock, p2s.sell_price as sell_price, p2s.purchase_price as purchase_price FROM featureproducts LEFT JOIN feature_product_to_storeayments p2s ON (featureproducts.p_id = p2s.product_id) GROUP BY featureproducts.p_id HAVING  quantity_in_stock != '' LIMIT 5";
-        
+        $query = "SELECT bestsellers.*,p2s.quantity_in_stock, p2s.sell_price as sell_price, p2s.purchase_price as purchase_price FROM bestsellers LEFT JOIN bestsellers_product p2s ON (bestsellers.p_id = p2s.product_id) GROUP BY bestsellers.p_id HAVING  quantity_in_stock != '' LIMIT 5";
+
         $productResult = $this->getDBResult($query);
         return $productResult;
     }
@@ -57,6 +58,7 @@ class ShoppingCartd extends DBController
     {
         
         $query = "SELECT featureproducts.*,feature_product_to_storeayments.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM featureproducts, tbl_cart,feature_product_to_storeayments WHERE featureproducts.p_id = tbl_cart.product_id AND featureproducts.p_id = feature_product_to_storeayments.product_id AND  tbl_cart.member_id = ? ";
+        $query = "SELECT bestsellers.*,bestsellers_product.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM bestsellers, tbl_cart,bestsellers_product WHERE bestsellers.p_id = tbl_cart.product_id AND bestsellers.p_id = bestsellers_product.product_id AND  tbl_cart.member_id = ? ";
         
         $params = array(
             array(
@@ -72,7 +74,8 @@ class ShoppingCartd extends DBController
     function getProductByCode($product_code)
     {
         $query = "SELECT * FROM featureproducts WHERE p_code=?";
-        
+        $query = "SELECT * FROM bestsellers WHERE p_code=?";
+
         $params = array(
             array(
                 "param_type" => "s",
@@ -192,15 +195,7 @@ if (! empty($_GET["action"])) {
                 } else {
                     // Add to cart table
                     $shoppingCart->addToCart($productResult[0]["p_id"], $_POST["quantity"], $member_id);
-               //     echo '<script>alert("Item Added successfully")</script>';
-                    //$idc=$_GET['id'];
-                    //echo '<script>alert('$idc')</script>';
-                    //echo "<script type=\"text/javascript\">\n";
-                    //echo "var foo = ${idc};\n";
-//                    echo "alert('value is:' + foo);\n";
-//                     echo "</script>\n";
-
-                }
+               }
              
                 
             }

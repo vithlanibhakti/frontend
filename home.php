@@ -22,18 +22,20 @@ class ShoppingCartd extends DBController
     {
        // $idc=$_GET['id'];
         //echo $idc;  
-                
+        $query = "SELECT adminproducts.*,p2s.quantity_in_stock, p2s.sell_price as sell_price, p2s.purchase_price as purchase_price FROM adminproducts LEFT JOIN admin_product_to_store p2s ON (adminproducts.p_id = p2s.product_id) GROUP BY adminproducts.p_id HAVING  quantity_in_stock != '' LIMIT 5";                
         $query = "SELECT bestsellers.*,p2s.quantity_in_stock, p2s.sell_price as sell_price, p2s.purchase_price as purchase_price FROM bestsellers LEFT JOIN bestsellers_product p2s ON (bestsellers.p_id = p2s.product_id) GROUP BY bestsellers.p_id HAVING  quantity_in_stock != '' LIMIT 5";
-        
+        $query = "SELECT featureproducts.*,p2s.quantity_in_stock, p2s.sell_price as sell_price, p2s.purchase_price as purchase_price FROM featureproducts LEFT JOIN feature_product_to_storeayments p2s ON (featureproducts.p_id = p2s.product_id) GROUP BY featureproducts.p_id HAVING  quantity_in_stock != '' LIMIT 5";
+
         $productResult = $this->getDBResult($query);
         return $productResult;
     }
 
     function getMemberCartItem($member_id)
     {
-        
+        $query = "SELECT adminproducts.*,admin_product_to_store.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM adminproducts, tbl_cart,admin_product_to_store WHERE adminproducts.p_id = tbl_cart.product_id AND adminproducts.p_id = admin_product_to_store.product_id AND  tbl_cart.member_id = ? ";
         $query = "SELECT bestsellers.*,bestsellers_product.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM bestsellers, tbl_cart,bestsellers_product WHERE bestsellers.p_id = tbl_cart.product_id AND bestsellers.p_id = bestsellers_product.product_id AND  tbl_cart.member_id = ? ";
-        
+        $query = "SELECT featureproducts.*,feature_product_to_storeayments.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM featureproducts, tbl_cart,feature_product_to_storeayments WHERE featureproducts.p_id = tbl_cart.product_id AND featureproducts.p_id = feature_product_to_storeayments.product_id AND  tbl_cart.member_id = ? ";
+
         $params = array(
             array(
                 "param_type" => "i",
@@ -48,6 +50,8 @@ class ShoppingCartd extends DBController
     function getProductByCode($product_code)
     {
         $query = "SELECT * FROM bestsellers WHERE p_code=?";
+        $query = "SELECT * FROM featureproducts WHERE p_code=?";
+        $query = "SELECT * FROM adminproducts WHERE p_code=?";
         
         $params = array(
             array(
@@ -297,30 +301,20 @@ if (! empty($cartItem)) {
                             </div>
                             <div class="product-container">
                                 <div class="m-0 row-cols-2 row-cols-xs-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-5 row">
-                                <?php
-				$query = "SELECT * FROM adminproducts ORDER BY p_id ASC LIMIT 6";
-				$result = mysqli_query($con, $query);
-				if(mysqli_num_rows($result) > 0)
-				{
-					while($row = mysqli_fetch_array($result))
-					{
-                        $p_id= $row['p_id'];   
-                        $p_name= $row['p_name'];   
-                        $p_image= $row['p_image'];   
-                                        $result2 = mysqli_query($con,"SELECT  `product_id`, `sell_price` FROM `admin_product_to_store` where `product_id` = $p_id  LIMIT 6");                                    
-                                        while($row2 = mysqli_fetch_array($result2)) 
-                                        {
-                                            $sell_price= $row2['sell_price'];   
-                                   //          echo $sell_price."<br>"; 
-                                              $product_id= $row2['product_id'];   
-                                              // echo $product_id."<br>"; 
-				?>
-<form method="post" action="home.php?action=add&p_id=<?php echo $row["p_id"]; ?>">
+                               
+    <?php
+    $query = "SELECT adminproducts.*,p2s.quantity_in_stock, p2s.sell_price as sell_price, p2s.purchase_price as purchase_price FROM adminproducts LEFT JOIN admin_product_to_store p2s ON (adminproducts.p_id = p2s.product_id) GROUP BY adminproducts.p_id HAVING quantity_in_stock != '' LIMIT 5";
+    $product_array = $shoppingCart->getAllProduct($query);
+    if (! empty($product_array)) {
+        foreach ($product_array as $key => $value) {
+            ?>
+    
+        <form method="post" action="feature.php?action=add&code=<?php echo $product_array[$key]["p_code"]; ?>" onsubmit="myFunction()">
 <div class="col" style="padding-bottom: 15px;">
                                         <div class="product-card-container">
                                             <div class="row">
                                                 <div class="product-card-image-container col-md-12">
-                                                <img class="img-fluid" src="<?php echo $p_image; ?>">
+                                                <img class="img-fluid" src="<?php echo $product_array[$key]["p_image"]; ?>">
                                                     <div class="product-card-promotion-badge">
                                                         <div class="product-card-promotion-badge-nexus">
                                                             <!-- <img class="img-fluid" src="/static/media/Nexus.0af60875.png"> -->
@@ -334,28 +328,24 @@ if (! empty($cartItem)) {
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="product-card-name col-md-12"><?php echo $p_name; ?></div>
+                                                <div class="product-card-name col-md-12"><?php echo $product_array[$key]["p_name"]; ?></div>
                                                 <div class="product-card-price-container col-md-12">
-                                                    <div class="product-card-original-price"><?php echo $sell_price; ?></div>
+                                                    <div class="product-card-original-price"><?php echo $product_array[$key]["sell_price"]; ?></div>
                                                     <div class="product-card-final-price">Rs 138.00 / Unit</div>
                                                 </div>
                                                 <div class="product-card-button-container col-md-12">
                                                     <!-- <button type="button" onclick="display()" class="product-card-button-add btn btn-primary btn-block">
                                                     <i class="fas fa-shopping-cart"></i>Add to Cart</button> -->
-                                                    <input type="text" name="quantity" value="1" class="form-control" />
-
-<input type="hidden" name="hidden_name" value="<?php echo $row["p_name"]; ?>" />
-<input type="hidden" name="hidden_price" value="<?php echo $row2["sell_price"]; ?>" />
-<input type="submit" name="add_to_cart" style="margin-top:5px;" class="product-card-button-add btn btn-primary btn-block" value="Add to Cart" />
-
+                                                    <input type="hidden" name="quantity" value="1" size="2" class="input-cart-quantity" />
+                        <input type="image" src="add-to-cart.png" class="btnAddAction" />
+                                           
                                                 </div>
                           	</div>
                               </div>
 				</form>    
 </div>
 			<?php
-                    }
-                }
+                                }
                 }
                 
             ?>                            
@@ -526,30 +516,20 @@ if (! empty($cartItem)) {
                     </div>
                     <div class="col-md-10 col-12 offset-md-1">
                         <div class="m-0 row-cols-2 row-cols-xs-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-5 row">
-                        <?php
-				$query ="SELECT  `p_id`,`p_name`, `p_image` FROM `featureproducts` LIMIT 8";  
-				$result = mysqli_query($con, $query);
-				if(mysqli_num_rows($result) > 0)
-				{
-					while($row = mysqli_fetch_array($result))
-					{
-                        $p_id= $row['p_id'];   
-                        $p_name= $row['p_name'];   
-                        $p_image= $row['p_image'];   
-                                        $result2 = mysqli_query($con,"SELECT  `product_id`, `sell_price` FROM `feature_product_to_storeayments` where `product_id` = $p_id  LIMIT 8");      
-                                        while($row2 = mysqli_fetch_array($result2)) 
-                                        {
-                                            $sell_price= $row2['sell_price'];   
-                                   //          echo $sell_price."<br>"; 
-                                              $product_id= $row2['product_id'];   
-                                              // echo $product_id."<br>"; 
-				?>
-<form method="post" action="home.php?action=add&p_id=<?php echo $row["p_id"]; ?>">
+                      
+    <?php
+    $query = "SELECT featureproducts.*,p2s.quantity_in_stock, p2s.sell_price as sell_price, p2s.purchase_price as purchase_price FROM featureproducts LEFT JOIN feature_product_to_storeayments p2s ON (featureproducts.p_id = p2s.product_id) GROUP BY featureproducts.p_id HAVING quantity_in_stock != '' LIMIT 5";
+    $product_array = $shoppingCart->getAllProduct($query);
+    if (! empty($product_array)) {
+        foreach ($product_array as $key => $value) {
+            ?>
+
+<form method="post" action="home.php?action=add&code=<?php echo $product_array[$key]["p_code"]; ?>" onsubmit="myFunction()">
 <div class="col" style="padding-bottom: 15px;">
                                         <div class="product-card-container">
                                             <div class="row">
                                                 <div class="product-card-image-container col-md-12">
-                                                <img class="img-fluid" src="<?php echo $p_image; ?>">
+                                                <img class="img-fluid" src="<?php echo $product_array[$key]["p_image"]; ?>">
                                                     <div class="product-card-promotion-badge">
                                                         <div class="product-card-promotion-badge-nexus">
                                                             <!-- <img class="img-fluid" src="/static/media/Nexus.0af60875.png"> -->
@@ -563,20 +543,15 @@ if (! empty($cartItem)) {
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="product-card-name col-md-12"><?php echo $p_name; ?></div>
+                                                <div class="product-card-name col-md-12"><?php echo $product_array[$key]["p_name"]; ?></div>
                                                 <div class="product-card-price-container col-md-12">
-                                                    <div class="product-card-original-price"><?php echo $sell_price; ?></div>
+                                                    <div class="product-card-original-price"><?php echo $product_array[$key]["sell_price"]; ?></div>
                                                     <div class="product-card-final-price">Rs 138.00 / Unit</div>
                                                 </div>
                                                 <div class="product-card-button-container col-md-12">
-                                                    <!-- <button type="button" onclick="display()" class="product-card-button-add btn btn-primary btn-block">
-                                                    <i class="fas fa-shopping-cart"></i>Add to Cart</button> -->
-                                                    <input type="text" name="quantity" value="1" class="form-control" />
-
-<input type="hidden" name="hidden_name" value="<?php echo $row["p_name"]; ?>" />
-<input type="hidden" name="hidden_price" value="<?php echo $row2["sell_price"]; ?>" />
-<input type="submit" name="add_to_cart" style="margin-top:5px;" class="product-card-button-add btn btn-primary btn-block" value="Add to Cart" />
-
+                                                <input type="hidden" name="quantity" value="1" size="2" class="input-cart-quantity" />
+                        <input type="image" src="add-to-cart.png" class="btnAddAction" />
+                        
                                                 </div>
                           	</div>
                               </div>
@@ -584,7 +559,7 @@ if (! empty($cartItem)) {
 </div>
 			<?php
                     }
-                }
+                
                 }
                 
             ?>
@@ -760,4 +735,28 @@ function display() {
             }
          
     
+function myFunction() {
+    
+  var myvar='<?php echo $email;?>';
+//               alert(myvar);
+               if(myvar== 'guest')
+               {
+                var response = confirm('Do you want to login as guest?');
+                    if ( response == true )
+                    {
+                        // window.location = "login.php";
+                        window.open('login.php', '_blank');
+
+                    }
+                    else{
+                        alert("For order you have to login");
+                        return false;
+
+                    }
+               }
+               else{
+                
+                alert("Record Inserted!")
+               }
+}
 </script>

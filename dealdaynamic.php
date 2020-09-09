@@ -47,8 +47,9 @@ class ShoppingCartd extends DBController
        // $idc=$_GET['id'];
         //echo $idc;  
                 
+        $query = "SELECT adminproducts.*,p2s.quantity_in_stock, p2s.sell_price as sell_price, p2s.purchase_price as purchase_price FROM adminproducts LEFT JOIN admin_product_to_store p2s ON (adminproducts.p_id = p2s.product_id) GROUP BY adminproducts.p_id HAVING  quantity_in_stock != '' LIMIT 5";
         $query = "SELECT bestsellers.*,p2s.quantity_in_stock, p2s.sell_price as sell_price, p2s.purchase_price as purchase_price FROM bestsellers LEFT JOIN bestsellers_product p2s ON (bestsellers.p_id = p2s.product_id) GROUP BY bestsellers.p_id HAVING  quantity_in_stock != '' LIMIT 5";
-        
+
         $productResult = $this->getDBResult($query);
         return $productResult;
     }
@@ -56,6 +57,7 @@ class ShoppingCartd extends DBController
     function getMemberCartItem($member_id)
     {
         
+        $query = "SELECT adminproducts.*,admin_product_to_store.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM adminproducts, tbl_cart,admin_product_to_store WHERE adminproducts.p_id = tbl_cart.product_id AND adminproducts.p_id = admin_product_to_store.product_id AND  tbl_cart.member_id = ? ";
         $query = "SELECT bestsellers.*,bestsellers_product.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM bestsellers, tbl_cart,bestsellers_product WHERE bestsellers.p_id = tbl_cart.product_id AND bestsellers.p_id = bestsellers_product.product_id AND  tbl_cart.member_id = ? ";
         
         $params = array(
@@ -71,8 +73,9 @@ class ShoppingCartd extends DBController
 
     function getProductByCode($product_code)
     {
+        $query = "SELECT * FROM adminproducts WHERE p_code=?";
         $query = "SELECT * FROM bestsellers WHERE p_code=?";
-        
+
         $params = array(
             array(
                 "param_type" => "s",
@@ -192,7 +195,7 @@ if (! empty($_GET["action"])) {
                 } else {
                     // Add to cart table
                     $shoppingCart->addToCart($productResult[0]["p_id"], $_POST["quantity"], $member_id);
-                }
+               }
              
                 
             }
@@ -307,14 +310,13 @@ if (! empty($cartItem)) {
          
 
     <?php
-    $query = "SELECT bestsellers.*,p2s.quantity_in_stock, p2s.sell_price as sell_price, p2s.purchase_price as purchase_price FROM bestsellers LEFT JOIN bestsellers_product p2s ON (bestsellers.p_id = p2s.product_id) GROUP BY bestsellers.p_id HAVING quantity_in_stock != '' LIMIT 5";
+    $query = "SELECT adminproducts.*,p2s.quantity_in_stock, p2s.sell_price as sell_price, p2s.purchase_price as purchase_price FROM adminproducts LEFT JOIN admin_product_to_store p2s ON (adminproducts.p_id = p2s.product_id) GROUP BY adminproducts.p_id HAVING quantity_in_stock != '' LIMIT 5";
     $product_array = $shoppingCart->getAllProduct($query);
     if (! empty($product_array)) {
         foreach ($product_array as $key => $value) {
-			  
             ?>
     
-        <form method="post" action="best.php?action=add&code=<?php echo $product_array[$key]["p_code"]; ?>" onsubmit="myFunction()">
+        <form method="post" action="feature.php?action=add&code=<?php echo $product_array[$key]["p_code"]; ?>" onsubmit="myFunction()">
         <div class="col" style="padding-bottom: 15px;">
                         <div class="product-card-container">
                                        <div class="row">
