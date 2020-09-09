@@ -86,7 +86,6 @@ class ShoppingCartd extends DBController
     function addToCart($product_id, $quantity, $member_id)
     {
         $query = "INSERT INTO tbl_cart (product_id,quantity,member_id) VALUES (?, ?, ?)";
-        
 
         $params = array(
             array(
@@ -168,12 +167,17 @@ if (! empty($_GET["action"])) {
                     // Update cart item quantity in database
                     $newQuantity = $cartResult[0]["quantity"] + $_POST["quantity"];
                     $shoppingCart->updateCartQuantity($newQuantity, $cartResult[0]["id"]);
-                } else {
+                }
+                 else 
+                {
                     $shoppingCart->addToCart($productResult[0]["p_id"], $_POST["quantity"], $member_id);
+                
                 }
              
-                
+                header("Location: http://www.example.com/another-page.php");
+   
             }
+
             break;
         case "remove":
             // Delete single entry from the cart
@@ -183,7 +187,8 @@ if (! empty($_GET["action"])) {
             // Empty cart
             $shoppingCart->emptyCart($member_id);
             break;
-    }
+    
+        }
 }
 $cartItem = $shoppingCart->getMemberCartItem($member_id);
 if (! empty($cartItem)) {
@@ -755,8 +760,13 @@ function myFunction() {
                     }
                }
                else{
-                
-                alert("Record Inserted!")
+                alert("Record Inserted!");
                }
 }
+
+setTimeout(function(){
+    window.location = window.location.pathname;
+}, 5000);
+
+
 </script>
