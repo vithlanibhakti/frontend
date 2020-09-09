@@ -1,16 +1,13 @@
-
 <?php
 require_once "DBController.php";
-
 class ShoppingCart extends DBController
 {
-
-
     function getMemberCartItem($member_id)
     {
 
         $query = "SELECT adminproducts.*,admin_product_to_store.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM adminproducts, tbl_cart,admin_product_to_store WHERE adminproducts.p_id = tbl_cart.product_id AND adminproducts.p_id = admin_product_to_store.product_id AND  tbl_cart.member_id = ? ";
-
+        $query = "SELECT products.*,product_to_store.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM products, tbl_cart,product_to_store WHERE products.p_id = tbl_cart.product_id AND products.p_id = product_to_store.product_id AND  tbl_cart.member_id = ? ";
+        $query = "SELECT bestsellers.*,bestsellers_product.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM bestsellers, tbl_cart,bestsellers_product WHERE bestsellers.p_id = tbl_cart.product_id AND bestsellers.p_id = bestsellers_product.product_id AND  tbl_cart.member_id = ? ";
         $params = array(
             array(
                 "param_type" => "i",
@@ -20,6 +17,18 @@ class ShoppingCart extends DBController
 
         $cartResult = $this->getDBResult($query, $params);
         return $cartResult;
+
+        $query = "SELECT products.*,product_to_store.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM products, tbl_cart,product_to_store WHERE products.p_id = tbl_cart.product_id AND products.p_id = product_to_store.product_id AND  tbl_cart.member_id = ? ";
+        // $params = array(
+        //     array(
+        //         "param_type" => "i",
+        //         "param_value" => $member_id
+        //     )
+        // );
+
+        // $cartResult = $this->getDBResult($query, $params);
+        // return $cartResult;
+
     }
 
     function getProductByCode($product_code)
@@ -315,6 +324,7 @@ if (! empty($cartItem)) {
 
             </div>
         </div> -->
+        <form method="post" action="addtocart.php" >
         <div class="main-content-holder">
     <div class="col-md-10 offset-md-1">
         <div style="padding-top: 2.5rem; padding-bottom: 1.5625rem; margin: 0px;" class="row">
@@ -462,9 +472,7 @@ else{
                     else{ ?>
                          <button class="summary-checkout-button" id="enter" disabled="true" type="submit" name="submit">Proceed to Checkout</button>
                     <?php }
-
-
-                    }
+     }
                     ?>
                         <!-- <div class="summary-checkout-button" >Proceed to Checkout</div> -->
                     </div>
@@ -472,6 +480,7 @@ else{
                 </div>
             </div>
         </div>
+        </form>
     </div>
 </div>
 
