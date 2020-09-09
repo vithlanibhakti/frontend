@@ -763,7 +763,6 @@ function myFunction() {
                 alert("Record Inserted!");
                }
 }
-
 setTimeout(function(){
     window.location = window.location.pathname;
 }, 5000);
