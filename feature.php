@@ -56,7 +56,7 @@ class ShoppingCartd extends DBController
     function getMemberCartItem($member_id)
     {
         
-        $query = "SELECT featureproducts.*,feature_product_to_storeayments.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM bestsellers, tbl_cart,feature_product_to_storeayments WHERE featureproducts.p_id = tbl_cart.product_id AND featureproducts.p_id = feature_product_to_storeayments.product_id AND  tbl_cart.member_id = ? ";
+        $query = "SELECT featureproducts.*,feature_product_to_storeayments.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM featureproducts, tbl_cart,feature_product_to_storeayments WHERE featureproducts.p_id = tbl_cart.product_id AND featureproducts.p_id = feature_product_to_storeayments.product_id AND  tbl_cart.member_id = ? ";
         
         $params = array(
             array(
@@ -71,7 +71,7 @@ class ShoppingCartd extends DBController
 
     function getProductByCode($product_code)
     {
-        $query = "SELECT * FROM bestsellers WHERE p_code=?";
+        $query = "SELECT * FROM featureproducts WHERE p_code=?";
         
         $params = array(
             array(
@@ -315,13 +315,13 @@ if (! empty($cartItem)) {
          
 
     <?php
-    $query = "SELECT bestsellers.*,p2s.quantity_in_stock, p2s.sell_price as sell_price, p2s.purchase_price as purchase_price FROM bestsellers LEFT JOIN feature_product_to_storeayments p2s ON (bestsellers.p_id = p2s.product_id) GROUP BY bestsellers.p_id HAVING quantity_in_stock != '' LIMIT 5";
+    $query = "SELECT featureproducts.*,p2s.quantity_in_stock, p2s.sell_price as sell_price, p2s.purchase_price as purchase_price FROM featureproducts LEFT JOIN feature_product_to_storeayments p2s ON (featureproducts.p_id = p2s.product_id) GROUP BY featureproducts.p_id HAVING quantity_in_stock != '' LIMIT 5";
     $product_array = $shoppingCart->getAllProduct($query);
     if (! empty($product_array)) {
         foreach ($product_array as $key => $value) {
             ?>
     
-        <form method="post" action="best.php?action=add&code=<?php echo $product_array[$key]["p_code"]; ?>" onsubmit="myFunction()">
+        <form method="post" action="feature.php?action=add&code=<?php echo $product_array[$key]["p_code"]; ?>" onsubmit="myFunction()">
         <div class="col" style="padding-bottom: 15px;">
                         <div class="product-card-container">
                                        <div class="row">
