@@ -337,7 +337,7 @@ body{margin:0;font-family:-apple-system,BlinkMacSystemFont,segoe ui,roboto,oxyge
             </div>
         </div>
     </div>
-    <?php include("footer.html"); ?>
+    <?php include("footer.php"); ?>
     <script>
 // function userValidate(){
 //     alert("DD");

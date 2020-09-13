@@ -161,7 +161,7 @@ if (! empty($_GET["action"])) {
                 
                 $productResult = $shoppingCart->getProductByCode($_GET["code"]);
                 
-                $cartResult = $shoppingCart->getCartItemByProduct($productResult[0]["p_id"], $member_id);
+                $cartResult = $shoppingCart->getCartItemByProduct($productResult[0]["p_code"], $member_id);
                 
                 if (! empty($cartResult)) {
                     // Update cart item quantity in database
@@ -170,7 +170,7 @@ if (! empty($_GET["action"])) {
                 }
                  else 
                 {
-                    $shoppingCart->addToCart($productResult[0]["p_id"], $_POST["quantity"], $member_id);
+                    $shoppingCart->addToCart($productResult[0]["p_code"], $_POST["quantity"], $member_id);
                 
                 }
              
@@ -549,10 +549,10 @@ if (! empty($cartItem)) {
                                                     </div>
                                                 </div>
                                                 <div class="product-card-name col-md-12"><?php echo $product_array[$key]["p_name"]; ?></div>
-                                                <div class="product-card-price-container col-md-12">
+                                                <!-- <div class="product-card-price-container col-md-12">
                                                     <div class="product-card-original-price"><?php echo $product_array[$key]["sell_price"]; ?></div>
                                                     <div class="product-card-final-price">Rs 138.00 / Unit</div>
-                                                </div>
+                                                </div> -->
                                                 <div class="product-card-button-container col-md-12">
                                                 <input type="hidden" name="quantity" value="1" size="2" class="input-cart-quantity" />
                         <input type="image" src="add-to-cart.png" class="btnAddAction" />
@@ -679,7 +679,7 @@ $c = $c +1;
                     <div></div>
             </div>
         </div>
-        <?php include("footer.html"); ?>
+        <?php include("footer.php"); ?>
 </div>
 
 <script>
@@ -699,7 +699,7 @@ $(document).ready(function() {
 
 			var category_id = this.value;
 
-debugger;
+//debugger;
           //  alert(category_id);
 			$.ajax({
 				url: "get_subcat.php",
@@ -763,9 +763,9 @@ function myFunction() {
                 alert("Record Inserted!");
                }
 }
-setTimeout(function(){
-    window.location = window.location.pathname;
-}, 5000);
+//  setTimeout(function(){
+//      window.location = window.location.pathname;
+//  }, 8000);
 
 
 </script>

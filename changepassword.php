@@ -102,7 +102,7 @@ $password=$row['password'];
         </div>
     </div>
     </form>
-    <?php include("footer.html"); ?>
+    <?php include("footer.php"); ?>
     
 <script>
 function myFunction() {

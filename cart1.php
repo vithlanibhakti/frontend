@@ -5,10 +5,10 @@ class ShoppingCart extends DBController
     function getMemberCartItem($member_id)
     {
 
-        $query = "SELECT adminproducts.*,admin_product_to_store.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM adminproducts, tbl_cart,admin_product_to_store WHERE adminproducts.p_id = tbl_cart.product_id AND adminproducts.p_id = admin_product_to_store.product_id AND  tbl_cart.member_id = ? ";
-        $query = "SELECT products.*,product_to_store.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM products, tbl_cart,product_to_store WHERE products.p_id = tbl_cart.product_id AND products.p_id = product_to_store.product_id AND  tbl_cart.member_id = ? ";
-        $query = "SELECT bestsellers.*,bestsellers_product.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM bestsellers, tbl_cart,bestsellers_product WHERE bestsellers.p_id = tbl_cart.product_id AND bestsellers.p_id = bestsellers_product.product_id AND  tbl_cart.member_id = ? ";
-        $query = "SELECT featureproducts.*,feature_product_to_storeayments.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM featureproducts, tbl_cart,feature_product_to_storeayments WHERE featureproducts.p_id = tbl_cart.product_id AND featureproducts.p_id = feature_product_to_storeayments.product_id AND  tbl_cart.member_id = ? ";
+     //$query = "SELECT adminproducts.*,admin_product_to_store.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM adminproducts, tbl_cart,admin_product_to_store WHERE adminproducts.p_code = tbl_cart.product_id AND adminproducts.p_id = admin_product_to_store.product_id AND  tbl_cart.member_id = ? ";
+       $query = "SELECT products.*,product_to_store.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM products, tbl_cart,product_to_store WHERE products.p_code = tbl_cart.product_id AND products.p_id = product_to_store.product_id AND  tbl_cart.member_id = ? ";
+     //$query = "SELECT bestsellers.*,bestsellers_product.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM bestsellers, tbl_cart,bestsellers_product WHERE bestsellers.p_code = tbl_cart.product_id AND bestsellers.p_id = bestsellers_product.product_id AND  tbl_cart.member_id = ? ";
+     //   $query = "SELECT featureproducts.*,feature_product_to_storeayments.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM featureproducts, tbl_cart,feature_product_to_storeayments WHERE featureproducts.p_id = tbl_cart.product_id AND featureproducts.p_id = feature_product_to_storeayments.product_id AND  tbl_cart.member_id = ? ";
         $params = array(
             array(
                 "param_type" => "i",
@@ -19,7 +19,7 @@ class ShoppingCart extends DBController
         $cartResult = $this->getDBResult($query, $params);
         return $cartResult;
 
-        $query = "SELECT products.*,product_to_store.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM products, tbl_cart,product_to_store WHERE products.p_id = tbl_cart.product_id AND products.p_id = product_to_store.product_id AND  tbl_cart.member_id = ? ";
+        //$query = "SELECT products.*,product_to_store.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM products, tbl_cart,product_to_store WHERE products.p_id = tbl_cart.product_id AND products.p_id = product_to_store.product_id AND  tbl_cart.member_id = ? ";
         // $params = array(
         //     array(
         //         "param_type" => "i",
@@ -226,10 +226,10 @@ function increment_quantity(cart_id, sell_price) {
                 sell_price : sell_price
 			},
 			success: function(dataResult){
-			//	alert("Updated");
+		//		alert("Updated");
 				//alert(dataResult);
         var inputQuantityElement = $("#input-quantity-"+cart_id);
-       //alert("stock" +dataResult);
+     //  alert("stock" +dataResult);
        //alert("cr" +inputQuantityElement.val());
     if($(inputQuantityElement).val() < dataResult)
     {
@@ -247,7 +247,6 @@ function increment_quantity(cart_id, sell_price) {
 
 //     //alert(cart_id);
 //     var inputQuantityElement = $("#input-quantity-"+cart_id);
-//     var val = "<?php echo $alert_quantity ?>";
 // //alert(val);
 // if($(inputQuantityElement).val() <= val)
 // {
@@ -445,7 +444,7 @@ else{
                             <span id="summary-column-value">Rs.<?php echo $d; ?></span></div>
                             <div><span id="summary-column-name">Total Nexus Discounts</span>
                             <span id="summary-column-value">Rs. 0.00</span></div>
-                            <div><span id="summary-column-name">Total Keells Discounts</span>
+                            <div><span id="summary-column-name">Total GIT Lanka Discounts</span>
                             <span id="summary-column-value">Rs. 0.00</span></div>
                             <div style="border: 0px none;">
                             <span id="summary-column-name">Total Discounts</span>
@@ -485,13 +484,13 @@ else{
     </div>
 </div>
 
-    <?php include("footer.html"); ?>
+    <?php include("footer.php"); ?>
 </BODY>
 </HTML>
    <script>
-$(document).ready(function() {
-    setTimeout(function(){
-   window.location.reload(1);
-}, 3000);
-});
+//  $(document).ready(function() {
+//      setTimeout(function(){
+//     window.location.reload(1);
+//  }, 3000);
+// });
 </script> 

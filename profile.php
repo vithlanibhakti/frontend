@@ -136,7 +136,7 @@ $optionalphone=$row['optionalphone'];
         </div>
     </div>
 </div>
-<?php include("footer.html");?>
+<?php include("footer.php");?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -9,7 +9,7 @@ class DBController
 
     private $password = "";
 
-    private $database = "modernpos_final";
+    private $database = "new";
 
     private  $conn;
 
@@ -25,6 +25,21 @@ class DBController
         }
     }
 
+    function runQuery($query) {
+		$result = mysqli_query($this->conn,$query);
+		while($row=mysqli_fetch_assoc($result)) {
+			$resultset[] = $row;
+		}		
+		if(!empty($resultset))
+			return $resultset;
+	}
+	
+	function numRows($query) {
+		$result  = mysqli_query($this->conn,$query);
+		$rowcount = mysqli_num_rows($result);
+		return $rowcount;	
+    }
+    
     function getDBResult($query, $params = array())
     {
         $sql_statement = $this->conn->prepare($query);

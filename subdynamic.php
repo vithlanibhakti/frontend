@@ -211,7 +211,7 @@ if (! empty($_GET["action"])) {
                 
                 $productResult = $shoppingCart->getProductByCode($_GET["code"]);
                 
-                $cartResult = $shoppingCart->getCartItemByProduct($productResult[0]["p_id"], $member_id);
+                $cartResult = $shoppingCart->getCartItemByProduct($productResult[0]["p_code"], $member_id);
                 
                 if (! empty($cartResult)) {
                     // Update cart item quantity in database
@@ -220,7 +220,7 @@ if (! empty($_GET["action"])) {
                    // echo '<script>alert("Item Added successfully")</script>';
                 } else {
                     // Add to cart table
-                    $shoppingCart->addToCart($productResult[0]["p_id"], $_POST["quantity"], $member_id);
+                    $shoppingCart->addToCart($productResult[0]["p_code"], $_POST["quantity"], $member_id);
                //     echo '<script>alert("Item Added successfully")</script>';
                     //$idc=$_GET['id'];
                     //echo '<script>alert('$idc')</script>';

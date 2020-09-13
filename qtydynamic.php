@@ -17,34 +17,6 @@
     <title>GIT Lanka Online</title>
     <link rel="stylesheet" href="assets/css/login.css">
     <link rel="stylesheet" href="assets/css/homepage.css">
-
-
-    <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" /> -->
-
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-
-<script type="text/javascript">
-  
-  $(function() {
-    $( "#slider-range" ).slider({
-      range: true,
-      min: 0,
-      max: 1000,
-      values: [ <?php echo $min; ?>, <?php echo $max; ?> ],
-      slide: function( event, ui ) {
-        $( "#amount" ).html( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-		$( "#min" ).val(ui.values[ 0 ]);
-		$( "#max" ).val(ui.values[ 1 ]);
-      }
-      });
-    $( "#amount" ).html( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-     " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-  });
-  </script>
-
-
 </head>
 <body>
 <br>
@@ -133,9 +105,7 @@ class ShoppingCartd extends DBController
 
     function addToCart($product_id, $quantity, $member_id)
     {
-        $query = "INSERT INTO tbl_cart (product_id,quantity,member_id) VALUES (?, ?, ?)";
-        
-
+        $query = "INSERT INTO tbl_cart (product_id,quantity,member_id) VALUES (?, ?,?)";
         $params = array(
             array(
                 "param_type" => "i",
@@ -149,6 +119,11 @@ class ShoppingCartd extends DBController
                 "param_type" => "i",
                 "param_value" => $member_id
             )
+            // ,
+            // array(
+            //     "param_type" => "i",
+            //     "param_value" => $p_code
+            // )
         );
         
         $this->updateDB($query, $params);
@@ -210,7 +185,7 @@ if (! empty($_GET["action"])) {
                 
                 $productResult = $shoppingCart->getProductByCode($_GET["code"]);
                 
-                $cartResult = $shoppingCart->getCartItemByProduct($productResult[0]["p_id"], $member_id);
+                $cartResult = $shoppingCart->getCartItemByProduct($productResult[0]["p_code"], $member_id);
                 
                 if (! empty($cartResult)) {
                     // Update cart item quantity in database
@@ -219,7 +194,7 @@ if (! empty($_GET["action"])) {
                    // echo '<script>alert("Item Added successfully")</script>';
                 } else {
                     // Add to cart table
-                    $shoppingCart->addToCart($productResult[0]["p_id"], $_POST["quantity"], $member_id);
+                    $shoppingCart->addToCart($productResult[0]["p_code"], $_POST["quantity"], $member_id);
                //     echo '<script>alert("Item Added successfully")</script>';
                     //$idc=$_GET['id'];
                     //echo '<script>alert('$idc')</script>';
@@ -358,8 +333,7 @@ if (! empty($cartItem)) {
                                       
                      ?>
                             <div class="mb-1 category-item">
-                            <span><a href='subdynamic.php?subid=<?php echo $sub_id;?>&catid=<?php echo $idc; ?>''>  
-                                <?php echo $category_name; ?></a></span>
+                            <span><a href='subdynamic.php?id=<?php echo $sub_id;?>&proid=<?php echo $idc; ?>''>      <?php echo $category_name; ?></a></span>
                             <i class="fas fa-angle-right"></i></div>
                             <?php } ?>
 
@@ -368,7 +342,7 @@ if (! empty($cartItem)) {
                            
                         <hr>
                         <div class="category-brand-container mb-3 mt-3 pl-1">
-                        <form id="mainForm" name="mainForm">
+                        
                         <?php 
                         include 'config.php';
                         //echo "<script>alert('$idc')</script>";                        
@@ -380,59 +354,21 @@ if (! empty($cartItem)) {
                      ?>
                             <div class="custom-controls-stacked">
                                 <div class="custom-control custom-radio mb-2">
-                                
-                                    <input name="rdoBrands[]" id="rdoBrands" type="radio" class="custom-control-input" value="<?php echo $brand_name;?>">
-                                <label for="rdoBrands" class="custom-control-label"><?php echo $brand_name;?></label>
+                                <input name="rdoBrands" id="ARUNALU" type="radio" class="custom-control-input" value="652">
+                                <label for="ARUNALU" class="custom-control-label"><?php echo $brand_name;?></label>
                                 </div>
-                                <span id="result"></span>
-
                             </div>
                                     <?php } ?>
                         </div>
-                        </form>
                         <!-- <span class="category-title"><strong>Price</strong></span>
                         <hr> -->
                         <div class="mt-5">
-                        <?php
-$min = 0;
-$max = 5000;
-
-if (! empty($_POST['min_price'])) {
-    $min = $_POST['min_price'];
-}
-
-if (! empty($_POST['max_price'])) {
-    $max = $_POST['max_price'];
-}
-
-?>
-  <div class="form-price-range-filter">
-        <form method="post" action="">
-            <div>
-                <input type="" id="min" name="min_price"
-                    value="<?php echo $min; ?>">
-                <div id="slider-range"></div>
-                <input type="" id="max" name="max_price"
-                    value="<?php echo $max; ?>">
-            </div>
-            <div>
-                <input type="submit" name="submit_range"
-                    value="Filter Product" class="btn-submit">
-            </div>
-        </form>
-    </div>
-  
-                            <!-- <div aria-disabled="false" class="input-range"><span class="input-range__label input-range__label--min">
-                            <span class="input-range__label-container">0</span></span>
+                            <!-- <div aria-disabled="false" class="input-range"><span class="input-range__label input-range__label--min"><span class="input-range__label-container">0</span></span>
                                 <div class="input-range__track input-range__track--background">
-                                    <div class="input-range__track input-range__track--active" style="left: 0%; width: 100%;"></div><span class="input-range__slider-container" style="position: absolute; left: 0%;">
-                                    <span class="input-range__label input-range__label--value">
-                                    <span class="input-range__label-container">0</span></span>
+                                    <div class="input-range__track input-range__track--active" style="left: 0%; width: 100%;"></div><span class="input-range__slider-container" style="position: absolute; left: 0%;"><span class="input-range__label input-range__label--value"><span class="input-range__label-container">0</span></span>
                                     <div aria-valuemax="5000"
-                                        aria-valuemin="0" aria-valuenow="0" class="input-range__slider" draggable="false" role="slider" tabindex="0">
-                                        </div>
-                                    </span><span class="input-range__slider-container" style="position: absolute; left: 100%;"><span class="input-range__label input-range__label--value"><span class="input-range__label-container">5000
-                                    </span></span>
+                                        aria-valuemin="0" aria-valuenow="0" class="input-range__slider" draggable="false" role="slider" tabindex="0"></div>
+                                    </span><span class="input-range__slider-container" style="position: absolute; left: 100%;"><span class="input-range__label input-range__label--value"><span class="input-range__label-container">5000</span></span>
                                     <div aria-valuemax="5000"
                                         aria-valuemin="0" aria-valuenow="5000" class="input-range__slider" draggable="false" role="slider" tabindex="0"></div>
                                     </span>
@@ -516,10 +452,10 @@ function myFunction() {
     
 </BODY>
 </HTML>
- <script>
-document.mainForm.onclick = function(){
-    var gender = document.querySelector('input[name = rdoBrands]:checked').value;
-    result.innerHTML = 'You Gender: '+gender;
-    alert(gender);
-}
-</script>
+<!-- <script>
+$(document).ready(function() {
+    setTimeout(function(){
+   window.location.reload(1);
+}, 5000);
+});
+</script> -->

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="78360953-9aa2-4445-b034-e5ad087b5ac2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/DBController.php" beforeDir="false" afterPath="$PROJECT_DIR$/DBController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/slide.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/slide.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/best.php" beforeDir="false" afterPath="$PROJECT_DIR$/best.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart1.php" beforeDir="false" afterPath="$PROJECT_DIR$/cart1.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dealdaynamic.php" beforeDir="false" afterPath="$PROJECT_DIR$/dealdaynamic.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature.php" beforeDir="false" afterPath="$PROJECT_DIR$/feature.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/get_subcat.php" beforeDir="false" afterPath="$PROJECT_DIR$/get_subcat.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/increment.php" beforeDir="false" afterPath="$PROJECT_DIR$/increment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qty.php" beforeDir="false" afterPath="$PROJECT_DIR$/qty.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qtydynamic.php" beforeDir="false" afterPath="$PROJECT_DIR$/qtydynamic.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subdynamic.php" beforeDir="false" afterPath="$PROJECT_DIR$/subdynamic.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1hIr6VQGilaEqlEWbBJ5mhsNiaz" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="78360953-9aa2-4445-b034-e5ad087b5ac2" name="Default Changelist" comment="" />
+      <created>1599709283189</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1599709283189</updated>
+      <workItem from="1599709288383" duration="1550000" />
+      <workItem from="1599790071122" duration="2836000" />
+      <workItem from="1599882130807" duration="1740000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="232" y="38" key="#Deployment" timestamp="1599709631648">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state x="232" y="38" key="#Deployment/0.0.1280.760@0.0.1280.760" timestamp="1599709631648" />
+    <state x="216" y="25" key="#SSH_Configurations" timestamp="1599709530957">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state x="216" y="25" key="#SSH_Configurations/0.0.1280.760@0.0.1280.760" timestamp="1599709530957" />
+    <state x="232" y="38" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599883391113">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state x="232" y="38" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.760@0.0.1280.760" timestamp="1599883391113" />
+    <state x="420" y="135" key="FileChooserDialogImpl" timestamp="1599709523605">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state x="420" y="135" key="FileChooserDialogImpl/0.0.1280.760@0.0.1280.760" timestamp="1599709523605" />
+    <state x="496" y="278" key="WebDeployment.AddServerDialog.v.1" timestamp="1599709324870">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state x="496" y="278" key="WebDeployment.AddServerDialog.v.1/0.0.1280.760@0.0.1280.760" timestamp="1599709324870" />
+  </component>
+</project>

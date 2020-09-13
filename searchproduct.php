@@ -21,7 +21,7 @@
 <body>
 <br>
 <?php
-//$idc=$_GET['id'];
+$p_name=$_GET['p_name'];
 require_once "header.php";
 require_once "config.php";
 
@@ -44,10 +44,10 @@ class ShoppingCartd extends DBController
 
     function getAllProduct()
     {
-       // $idc=$_GET['id'];
+        $p_name=$_GET['p_name'];
         //echo $idc;  
                 
-        $query = "SELECT bestsellers.*,p2s.quantity_in_stock, p2s.sell_price as sell_price, p2s.purchase_price as purchase_price FROM bestsellers LEFT JOIN bestsellers_product p2s ON (bestsellers.p_id = p2s.product_id) GROUP BY bestsellers.p_id HAVING  quantity_in_stock != '' LIMIT 5";
+        $query = "SELECT products.*,p2s.quantity_in_stock, p2s.sell_price as sell_price, p2s.purchase_price as purchase_price FROM products LEFT JOIN product_to_store p2s ON (products.p_id = p2s.product_id) GROUP BY products.p_id HAVING  p_name = '$p_name' ";
         
         $productResult = $this->getDBResult($query);
         return $productResult;
@@ -56,7 +56,7 @@ class ShoppingCartd extends DBController
     function getMemberCartItem($member_id)
     {
         
-        $query = "SELECT bestsellers.*,bestsellers_product.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM bestsellers, tbl_cart,bestsellers_product WHERE bestsellers.p_id = tbl_cart.product_id AND bestsellers.p_id = bestsellers_product.product_id AND  tbl_cart.member_id = ? ";
+        $query = "SELECT products.*,product_to_store.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM products, tbl_cart,product_to_store WHERE products.p_id = tbl_cart.product_id AND products.p_id = product_to_store.product_id AND  tbl_cart.member_id = ? ";
         
         $params = array(
             array(
@@ -71,7 +71,7 @@ class ShoppingCartd extends DBController
 
     function getProductByCode($product_code)
     {
-        $query = "SELECT * FROM bestsellers WHERE p_code=?";
+        $query = "SELECT * FROM products WHERE p_code=?";
         
         $params = array(
             array(
@@ -101,13 +101,12 @@ class ShoppingCartd extends DBController
         
         $cartResult = $this->getDBResult($query, $params);
         return $cartResult;
+        
     }
 
     function addToCart($product_id, $quantity, $member_id)
     {
-        $query = "INSERT INTO tbl_cart (product_id,quantity,member_id) VALUES (?, ?, ?)";
-        
-
+        $query = "INSERT INTO tbl_cart (product_id,quantity,member_id) VALUES (?, ?,?)";
         $params = array(
             array(
                 "param_type" => "i",
@@ -121,6 +120,11 @@ class ShoppingCartd extends DBController
                 "param_type" => "i",
                 "param_value" => $member_id
             )
+            // ,
+            // array(
+            //     "param_type" => "i",
+            //     "param_value" => $p_code
+            // )
         );
         
         $this->updateDB($query, $params);
@@ -182,8 +186,7 @@ if (! empty($_GET["action"])) {
                 
                 $productResult = $shoppingCart->getProductByCode($_GET["code"]);
                 
-                $cartResult = $shoppingCart->getCartItemByProduct($productResult[0]["p_code"], $member_id);
-                
+                $cartResult = $shoppingCart->getCartItemByProduct($productResult[0]["p_code"], $member_id);                
                 if (! empty($cartResult)) {
                     // Update cart item quantity in database
                     $newQuantity = $cartResult[0]["quantity"] + $_POST["quantity"];
@@ -192,6 +195,8 @@ if (! empty($_GET["action"])) {
                 } else {
                     // Add to cart table
                     $shoppingCart->addToCart($productResult[0]["p_code"], $_POST["quantity"], $member_id);
+                   echo '<script>alert("Item new ")</script>';
+                    
                 }
              
                 
@@ -301,20 +306,27 @@ if (! empty($cartItem)) {
                     </div>
                 </div>
             </div>
-                            </div>
+            <!-- <div class="row mt-3">
+                <div class="sorting-holder 
+                     col-md-2 offset-md-9"><span><div class="dropdown">Sort by:<button aria-haspopup="true" aria-expanded="false" tag="span" data-toggle="dropdown" type="button" class="item-order-sort-link dropdown-toggle btn btn-primary"> Relevant</button></div></span></div>
+            </div> -->
+            
          <div class="col-md-9 col-12">
-      <div class="m-0 row-cols-2 row-cols-xs-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-4 row">
+                        <div class="m-0 row-cols-2 row-cols-xs-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-4 row">
          
 
     <?php
-    $query = "SELECT bestsellers.*,p2s.quantity_in_stock, p2s.sell_price as sell_price, p2s.purchase_price as purchase_price FROM bestsellers LEFT JOIN bestsellers_product p2s ON (bestsellers.p_id = p2s.product_id) GROUP BY bestsellers.p_id HAVING quantity_in_stock != '' LIMIT 5";
+    //echo $idc;
+    $query = "SELECT products.*,p2s.quantity_in_stock, p2s.sell_price as sell_price, p2s.purchase_price as purchase_price FROM products LEFT JOIN product_to_store p2s ON (products.p_id = p2s.product_id) GROUP BY products.p_id HAVING quantity_in_stock != '' AND p_name = '$p_name'";
     $product_array = $shoppingCart->getAllProduct($query);
+
     if (! empty($product_array)) {
+		
         foreach ($product_array as $key => $value) {
 			  
             ?>
     
-        <form method="post" action="best.php?action=add&code=<?php echo $product_array[$key]["p_code"]; ?>" onsubmit="myFunction()">
+        <form method="post" action="searchproduct.php?action=add&code=<?php echo $product_array[$key]["p_code"]; ?>&p_name=<?php echo $p_name; ?>" onsubmit="myFunction()">
         <div class="col" style="padding-bottom: 15px;">
                         <div class="product-card-container">
                                        <div class="row">

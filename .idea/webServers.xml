@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="3cf2d8cf-be7d-4920-9290-0f79904cd894" name="frontend" url="http://pos.gitl.lk">
+        <fileTransfer rootFolder="/var/www/html/modernpos" accessType="SFTP" host="pos.gitl.lk" port="22" sshConfigId="7f798cc8-3904-40e0-ba5d-e8a70004f0f5" sshConfig="root@pos.gitl.lk:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

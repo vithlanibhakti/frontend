@@ -262,7 +262,8 @@ $result = mysqli_query($con,"SELECT * FROM complaints");
 </div>
                                         </form>
 <div></div>
-        <script> 
+
+<script> 
          $(document).ready(function(){
         $("#mytable1").show();
      	$("#mytable2").hide();

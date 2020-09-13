@@ -77,31 +77,66 @@
                 </div>
                 <div class="footer-link-holder footer-link-holder-sub col-lg-2 col-md-3 col-12">
                     <div class="footer-link-heading">Quick Links</div>
-                    <div class="footer-link-item">Home</div>
-                    <div class="footer-link-item">Catalogue &amp; Deals</div>
-                    <div class="footer-link-item">Utility bill payments</div>
-                    <div class="footer-link-item">Track my order</div>
+                    <a href="home.php">   <div class="footer-link-item">Home</div></a>
+                             <a href="qty.php">     <div class="footer-link-item">Catalogue &amp; Deals</div> </a>
+                             <a href="utilityPayment.php">   <div class="footer-link-item">Utility bill payments</div></a>
+                             <a href="trackorderprofile.php">   <div class="footer-link-item">Track my order</div></a>
                 </div>
                 <div class="footer-link-holder footer-link-holder-sub col-lg-2 col-12">
                     <div class="footer-link-heading">Categories</div>
-                    <div class="footer-link-item">Grocery</div>
-                    <div class="footer-link-item">Beverages</div>
-                    <div class="footer-link-item">Household</div>
+                    <?php
+                    $count=0;
+                    $image=[];
+                    
+                    $c=0;
+                    $id=[];
+include 'config.php';
+$result = mysqli_query($con,"SELECT category_name,category_id FROM categorys LIMIT 5;");
+			while($row = mysqli_fetch_array($result)) {
+            $img= $row['category_name'];
+            $idc= $row['category_id'];
+            //echo $idc;
+$image[$count]=$img;
+$count = $count +1;
+
+$id[$c]=$idc;
+$c = $c +1;
+
+                        }
+                        $image0= $image[0];
+                        $image1= $image[1];
+                        $image2= $image[2];
+                        $image3= $image[3];
+                        $image4= $image[4];
+                        
+
+                        $id0= $id[0];
+                        $id1= $id[1];
+                        $id2= $id[2];
+                        $id3= $id[3];
+                        $id4= $id[4];
+                                    ?>
+                    <a href='qtydynamic.php?id=<?php echo $id0;?>'> <div class="footer-link-item"><?php echo $image0; ?></div></a>
+                    <a href='qtydynamic.php?id=<?php echo $id1;?>'> <div class="footer-link-item"><?php echo $image1; ?></div></a>
+                    <a href='qtydynamic.php?id=<?php echo $id2;?>'> <div class="footer-link-item"><?php echo $image2; ?></div></a>
+                    <a href='qtydynamic.php?id=<?php echo $id3;?>'> <div class="footer-link-item"><?php echo $image3; ?></div></a>
+                    <a href='qtydynamic.php?id=<?php echo $id4;?>'> <div class="footer-link-item"><?php echo $image4; ?></div></a>
+                    <!-- <div class="footer-link-item">Household</div>
                     <div class="footer-link-item">Vegetables</div>
-                    <div class="footer-link-item">Fruits</div>
+                    <div class="footer-link-item">Fruits</div> -->
                 </div>
                 <div class="footer-link-holder footer-link-holder-sub col-lg-2 col-12">
-                    <div class="footer-link-heading">Useful Links</div>
-                    <div class="footer-link-item">Privacy Policy</div>
-                    <div class="footer-link-item">FAQ</div>
-                    <div class="footer-link-item"> Terms and Conditions</div>
-                    <div class="footer-link-item">Stores</div>
-                    <div class="footer-link-item">Delivery grid</div>
+                <a href="privacy.php"> 
+                      <div class="footer-link-item">Privacy Policy</div></a>
+                                <div class="footer-link-item">FAQ</div>
+                                <div class="footer-link-item">Terms and Conditions</div>
+                                <a href="storelocator.php">   <div class="footer-link-item">Stores</div></a>
+                                <div class="footer-link-item">Delivery grid</div>
                 </div>
                 <div class="footer-link-holder footer-link-holder-sub col-lg-2 col-12">
                     <div class="footer-link-heading">Customer Service</div>
-                    <div class="footer-link-item">Contact us</div>
-                    <div class="footer-link-item">About us </div>
+                    <a href="contactus.php">   <div class="footer-link-item">Contact us</div></a>
+                                <a href="aboutus.php">   <div class="footer-link-item">About us </div></a>
                 </div>
             </div>
         </div>

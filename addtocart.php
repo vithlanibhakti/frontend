@@ -378,7 +378,7 @@ else
                                 </div>
                                 <hr>
                                 <div class="product-summary-line row">
-                                    <div class="col"><span>Total Keells Discounts</span></div>
+                                    <div class="col"><span>Total GIT Lanka Discounts</span></div>
                                     <div class="product-summary-right col"><span>Rs. 0.00</span></div>
                                 </div>
                                 <hr>

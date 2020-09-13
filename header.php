@@ -97,6 +97,7 @@ $city=$row['state'];
     <title>GIT Lanka Online</title>
     <link rel="stylesheet" href="assets/css/login.css">
     <link rel="stylesheet" href="assets/css/homepage.css">
+    <link rel="stylesheet" href="assets/css/privacy.css">
 </head>
 <style>
 .nav-container {
@@ -115,10 +116,10 @@ class ShoppingCartc extends DBController
     function getMemberCartItem($member_id)
     {
 
-        $query = "SELECT adminproducts.*,admin_product_to_store.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM adminproducts, tbl_cart,admin_product_to_store WHERE adminproducts.p_id = tbl_cart.product_id AND adminproducts.p_id = admin_product_to_store.product_id AND  tbl_cart.member_id = ? ";
-        $query = "SELECT products.*,product_to_store.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM products, tbl_cart,product_to_store WHERE products.p_id = tbl_cart.product_id AND products.p_id = product_to_store.product_id AND  tbl_cart.member_id = ? ";
-        $query = "SELECT bestsellers.*,bestsellers_product.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM bestsellers, tbl_cart,bestsellers_product WHERE bestsellers.p_id = tbl_cart.product_id AND bestsellers.p_id = bestsellers_product.product_id AND  tbl_cart.member_id = ? ";
-        $query = "SELECT featureproducts.*,feature_product_to_storeayments.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM featureproducts, tbl_cart,feature_product_to_storeayments WHERE featureproducts.p_id = tbl_cart.product_id AND featureproducts.p_id = feature_product_to_storeayments.product_id AND  tbl_cart.member_id = ? ";
+        //$query = "SELECT adminproducts.*,admin_product_to_store.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM adminproducts, tbl_cart,admin_product_to_store WHERE adminproducts.p_id = tbl_cart.product_id AND adminproducts.p_id = admin_product_to_store.product_id AND  tbl_cart.member_id = ? ";
+        $query = "SELECT products.*,product_to_store.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM products, tbl_cart,product_to_store WHERE products.p_code = tbl_cart.product_id AND products.p_id = product_to_store.product_id AND  tbl_cart.member_id = ? ";
+        //$query = "SELECT bestsellers.*,bestsellers_product.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM bestsellers, tbl_cart,bestsellers_product WHERE bestsellers.p_code = tbl_cart.product_id AND bestsellers.p_id = bestsellers_product.product_id AND  tbl_cart.member_id = ? ";
+        //$query = "SELECT featureproducts.*,feature_product_to_storeayments.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM featureproducts, tbl_cart,feature_product_to_storeayments WHERE featureproducts.p_id = tbl_cart.product_id AND featureproducts.p_id = feature_product_to_storeayments.product_id AND  tbl_cart.member_id = ? ";
         $params = array(
             array(
                 "param_type" => "i",
@@ -129,7 +130,7 @@ class ShoppingCartc extends DBController
         $cartResult = $this->getDBResult($query, $params);
         return $cartResult;
 
-        $query = "SELECT products.*,product_to_store.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM products, tbl_cart,product_to_store WHERE products.p_id = tbl_cart.product_id AND products.p_id = product_to_store.product_id AND  tbl_cart.member_id = ? ";
+        //$query = "SELECT products.*,product_to_store.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM products, tbl_cart,product_to_store WHERE products.p_id = tbl_cart.product_id AND products.p_id = product_to_store.product_id AND  tbl_cart.member_id = ? ";
         // $params = array(
         //     array(
         //         "param_type" => "i",
@@ -168,7 +169,7 @@ $member_id = $uid; // you can your integerate authentication module here to get 
 
 $shoppingCart = new ShoppingCartc();
 ?>
-<?php
+<!-- <?php
 include 'config.php';
 $result1 = mysqli_query($con,"SELECT  `product_id`,`id` FROM `tbl_cart` WHERE `member_id`=$member_id;");
             while($row1 = mysqli_fetch_array($result1))
@@ -180,7 +181,7 @@ $result1 = mysqli_query($con,"SELECT  `product_id`,`id` FROM `tbl_cart` WHERE `m
                 $ar = [$product_id];
                 $str= implode(', ', $ar);
 //                echo "<script>alert('implod ==' + '$str')</script>";
-                $resul1 = mysqli_query($con,"SELECT  `alert_quantity` FROM `admin_product_to_store` WHERE `product_id`=$str;");
+                $resul1 = mysqli_query($con,"SELECT  `alert_quantity` FROM `admin_product_to_store` WHERE `p_code`=$str;");
                 while($row = mysqli_fetch_array($resul1))
                 {
                     $alert_quantity= $row['alert_quantity'];
@@ -188,98 +189,99 @@ $result1 = mysqli_query($con,"SELECT  `product_id`,`id` FROM `tbl_cart` WHERE `m
                 }
             }
             
-?>
+?> -->
 <html lang="en">
+
 <head>
 
-<link rel="stylesheet" href="assets/css/productcart.css">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/css/productcart.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<script src="jquery-3.2.1.min.js"></script>
-<script>
-debugger;
-function increment_quantity(cart_id, sell_price) {
+    <script src="jquery-3.2.1.min.js"></script>
+    <script>
+    debugger;
 
-    $.ajax({
-			url: "increment.php",
-			type: "POST",
-			data:{
-				cart_id: cart_id,
-                sell_price : sell_price
-			},
-			success: function(dataResult){
-			//	alert("Updated");
-				//alert(dataResult);
-        var inputQuantityElement = $("#input-quantity-"+cart_id);
-       //alert("stock" +dataResult);
-       //alert("cr" +inputQuantityElement.val());
-    if($(inputQuantityElement).val() < dataResult)
-    {
-   //     alert("d");
-    var newQuantity = parseInt($(inputQuantityElement).val()) + 1;
-    var newPrice = newQuantity * sell_price;
-    save_to_db(cart_id, newQuantity, newPrice);
+    function increment_quantity(cart_id, sell_price) {
+alert(cart_id);
+        $.ajax({
+            url: "increment.php",
+            type: "POST",
+            data: {
+                cart_id: cart_id,
+                sell_price: sell_price
+            },
+            success: function(dataResult) {
+               	alert("Updated");
+                //alert(dataResult);
+                var inputQuantityElement = $("#input-quantity-" + cart_id);
+                //alert("stock" +dataResult);
+                //alert("cr" +inputQuantityElement.val());
+                if ($(inputQuantityElement).val() < dataResult) {
+                    //     alert("d");
+                    var newQuantity = parseInt($(inputQuantityElement).val()) + 1;
+                    var newPrice = newQuantity * sell_price;
+                    save_to_db(cart_id, newQuantity, newPrice);
+                } else {
+                    alert("out of stock");
+                }
+            }
+
+        });
+
+        //     //alert(cart_id);
+        //     var inputQuantityElement = $("#input-quantity-"+cart_id);
+        //     var val = "<?php echo $alert_quantity ?>";
+        // //alert(val);
+        // if($(inputQuantityElement).val() <= val)
+        // {
+        //     var newQuantity = parseInt($(inputQuantityElement).val())+1;
+        //     var newPrice = newQuantity * sell_price;
+        //     save_to_db(cart_id, newQuantity, newPrice);
+        // }
     }
-    else{
-        alert("out of stock");
+
+    function decrement_quantity(cart_id, sell_price) {
+        var inputQuantityElement = $("#input-quantity-" + cart_id);
+        if ($(inputQuantityElement).val() > 1) {
+            var newQuantity = parseInt($(inputQuantityElement).val()) - 1;
+            var newPrice = newQuantity * sell_price;
+            save_to_db(cart_id, newQuantity, newPrice);
+        }
     }
-			}
-			
-		});
 
-//     //alert(cart_id);
-//     var inputQuantityElement = $("#input-quantity-"+cart_id);
-//     var val = "<?php echo $alert_quantity ?>";
-// //alert(val);
-// if($(inputQuantityElement).val() <= val)
-// {
-//     var newQuantity = parseInt($(inputQuantityElement).val())+1;
-//     var newPrice = newQuantity * sell_price;
-//     save_to_db(cart_id, newQuantity, newPrice);
-// }
-}
-
-function decrement_quantity(cart_id, sell_price) {
-    var inputQuantityElement = $("#input-quantity-"+cart_id);
-    if($(inputQuantityElement).val() > 1)
-    {
-    var newQuantity = parseInt($(inputQuantityElement).val()) - 1;
-    var newPrice = newQuantity * sell_price;
-    save_to_db(cart_id, newQuantity, newPrice);
+    function save_to_db(cart_id, new_quantity, newPrice) {
+        var inputQuantityElement = $("#input-quantity-" + cart_id);
+        var priceElement = $("#cart-price-" + cart_id);
+        alert(priceElement);
+        $.ajax({
+            url: "update_cart_quantity.php",
+            data: "cart_id=" + cart_id + "&new_quantity=" + new_quantity,
+            type: 'post',
+            success: function(response) {
+                $(inputQuantityElement).val(new_quantity);
+                $(priceElement).text("$" + newPrice);
+                var totalQuantity = 0;
+                $("input[id*='input-quantity-']").each(function() {
+                    var cart_quantity = $(this).val();
+                    totalQuantity = parseInt(totalQuantity) + parseInt(cart_quantity);
+                });
+                $("#total-quantity").text(totalQuantity);
+                var totalItemPrice = 0;
+                $("div[id*='cart-price-']").each(function() {
+                    var cart_price = $(this).text().replace("$", "");
+                    totalItemPrice = parseInt(totalItemPrice) + parseInt(cart_price);
+                });
+                $("#total-price").text(totalItemPrice);
+            }
+        });
     }
-}
-
-function save_to_db(cart_id, new_quantity, newPrice) {
-	var inputQuantityElement = $("#input-quantity-"+cart_id);
-	var priceElement = $("#cart-price-"+cart_id);
-    $.ajax({
-		url : "update_cart_quantity.php",
-		data : "cart_id="+cart_id+"&new_quantity="+new_quantity,
-		type : 'post',
-		success : function(response) {
-			$(inputQuantityElement).val(new_quantity);
-            $(priceElement).text("$"+newPrice);
-            var totalQuantity = 0;
-            $("input[id*='input-quantity-']").each(function() {
-                var cart_quantity = $(this).val();
-                totalQuantity = parseInt(totalQuantity) + parseInt(cart_quantity);
-            });
-            $("#total-quantity").text(totalQuantity);
-            var totalItemPrice = 0;
-            $("div[id*='cart-price-']").each(function() {
-                var cart_price = $(this).text().replace("$","");
-                totalItemPrice = parseInt(totalItemPrice) + parseInt(cart_price);
-            });
-            $("#total-price").text(totalItemPrice);
-		}
-	});
-}
-</script>
+    </script>
 
 </HEAD>
+
 <BODY>
 
-<?php
+    <?php
 $cartItem = $shoppingCart->getMemberCartItem($member_id);
 if (! empty($cartItem)) {
     $item_quantity = 0;
@@ -296,8 +298,8 @@ if (! empty($cartItem)) {
 }
 ?>
 
-<div class="product-cart-summary">
-<?php
+    <div class="product-cart-summary">
+        <?php
 					    $fetch="SELECT  `id`,`username` FROM `users` WHERE username='$email' ";
                         $result = mysqli_query($con,$fetch);
 
@@ -340,20 +342,20 @@ else{
 }
 
 ?>
-<?php if (! empty($cartItem))
+        <?php if (! empty($cartItem))
 {
-?>                  <?php }
+?> <?php }
 
                     ?>
-                        <!-- <div class="summary-checkout-button" >Proceed to Checkout</div> -->
-                    </div>
-                <?php } ?>
-                </div>
-            </div>
-        </div>
-        </form>
+        <!-- <div class="summary-checkout-button" >Proceed to Checkout</div> -->
     </div>
-</div>
+    <?php } ?>
+    </div>
+    </div>
+    </div>
+    </form>
+    </div>
+    </div>
 
 
     <div id="root">
@@ -406,7 +408,7 @@ else{
                                             <div class="upper-nav-item-dropdown-container">
                                                 <?php if($email == 'guest')
                         {
-                            echo "delivery"; 
+                            echo "Pickup"; 
                         }
                         else
                         {
@@ -426,7 +428,7 @@ else{
                         </div>
 
                     </div>
-                    
+
                     </nav>
                 </div>
                 <div class="default-header-navbar">
@@ -458,7 +460,7 @@ else{
                                             <div class="navbar-nav">
                                                 <a href="home.php"
                                                     class="nav-item-navbar nav-item-highlighted">Home</a>&nbsp;&nbsp;&nbsp;
-                                                <a href="deals.php" class="nav-item-navbar">Catalogues &amp;
+                                                <a href="qty.php" class="nav-item-navbar">Catalogues &amp;
                                                     Deals</a>&nbsp;&nbsp;&nbsp;
                                                 <a href="storelocator.php" class="nav-item-navbar">
                                                     Stores</a>&nbsp;&nbsp;&nbsp;
@@ -470,27 +472,26 @@ else{
                                             </div>
                                         </div>
                                     </nav>
-                                    
-                                <?php 
+
+                                    <?php 
 if (! empty($cartItem)) {
 ?>
-<a href="cart1.php"> <i class="fas fa-shopping-cart">
+                                    <a href="cart1.php">
+                                        <i class="fas fa-shopping-cart">
                                             <span id="smart-checkout-count" class="badge">
                                                 <?php if($email == 'guest')
                                                 {
                                                     ?>
-                                                                        <span
-                                                                            id="total-quantity"><?php  $item_quantity=0; echo $item_quantity; ?></span>
-                                                                        <?php 
+                                                <span
+                                                    id="total-quantity"><?php  $item_quantity=0; echo $item_quantity; ?></span>
+                                                <?php 
                                                 }
                                                 else
                                                 { ?>
-                                                                       <span id="total-quantity"><?php echo $item_quantity; ?></span>
-                                                                        <?php }
+                                                <span id="total-quantity"><?php echo $item_quantity; ?></span>
+                                                <?php }
                                                 ?>
-
                                             </span>
-
                                         </i>
                                         <?php if($email == 'guest')
                         {
@@ -505,15 +506,15 @@ if (! empty($cartItem)) {
                         ?>
 
                                     </a>
-<?php 
+                                    <?php 
 }
 else{
 ?>
                                     <i class="fas fa-shopping-cart">
-                                            <span id="smart-checkout-count" class="badge">
-                                           0 </i></span>
-                                           <span id="total-price">RS. 0 </span>
-<?php } ?>                              
+                                        <span id="smart-checkout-count" class="badge">
+                                            0 </i></span>
+                                    <span id="total-price">RS. 0 </span>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -558,7 +559,8 @@ $result = mysqli_query($con,"SELECT * FROM categorys");
                                 <div class="auto-complete-text">
 
                                     <div id="main">
-                                        <input type="text" id="search" placeholder="Search" />
+                                        <!-- <input type="text" id="search" placeholder="Search" /> -->
+                                        <?php include_once ("autosearch.php"); ?>
                                     </div>
                                     <br>
 
@@ -572,187 +574,7 @@ $result = mysqli_query($con,"SELECT * FROM categorys");
                             </div>
                             <div id="category_menu_default_header" style="display: none;">
                                 <!-- <img src="/static/media/white-close-button.e47a6082.png" alt="menu-close_btn" class="category-menu-default-header-close-btn"> -->
-                                <div class="category-menu-default-header-container">
-                                    <ul class="category_menu_default_header-area">
-                                        <li id="dep_id_16">Vegetables <span><i class="fa fa-angle-right"></i></span>
-                                        </li>
-                                        <ul id="sub_dep_id_16" style="display: none;">
-                                            <a href="/product/1/16">
-                                                <li class="cat_item_" data-cat-id="all"><strong>All Vegetables</strong>
-                                                </li>
-                                            </a>
-                                            <a href="/product/2/16/109">
-                                                <li>Pola</li>
-                                            </a>
-                                            <a href="/product/2/16/114">
-                                                <li>Organic</li>
-                                            </a>
-                                            <a href="/product/2/16/117">
-                                                <li>Packets &amp; Units</li>
-                                            </a>
-                                            <a href="/product/2/16/208">
-                                                <li>Exotic</li>
-                                            </a>
-                                            <a href="/product/2/16/212">
-                                                <li>Low Country Vegetables</li>
-                                            </a>
-                                            <a href="/product/2/16/244">
-                                                <li>Up Country Vegetables</li>
-                                            </a>
-                                        </ul>
-                                        <li id="dep_id_6">Fruits <span><i class="fa fa-angle-right"></i></span></li>
-                                        <ul id="sub_dep_id_6" style="display: none;">
-                                            <a href="/product/1/6">
-                                                <li class="cat_item_" data-cat-id="all"><strong>All Fruits</strong></li>
-                                            </a>
-                                            <a href="/product/2/6/34">
-                                                <li>Organic</li>
-                                            </a>
-                                            <a href="/product/2/6/226">
-                                                <li>Inorganic</li>
-                                            </a>
-                                        </ul>
-                                        <li id="dep_id_12">Meat <span><i class="fa fa-angle-right"></i></span></li>
-                                        <ul id="sub_dep_id_12" style="display: none;">
-                                            <a href="/product/1/12">
-                                                <li class="cat_item_" data-cat-id="all"><strong>All Meat</strong></li>
-                                            </a>
-                                            <a href="/product/2/12/9">
-                                                <li>Fresh Meat</li>
-                                            </a>
-                                            <a href="/product/2/12/143">
-                                                <li>Frozen Chicken</li>
-                                            </a>
-                                        </ul>
-                                        <li id="dep_id_4">Fish <span><i class="fa fa-angle-right"></i></span></li>
-                                        <ul id="sub_dep_id_4" style="display: none;">
-                                            <a href="/product/1/4">
-                                                <li class="c at_item_" data-ca t-id="all"><strong>All Fish<strong></l i>
-                                            </a>
-                                            <a href="/product/2/4/87">
-                                                <li>Fresh Sea Food</li>
-                                            </a>
-                                        </ul>
-                                        <li id="dep_id_2">Beverages <span><i class="fa fa-angle-right"></i></span></li>
-                                        <ul id="sub_dep_id_2" style="display: none;">
-                                        </ul>
-                                        <li id="dep_id_3">Chilled <span><i class="fa fa-angle-right"></i></span></li>
-                                        <ul id="sub_dep_id_3" style="display: none;">
-                                            <a href="/product/1/3">
-                                                <li class="cat_item_" data-cat-id="all"><strong>All Chilled</strong>
-                                                </li>
-                                            </a>
-                                            <a href="/product/2/3/18">
-                                                <li>Desserts</li>
-                                            </a>
-                                            <a href="/product/2/3/19">
-                                                <li>Cheese</li>
-                                            </a>
-                                            <a href="/product/2/3/86">
-                                                <li>Yoghurt</li>
-                                            </a>
-                                            <a href="/product/2/3/129">
-                                                <li>Cream</li>
-                                            </a>
-                                            <a href="/product/2/3/159">
-                                                <li>Spreads</li>
-                                            </a>
-                                            <a href="/product/2/3/161">
-                                                <li>Cooking Ingredients</li>
-                                            </a>
-                                        </ul>
-                                        <li id="dep_id_5">Frozen Food <span><i class="fa fa-angle-right"></i></span>
-                                        </li>
-                                        <ul id="sub_dep_id_5" style="display: none;">
-                                            <a href="/product/1/5">
-                                                <li class="cat_item_" data-cat-id="all"><strong>All Frozen Food</strong>
-                                                </li>
-                                            </a>
-                                            
-                                        </ul>
-                                        <li id="dep_id_7">Grocery <span><i class="fa fa-angle-right"></i></span></li>
-                                        <ul id="sub_dep_id_7" style="display: none;">
-                                            <a href="/product/1/7">
-                                                <li class="cat_item_" data-cat-id="all"><strong>All Grocery</strong>
-                                                </li>
-                                            </a>
-                                            
-                                        </ul>
-                                        <li id="dep_id_8">Homeware <span><i class="fa fa-angle-right"></i></span></li>
-                                        <ul id="sub_dep_id_8" style="display: none;">
-                                            <a href="/product/1/8">
-                                                <li class="cat_item_" data-cat-id="all"><strong>All Homeware</strong>
-                                                </li>
-                                            </a>
-                                            
-                                        </ul>
-                                        <li id="dep_id_9">Household <span><i class="fa fa-angle-right"></i></span></li>
-                                        <ul id="sub_dep_id_9" style="display: none;">
-                                            <a href="/product/1/9">
-                                                <li class="cat_item_" data-cat-id="all"><strong>All Household</strong>
-                                                </li>
-                                            </a>
-                                            
-                                        </ul>
-                                        <li id="dep_id_11">Tobacco <span><i class="fa fa-angle-right"></i></span></li>
-                                        <ul id="sub_dep_id_11" style="display: none;">
-                                            <a href="/product/1/11">
-                                                <li class="cat_item_" data-cat-id="all"><strong>All Tobacco</strong>
-                                                </li>
-                                            </a>
-                                            <a href="/product/2/11/122">
-                                                <li>Tobacco</li>
-                                            </a>
-                                        </ul>
-                                        <li id="dep_id_13">Gift Voucher <span><i class="fa fa-angle-right"></i></span>
-                                        </li>
-                                        <ul id="sub_dep_id_13" style="display: none;">
-                                            <a href="/product/1/13">
-                                                <li class="cat_item_" data-cat-id="all"><strong>All Gift
-                                                        Voucher</strong></li>
-                                            </a>
-                                            <a href="/product/2/13/186">
-                                                <li>Gift Vouchers</li>
-                                            </a>
-                                        </ul>
-                                        <li id="dep_id_14">Pharmacy <span><i class="fa fa-angle-right"></i></span></li>
-                                        <ul id="sub_dep_id_14" style="display: none;">
-                                            <a href="/product/1/14">
-                                                <li class="cat_item_" data-cat-id="all"><strong>All Pharmacy</strong>
-                                                </li>
-                                            </a>
-                                            <a href="/product/2/14/64">
-                                                <li>Contraceptives &amp; Sexual Wellbeing</li>
-                                            </a>
-                                            <a href="/product/2/14/118">
-                                                <li>Medicated Skin &amp; Hair Care</li>
-                                            </a>
-                                            <a href="/product/2/14/120">
-                                                <li>Pain Relief</li>
-                                            </a>
-                                            <a href="/product/2/14/156">
-                                                <li>First Aid</li>
-                                            </a>
-                                            <a href="/product/2/14/165">
-                                                <li>Cough, Cold &amp; Flu Relief</li>
-                                            </a>
-                                            <a href="/product/2/14/176">
-                                                <li>Lifestyle &amp; Wellbeing</li>
-                                            </a>
-                                        </ul>
-                                        <li id="dep_id_15">Production Bakery <span><i
-                                                    class="fa fa-angle-right"></i></span></li>
-                                        <ul id="sub_dep_id_15" style="display: none;">
-                                            <a href="/product/1/15">
-                                                <li class="cat_item_" data-cat-id="all"><strong>All Production
-                                                        Bakery</strong></li>
-                                            </a>
-                                            <a href="/product/2/15/99">
-                                                <li>Bakery</li>
-                                            </a>
-                                        </ul>
-                                    </ul>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -792,5 +614,4 @@ $result = mysqli_query($con,"SELECT * FROM categorys");
 
             });
         });
-
-</script> 
+        </script>

@@ -195,7 +195,7 @@ else{
                             <span id="summary-column-value">Rs.<?php echo $d; ?></span></div>
                             <div><span id="summary-column-name">Total Nexus Discounts</span>
                             <span id="summary-column-value">Rs. 0.00</span></div>
-                            <div><span id="summary-column-name">Total Keells Discounts</span>
+                            <div><span id="summary-column-name">Total GIT Lanka Discounts</span>
                             <span id="summary-column-value">Rs. 0.00</span></div>
                             <div style="border: 0px none;">
                             <span id="summary-column-name">Total Discounts</span>
@@ -236,4 +236,4 @@ else{
     </div>
 </div>
                 </form>
-<?php include("footer.html"); ?>
+<?php include("footer.php"); ?>

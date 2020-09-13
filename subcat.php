@@ -21,7 +21,7 @@
 <body>
 <br>
 <?php
-//$idc=$_GET['id'];
+$idc=$_GET['id'];
 require_once "header.php";
 require_once "config.php";
 
@@ -44,10 +44,10 @@ class ShoppingCartd extends DBController
 
     function getAllProduct()
     {
-       // $idc=$_GET['id'];
+        $idc=$_GET['id'];
         //echo $idc;  
                 
-        $query = "SELECT bestsellers.*,p2s.quantity_in_stock, p2s.sell_price as sell_price, p2s.purchase_price as purchase_price FROM bestsellers LEFT JOIN bestsellers_product p2s ON (bestsellers.p_id = p2s.product_id) GROUP BY bestsellers.p_id HAVING  quantity_in_stock != '' LIMIT 5";
+        $query = "SELECT products.*,p2s.quantity_in_stock, p2s.sell_price as sell_price, p2s.purchase_price as purchase_price FROM products LEFT JOIN product_to_store p2s ON (products.p_id = p2s.product_id) GROUP BY products.p_id HAVING   sub_id = '$idc' AND p2s.quantity_in_stock != '' ";
         
         $productResult = $this->getDBResult($query);
         return $productResult;
@@ -56,7 +56,7 @@ class ShoppingCartd extends DBController
     function getMemberCartItem($member_id)
     {
         
-        $query = "SELECT bestsellers.*,bestsellers_product.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM bestsellers, tbl_cart,bestsellers_product WHERE bestsellers.p_id = tbl_cart.product_id AND bestsellers.p_id = bestsellers_product.product_id AND  tbl_cart.member_id = ? ";
+        $query = "SELECT products.*,product_to_store.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM products, tbl_cart,product_to_store WHERE products.p_id = tbl_cart.product_id AND products.p_id = product_to_store.product_id AND  tbl_cart.member_id = ? ";
         
         $params = array(
             array(
@@ -71,7 +71,7 @@ class ShoppingCartd extends DBController
 
     function getProductByCode($product_code)
     {
-        $query = "SELECT * FROM bestsellers WHERE p_code=?";
+        $query = "SELECT * FROM products WHERE p_code=?";
         
         $params = array(
             array(
@@ -105,9 +105,7 @@ class ShoppingCartd extends DBController
 
     function addToCart($product_id, $quantity, $member_id)
     {
-        $query = "INSERT INTO tbl_cart (product_id,quantity,member_id) VALUES (?, ?, ?)";
-        
-
+        $query = "INSERT INTO tbl_cart (product_id,quantity,member_id) VALUES (?, ?,?)";
         $params = array(
             array(
                 "param_type" => "i",
@@ -121,6 +119,11 @@ class ShoppingCartd extends DBController
                 "param_type" => "i",
                 "param_value" => $member_id
             )
+            // ,
+            // array(
+            //     "param_type" => "i",
+            //     "param_value" => $p_code
+            // )
         );
         
         $this->updateDB($query, $params);
@@ -192,6 +195,14 @@ if (! empty($_GET["action"])) {
                 } else {
                     // Add to cart table
                     $shoppingCart->addToCart($productResult[0]["p_code"], $_POST["quantity"], $member_id);
+               //     echo '<script>alert("Item Added successfully")</script>';
+                    //$idc=$_GET['id'];
+                    //echo '<script>alert('$idc')</script>';
+                    //echo "<script type=\"text/javascript\">\n";
+                    //echo "var foo = ${idc};\n";
+//                    echo "alert('value is:' + foo);\n";
+//                     echo "</script>\n";
+
                 }
              
                 
@@ -301,20 +312,86 @@ if (! empty($cartItem)) {
                     </div>
                 </div>
             </div>
+            <!-- <div class="row mt-3">
+                <div class="sorting-holder 
+                     col-md-2 offset-md-9"><span><div class="dropdown">Sort by:<button aria-haspopup="true" aria-expanded="false" tag="span" data-toggle="dropdown" type="button" class="item-order-sort-link dropdown-toggle btn btn-primary"> Relevant</button></div></span></div>
+            </div> -->
+            <div class="row" style="margin: 0px;">
+                <div class="row col-md-10 col-12 offset-md-1">
+                    <div class="col-md-3 col-12"><span class="category-title"> Shop by <strong>Category</strong></span>
+                        <hr>
+                        <div class="category-container mb-1">
+                     
+                        <?php 
+                        include 'config.php';
+                        //echo "<script>alert('$idc')</script>";                        
+                                    $result1 = mysqli_query($con,"SELECT  `category_name`,`sub_id` FROM `sub_categorys` WHERE `category_id`=$idc;");                                    
+                                    while($row1 = mysqli_fetch_array($result1)) 
+                                    {
+                                        $category_name= $row1['category_name'];   
+                                        $sub_id= $row1['sub_id'];   
+                                      
+                     ?>
+                            <div class="mb-1 category-item">
+                            <span><a href='subdynamic.php?id=<?php echo $sub_id;?>&proid=<?php echo $idc; ?>''>      <?php echo $category_name; ?></a></span>
+                            <i class="fas fa-angle-right"></i></div>
+                            <?php } ?>
+
+                        </div><span class="category-title"><strong>Brands</strong>
+                        </span>
+                           
+                        <hr>
+                        <div class="category-brand-container mb-3 mt-3 pl-1">
+                        
+                        <?php 
+                        include 'config.php';
+                        //echo "<script>alert('$idc')</script>";                        
+                                    $result1 = mysqli_query($con,"SELECT  `brand_name` FROM `brands` WHERE `category_id`=$idc;");                                    
+                                    while($row1 = mysqli_fetch_array($result1)) 
+                                    {
+                                        $brand_name= $row1['brand_name'];   
+                                      
+                     ?>
+                            <div class="custom-controls-stacked">
+                                <div class="custom-control custom-radio mb-2">
+                                <input name="rdoBrands" id="ARUNALU" type="radio" class="custom-control-input" value="652">
+                                <label for="ARUNALU" class="custom-control-label"><?php echo $brand_name;?></label>
+                                </div>
+                            </div>
+                                    <?php } ?>
+                        </div>
+                        <!-- <span class="category-title"><strong>Price</strong></span>
+                        <hr> -->
+                        <div class="mt-5">
+                            <!-- <div aria-disabled="false" class="input-range"><span class="input-range__label input-range__label--min"><span class="input-range__label-container">0</span></span>
+                                <div class="input-range__track input-range__track--background">
+                                    <div class="input-range__track input-range__track--active" style="left: 0%; width: 100%;"></div><span class="input-range__slider-container" style="position: absolute; left: 0%;"><span class="input-range__label input-range__label--value"><span class="input-range__label-container">0</span></span>
+                                    <div aria-valuemax="5000"
+                                        aria-valuemin="0" aria-valuenow="0" class="input-range__slider" draggable="false" role="slider" tabindex="0"></div>
+                                    </span><span class="input-range__slider-container" style="position: absolute; left: 100%;"><span class="input-range__label input-range__label--value"><span class="input-range__label-container">5000</span></span>
+                                    <div aria-valuemax="5000"
+                                        aria-valuemin="0" aria-valuenow="5000" class="input-range__slider" draggable="false" role="slider" tabindex="0"></div>
+                                    </span>
+                                </div><span class="input-range__label input-range__label--max"><span class="input-range__label-container">5000</span></span>
+                            </div><span class="price-range-text mt-3 d-flex"><strong>Price&nbsp;</strong> Rs. 0 - Rs. 5000</span></div> -->
+                            </div>
                             </div>
          <div class="col-md-9 col-12">
-      <div class="m-0 row-cols-2 row-cols-xs-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-4 row">
+                        <div class="m-0 row-cols-2 row-cols-xs-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-4 row">
          
 
     <?php
-    $query = "SELECT bestsellers.*,p2s.quantity_in_stock, p2s.sell_price as sell_price, p2s.purchase_price as purchase_price FROM bestsellers LEFT JOIN bestsellers_product p2s ON (bestsellers.p_id = p2s.product_id) GROUP BY bestsellers.p_id HAVING quantity_in_stock != '' LIMIT 5";
+    //echo $idc;
+    $query = "SELECT products.*,p2s.quantity_in_stock, p2s.sell_price as sell_price, p2s.purchase_price as purchase_price FROM products LEFT JOIN product_to_store p2s ON (products.p_id = p2s.product_id) GROUP BY products.p_id HAVING   sub_id = '$idc' AND p2s.quantity_in_stock != ''";
     $product_array = $shoppingCart->getAllProduct($query);
+
     if (! empty($product_array)) {
+		
         foreach ($product_array as $key => $value) {
 			  
             ?>
     
-        <form method="post" action="best.php?action=add&code=<?php echo $product_array[$key]["p_code"]; ?>" onsubmit="myFunction()">
+        <form method="post" action="qtydynamic.php?action=add&code=<?php echo $product_array[$key]["p_code"]; ?>&id=<?php echo $idc; ?>" onsubmit="myFunction()">
         <div class="col" style="padding-bottom: 15px;">
                         <div class="product-card-container">
                                        <div class="row">

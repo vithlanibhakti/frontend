@@ -1,0 +1,130 @@
+
+.default-main-header {
+    color: white;
+    height: 7.3125rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+
+
+.about_us_thanks-section {
+   
+    background: white;
+    border-radius: 0em 8.125em 0em 8.125rem;
+    padding: 1.675rem;
+    flex-direction: column;
+    display: flex;
+    flex: 788 1;
+    min-height: 41.25rem;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.aboutus-view-header-text1{
+    font-size: 1.875rem;
+    text-align: center;
+    text-shadow: 0rem 0rem 1.5rem #f8f9fa;
+}
+
+.aboutus-view-header-text{
+    font-size: 1.875rem;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 0rem 0rem 1.5rem #f8f9fa;
+}
+
+
+
+.effort-header-text {
+    font-size: 1.2625rem;
+    line-height: 1.2;
+    letter-spacing: -0.0638rem;
+    text-shadow: 0rem 0rem 1.5rem #ffffff91;
+    font-weight: bold;
+}
+
+.aboutus-page-area {
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(30px);
+    -webkit-filter: blur(5px);
+}
+
+.container{ display: flex; }
+.no-margin{ margin: 0rem; }
+hr{ background: '#213418';}
+.white{ color: white;}
+.black{ color: black;}
+.green{ color: #64BF47;}
+.small-title{ font-size: 1.25rem; }
+.description{ 
+    font-size: 1rem; 
+    text-align: justify;
+    text-justify: inter-word;
+}
+.no-margin{ margin: 0rem; }
+.hr{
+    border: 0.0625em solid #FFFFFF;
+    opacity: 0.13;
+    margin-top: 0.9375rem;
+    margin-bottom: 0.9375rem;
+}
+.to-center{ align-items: center; }
+.right-margin-15{ margin-right: 0.9375rem; }
+.set-height-55{ height: 2.8125rem;}
+.flag-drop-custom{
+    background: white;
+    outline: none;
+    color: black;
+    border-bottom-left-radius: 1.5625rem;
+    border-right: 0rem;
+    height: 2.8rem;
+}
+.flag-select__option__icon{
+    position: unset !important;
+}
+.flag-select__option__label{
+    vertical-align: middle;
+}
+.custom-border {
+    position: relative !important;
+    position: relative !important;
+    border-left: 0.0625em #6c757d solid;
+    height: 30%;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 0.125rem;
+  }
+  .div-disable{
+    pointer-events: none;
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+.text-muted{
+    color: red !important;
+}
+.reg{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+
+.fa-trophy:before {
+    content: "\f091";
+    margin-left: 2rem;
+}
+
+.description {
+    font-size: 1rem;
+    text-align: justify;
+    text-justify: inter-word;
+    color: black;
+    margin-left: 2rem;
+}
