@@ -346,16 +346,19 @@ if (! empty($cartItem)) {
                         <?php 
                         include 'config.php';
                         //echo "<script>alert('$idc')</script>";                        
-                                    $result1 = mysqli_query($con,"SELECT  `brand_name` FROM `brands` WHERE `category_id`=$idc;");                                    
+                                    $result1 = mysqli_query($con,"SELECT  `brand_name`,`brand_id` FROM `brands` WHERE `category_id`=$idc;");                                    
                                     while($row1 = mysqli_fetch_array($result1)) 
                                     {
                                         $brand_name= $row1['brand_name'];   
+                                        $brand_id= $row1['brand_id'];   
                                       
                      ?>
                             <div class="custom-controls-stacked">
                                 <div class="custom-control custom-radio mb-2">
-                                <input name="rdoBrands" id="ARUNALU" type="radio" class="custom-control-input" value="652">
-                                <label for="ARUNALU" class="custom-control-label"><?php echo $brand_name;?></label>
+                                <!-- <input name="rdoBrands" id="rdoBrands" type="radio" class="custom-control-input" value="<?php echo $brand_name;?>"> -->
+                                <input type='radio' name='radiburdoBrandstton' value='<?php echo $brand_id;?>'>
+                                
+                                 <?php echo $brand_name;?>
                                 </div>
                             </div>
                                     <?php } ?>
@@ -452,10 +455,18 @@ function myFunction() {
     
 </BODY>
 </HTML>
-<!-- <script>
+ <script>
 $(document).ready(function() {
-    setTimeout(function(){
-   window.location.reload(1);
-}, 5000);
-});
-</script> -->
+//     setTimeout(function(){
+//    window.location.reload(1);
+// }, 5000);
+
+$('input[type=radio]').click(function(e) {
+		var gender = $(this).val(); 
+        alert(gender);
+        
+  var url = "branddata.php?id=" + encodeURIComponent(gender);
+        window.location.href = url;
+		
+    });});
+</script> 

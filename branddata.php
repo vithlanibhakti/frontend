@@ -21,7 +21,7 @@
 <body>
 <br>
 <?php
-$idc=$_GET['id'];
+$brand_id=$_GET['id'];
 require_once "header.php";
 require_once "config.php";
 
@@ -44,10 +44,10 @@ class ShoppingCartd extends DBController
 
     function getAllProduct()
     {
-        $idc=$_GET['id'];
+        $brand_id=$_GET['id'];
         //echo $idc;  
                 
-        $query = "SELECT products.*,p2s.quantity_in_stock, p2s.sell_price as sell_price, p2s.purchase_price as purchase_price FROM products LEFT JOIN product_to_store p2s ON (products.p_id = p2s.product_id) GROUP BY products.p_id HAVING   sub_id = '$idc' AND p2s.quantity_in_stock != '' ";
+        $query = "SELECT products.*,p2s.quantity_in_stock,p2s.brand_id, p2s.sell_price as sell_price, p2s.purchase_price as purchase_price FROM products LEFT JOIN product_to_store p2s ON (products.p_id = p2s.product_id) GROUP BY products.p_id HAVING brand_id = '$brand_id' AND p2s.quantity_in_stock != '' ";
         
         $productResult = $this->getDBResult($query);
         return $productResult;
@@ -316,73 +316,13 @@ if (! empty($cartItem)) {
                 <div class="sorting-holder 
                      col-md-2 offset-md-9"><span><div class="dropdown">Sort by:<button aria-haspopup="true" aria-expanded="false" tag="span" data-toggle="dropdown" type="button" class="item-order-sort-link dropdown-toggle btn btn-primary"> Relevant</button></div></span></div>
             </div> -->
-            <div class="row" style="margin: 0px;">
-                <div class="row col-md-10 col-12 offset-md-1">
-                    <div class="col-md-3 col-12"><span class="category-title"> Shop by <strong>Category</strong></span>
-                        <hr>
-                        <div class="category-container mb-1">
-                     
-                        <?php 
-                        include 'config.php';
-                        //echo "<script>alert('$idc')</script>";                        
-                                    $result1 = mysqli_query($con,"SELECT  `category_name`,`sub_id` FROM `sub_categorys` WHERE `category_id`=$idc;");                                    
-                                    while($row1 = mysqli_fetch_array($result1)) 
-                                    {
-                                        $category_name= $row1['category_name'];   
-                                        $sub_id= $row1['sub_id'];   
-                                      
-                     ?>
-                            <div class="mb-1 category-item">
-                            <span><a href='subdynamic.php?id=<?php echo $sub_id;?>&proid=<?php echo $idc; ?>''>      <?php echo $category_name; ?></a></span>
-                            <i class="fas fa-angle-right"></i></div>
-                            <?php } ?>
-
-                        </div><span class="category-title"><strong>Brands</strong>
-                        </span>
-                           
-                        <hr>
-                        <div class="category-brand-container mb-3 mt-3 pl-1">
-                        
-                        <?php 
-                        include 'config.php';
-                        //echo "<script>alert('$idc')</script>";                        
-                                    $result1 = mysqli_query($con,"SELECT  `brand_name` FROM `brands` WHERE `category_id`=$idc;");                                    
-                                    while($row1 = mysqli_fetch_array($result1)) 
-                                    {
-                                        $brand_name= $row1['brand_name'];   
-                                      
-                     ?>
-                            <div class="custom-controls-stacked">
-                                <div class="custom-control custom-radio mb-2">
-                                <input name="rdoBrands" id="ARUNALU" type="radio" class="custom-control-input" value="652">
-                                <label for="ARUNALU" class="custom-control-label"><?php echo $brand_name;?></label>
-                                </div>
-                            </div>
-                                    <?php } ?>
-                        </div>
-                        <!-- <span class="category-title"><strong>Price</strong></span>
-                        <hr> -->
-                        <div class="mt-5">
-                            <!-- <div aria-disabled="false" class="input-range"><span class="input-range__label input-range__label--min"><span class="input-range__label-container">0</span></span>
-                                <div class="input-range__track input-range__track--background">
-                                    <div class="input-range__track input-range__track--active" style="left: 0%; width: 100%;"></div><span class="input-range__slider-container" style="position: absolute; left: 0%;"><span class="input-range__label input-range__label--value"><span class="input-range__label-container">0</span></span>
-                                    <div aria-valuemax="5000"
-                                        aria-valuemin="0" aria-valuenow="0" class="input-range__slider" draggable="false" role="slider" tabindex="0"></div>
-                                    </span><span class="input-range__slider-container" style="position: absolute; left: 100%;"><span class="input-range__label input-range__label--value"><span class="input-range__label-container">5000</span></span>
-                                    <div aria-valuemax="5000"
-                                        aria-valuemin="0" aria-valuenow="5000" class="input-range__slider" draggable="false" role="slider" tabindex="0"></div>
-                                    </span>
-                                </div><span class="input-range__label input-range__label--max"><span class="input-range__label-container">5000</span></span>
-                            </div><span class="price-range-text mt-3 d-flex"><strong>Price&nbsp;</strong> Rs. 0 - Rs. 5000</span></div> -->
-                            </div>
-                            </div>
+            
          <div class="col-md-9 col-12">
                         <div class="m-0 row-cols-2 row-cols-xs-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-4 row">
          
 
     <?php
-    //echo $idc;
-    $query = "SELECT products.*,p2s.quantity_in_stock, p2s.sell_price as sell_price, p2s.purchase_price as purchase_price FROM products LEFT JOIN product_to_store p2s ON (products.p_id = p2s.product_id) GROUP BY products.p_id HAVING   sub_id = '$idc' AND p2s.quantity_in_stock != ''";
+    $query = "SELECT products.*,p2s.quantity_in_stock,p2s.brand_id, p2s.sell_price as sell_price, p2s.purchase_price as purchase_price FROM products LEFT JOIN product_to_store p2s ON (products.p_id = p2s.product_id) GROUP BY products.p_id HAVING brand_id = '$brand_id' AND p2s.quantity_in_stock != ''";
     $product_array = $shoppingCart->getAllProduct($query);
 
     if (! empty($product_array)) {
@@ -391,7 +331,7 @@ if (! empty($cartItem)) {
 			  
             ?>
     
-        <form method="post" action="subcat.php?action=add&code=<?php echo $product_array[$key]["p_code"]; ?>&id=<?php echo $idc; ?>" onsubmit="myFunction()">
+        <form method="post" action="branddata.php?action=add&code=<?php echo $product_array[$key]["p_code"]; ?>&id=<?php echo $brand_id; ?>" onsubmit="myFunction()">
         <div class="col" style="padding-bottom: 15px;">
                         <div class="product-card-container">
                                        <div class="row">
