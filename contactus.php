@@ -57,22 +57,50 @@
                 <div class="col-lg-8 col-md-12"></div>
             </div>
         </div>
+        <?php 
+        include('config.php');
+
+        //echo "<script>alert('$email');</script>";
+        
+        
+        $fetch="SELECT * FROM `stores`  ";
+        $result = mysqli_query($con,$fetch);
+        
+        if($result === FALSE)
+        {
+        die("Query Failed!".mysqli_error().$result);
+        }
+        while($row=mysqli_fetch_assoc($result))
+        {
+        $firstName=$row['name'];
+        $address=$row['address'];
+        $mobile=$row['mobile'];
+        $email=$row['email'];
+        }
+        
+        ?>
         <div class="col-md-10 col-12 offset-md-1">
             <div class="static-content-container p-2 mt-3 mb-5 ">
                 <div class="d-flex align-items-center bottom-left-radios justify-content-center "><img src="img/websitelogo.png"
                         class="jkhLogo">
-                    <div class="d-flex flex-column m-3 ml-5"><span class="head"><strong>Geo Info Tech Lanka (Pvt) Ltd</strong></span><span class="title">#9A,Kumbukgaha Pokuna Road,</span><span class="title">Nugegoda, Sri Lanka.</span></div>
+                    <div class="d-flex flex-column m-3 ml-5">
+                        <span class="head"><strong><?php echo $firstName;?> (Pvt) Ltd</strong>
+                    </span><span class="title"><?php echo $address; ?></span>
+                    </div>
                 </div>
                 <div class="d-flex flex-column justify-content-center align-items-center">
                     <div class="col d-flex justify-content-center"><i class="fas fa-phone-alt locator-icon"></i></div>
-                    <div class="col d-flex justify-content-center"><span class="title">+94 7777 02275</span></div>
+                    <div class="col d-flex justify-content-center"><span class="title"><?php echo $mobile ?></span></div>
                 </div>
                 <div class="d-flex flex-column justify-content-center align-items-center">
                     <div class="col d-flex justify-content-center"><i class="fas fa-envelope locator-icon"></i></div>
-                    <div class="col d-flex justify-content-center"><span class="title">info@gitl.lk<br></span></div>
+                    <div class="col d-flex justify-content-center"><span class="title"><?php echo $email; ?><br></span></div>
                 </div>
                 <div class="d-flex flex-column justify-content-center align-items-center top-right-radios ">
-                    <div class="col d-flex justify-content-center"><img src="/static/media/Fax-icon.ef4c981e.png" class="fas fa-phone-square locator-icon "></div>
+                    <div class="col d-flex justify-content-center">
+                    <i class="fas fa-fax locator-icon"></i>
+                
+                </div>
                     <div class="col d-flex justify-content-center"><span class="title">+94 7777 02339</span></div>
                 </div>
             </div>
@@ -169,7 +197,7 @@ $result = mysqli_query($con,"SELECT * FROM comments");
                 <div class="row">
                     <div class="col">
                         <!-- <button class="new-btn mr-2 no-right-radius" type="button" style="background-color: rgb(81, 172, 55);"> Submit Feedback</button> -->
-                        <button class="new-btn mr-2 no-right-radius " type="submit" name="submit" style="background-color: rgb(81, 172, 55);">Submit Feedback</button>
+                        <button class="new-btn mr-2  " type="submit" name="submit" style="background-color: rgb(81, 172, 55);">Submit Feedback</button>
                     </div>
                     <div class="col"></div>
                 </div>

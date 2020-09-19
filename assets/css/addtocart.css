@@ -3724,9 +3724,10 @@ input[type=submit].btn-block {
     vertical-align: .255em;
     content: "";
     border-top: 0;
-    border-right: .3em solid transparent;
+    /* border-right: .3em solid transparent;
     border-bottom: .3em solid;
-    border-left: .3em solid transparent
+    border-left: .3em solid transparent */
+    border-radius: 25px;
 }
 
 .dropup .dropdown-toggle:empty:after {
@@ -3746,10 +3747,11 @@ input[type=submit].btn-block {
     margin-left: .255em;
     vertical-align: .255em;
     content: "";
-    border-top: .3em solid transparent;
+    /* border-top: .3em solid transparent;
     border-right: 0;
     border-bottom: .3em solid transparent;
-    border-left: .3em solid
+    border-left: .3em solid */
+    border-radius: 25px;
 }
 
 .dropright .dropdown-toggle:empty:after {
@@ -3781,9 +3783,10 @@ input[type=submit].btn-block {
     margin-right: .255em;
     vertical-align: .255em;
     content: "";
-    border-top: .3em solid transparent;
+    /* border-top: .3em solid transparent;
     border-right: .3em solid;
-    border-bottom: .3em solid transparent
+    border-bottom: .3em solid transparent */
+    border-radius: 25px;
 }
 
 .dropleft .dropdown-toggle:empty:after {
@@ -3806,7 +3809,8 @@ input[type=submit].btn-block {
     height: 0;
     margin: .5rem 0;
     overflow: hidden;
-    border-top: 1px solid #e9ecef
+    /* border-top: 1px solid #e9ecef */
+    border-radius: 25px;
 }
 
 .dropdown-item {
@@ -3903,14 +3907,16 @@ input[type=submit].btn-block {
 
 .btn-group>.btn-group:not(:last-child)>.btn,
 .btn-group>.btn:not(:last-child):not(.dropdown-toggle) {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0
+    /* border-top-right-radius: 0;
+    border-bottom-right-radius: 0 */
+    border-radius: 25px;
 }
 
 .btn-group>.btn-group:not(:first-child)>.btn,
 .btn-group>.btn:not(:first-child) {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0
+    /* border-top-left-radius: 0;
+    border-bottom-left-radius: 0 */
+    border-radius: 25px;
 }
 
 .dropdown-toggle-split {
@@ -3958,14 +3964,16 @@ input[type=submit].btn-block {
 
 .btn-group-vertical>.btn-group:not(:last-child)>.btn,
 .btn-group-vertical>.btn:not(:last-child):not(.dropdown-toggle) {
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0
+    /* border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0 */
+    border-radius: 25px;
 }
 
 .btn-group-vertical>.btn-group:not(:first-child)>.btn,
 .btn-group-vertical>.btn:not(:first-child) {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0
+    /* border-top-left-radius: 0;
+    border-top-right-radius: 0 */
+    border-radius: 25px;
 }
 
 .btn-group-toggle>.btn,
@@ -4028,14 +4036,16 @@ input[type=submit].btn-block {
 
 .input-group>.custom-select:not(:last-child),
 .input-group>.form-control:not(:last-child) {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0
+    /* border-top-right-radius: 0;
+    border-bottom-right-radius: 0 */
+    border-radius: 25px;
 }
 
 .input-group>.custom-select:not(:first-child),
 .input-group>.form-control:not(:first-child) {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0
+    /* border-top-left-radius: 0;
+    border-bottom-left-radius: 0 */
+    border-radius: 25px;
 }
 
 .input-group>.custom-file {
@@ -4045,13 +4055,15 @@ input[type=submit].btn-block {
 
 .input-group>.custom-file:not(:last-child) .custom-file-label,
 .input-group>.custom-file:not(:last-child) .custom-file-label:after {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0
+    /* border-top-right-radius: 0;
+    border-bottom-right-radius: 0 */
+    border-radius: 25px;
 }
 
 .input-group>.custom-file:not(:first-child) .custom-file-label {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0
+    /* border-top-left-radius: 0;
+    border-bottom-left-radius: 0 */
+    border-radius: 25px;
 }
 
 .input-group-append,
@@ -4155,8 +4167,9 @@ input[type=submit].btn-block {
 .input-group>.input-group-append:not(:last-child)>.input-group-text,
 .input-group>.input-group-prepend>.btn,
 .input-group>.input-group-prepend>.input-group-text {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0
+    /* border-top-right-radius: 0;
+    border-bottom-right-radius: 0 */
+    border-radius: 25px;
 }
 
 .input-group>.input-group-append>.btn,
@@ -6394,7 +6407,7 @@ a.close.disabled {
 }
 
 .modal-content {
-    position: relative;
+    /* position: relative; */
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -6407,7 +6420,7 @@ a.close.disabled {
 }
 
 .modal-backdrop {
-    position: fixed;
+    /* position: fixed; */
     top: 0;
     left: 0;
     z-index: 1040;

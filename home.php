@@ -1,3 +1,37 @@
+<style>
+.height{
+	height:120px;
+}
+.circ {
+	width:150px;  height:150px;
+  vertical-align: middle;
+  border-radius: 50%;
+  transition: box-shadow 0.3s;
+}
+.circ:hover {
+  box-shadow: 0 0 0 10px white;
+}
+.under {
+
+position: relative ;
+    width: 60px;
+    height: 60px;
+	left : -65px;
+	top:26px;
+	margin-left: -70px;
+	object-fit: cover;
+}
+
+.over {
+	
+	width: 193px;
+    height: 193px;
+    object-fit: cover;
+    margin: 5px 10px;
+    box-shadow: 0 2px 5px 0px rgba(0, 0, 0, 0.3);
+  
+}
+</style>
 <?php
 require_once "header.php";
 require_once "config.php";
@@ -269,7 +303,7 @@ if (! empty($cartItem)) {
 
                     <div>
                         <div class="item-container1">
-                            <div class="item1"><i class="fa fa-clock"></i> Delivery within 48 Hours</div>
+                            <div class="item1"><i class="fa fa-clock"></i> Delivery within 24 Hours</div>
                             <div class="item1"><i class="fa fa-paper-plane"></i>Deliver to Doorstep</div>
                             <div class="item1"><i class="fa fa-check-circle"></i>Freshness Guaranteed</div>
                             <div class="item1"><i class="fa fa-hand-pointer"></i>Click and Collect</div>
@@ -298,7 +332,7 @@ if (! empty($cartItem)) {
                             <div class="switcher">
                                 <div class="switcher-controls-container">
                                 <!-- <button type="submit" class="btn btn-success ClickCheck" id="Create " name="but_prev"> <i class="fa fa-arrow-left"></i></button> -->
-                                <div class="switcher-control-nexus switcher-control-active">Nexus Deals</div>
+                                <div class="switcher-control-nexus switcher-control-active">Gift Card Deals</div>
                                     <div class="switcher-control-keells">GIT Lanka Deals</div>
                                     <!-- <button type="submit" class="btn btn-success ClickCheck" id="Create " name="but_prev"> <i class="fa fa-arrow-right"></i></button> -->
 
@@ -358,7 +392,7 @@ if (! empty($cartItem)) {
                                 <div class="switcher-main-button-holder row">
                                     <div class="input-group">
                                         <div class="btn-full">
-                                        <a href="qty.php" class="btn-inside new-btn-sm ">View All Nexus Deals</a>
+                                        <a href="qty.php" class="btn-inside new-btn-sm ">View All Gift Card Deals</a>
                            <div class="input-group-append">
                                                 <div class="input-group-text append">
                                                 <i class="fas fa-angle-right"></i></div>
@@ -497,7 +531,7 @@ if (! empty($cartItem)) {
                                 </div>
                             </div>
                         </div><button id="best-seller-slider-goLeft"><i class="fas fa-chevron-left"></i></button><button id="best-seller-slider-goRight"><i class="fas fa-chevron-right"></i></button></div>
-                    <div>
+                    <!-- <div>
                         <div class="p-0 m-0 row">
                             <div class="full-width-bannner-item col-lg-6 col-md-12 col-12">
                                 <a href="vegetables.php"><div class="slide"><img src="https://essstr.blob.core.windows.net/uiimg/BannerSections/BannerSection2A.jpg" style="width: 100%; height: 100%;">
@@ -509,7 +543,7 @@ if (! empty($cartItem)) {
                                 <div class="slide"><img src="https://essstr.blob.core.windows.net/uiimg/BannerSections/BannerSection2B.jpg" style="width: 100%; height: 100%;"></div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="row" style="margin: 0px;">
                         <div class="col-md-10 col-12 offset-md-1">
                             <div class="section-title">
@@ -539,20 +573,21 @@ if (! empty($cartItem)) {
                                                         <div class="product-card-promotion-badge-nexus">
                                                             <!-- <img class="img-fluid" src="/static/media/Nexus.0af60875.png"> -->
                                                         </div>
-                                                        <div class="product-card-promotion-badge-single-line">
+                                                        <!-- <div class="product-card-promotion-badge-single-line">
                                                             <div class="product-card-promotion-badge-percentage">29</div>
                                                             <div>
                                                                 <div class="product-card-promotion-badge-suffix">%</div>
                                                                 <div class="product-card-promotion-badge-suffix">Off</div>
                                                             </div>
-                                                        </div>
+                                                        </div> -->
+                                                        
                                                     </div>
                                                 </div>
                                                 <div class="product-card-name col-md-12"><?php echo $product_array[$key]["p_name"]; ?></div>
-                                                <!-- <div class="product-card-price-container col-md-12">
-                                                    <div class="product-card-original-price"><?php echo $product_array[$key]["sell_price"]; ?></div>
-                                                    <div class="product-card-final-price">Rs 138.00 / Unit</div>
-                                                </div> -->
+                                         <div class="product-card-price-container col-md-12">
+                                                    <div class="product-card-final-price"><?php echo $product_array[$key]["sell_price"]; ?></div>
+                                                    
+                                                </div> 
                                                 <div class="product-card-button-container col-md-12">
                                                 <input type="hidden" name="quantity" value="1" size="2" class="input-cart-quantity" />
                         <input type="image" src="add-to-cart.png" class="btnAddAction" />
@@ -586,7 +621,7 @@ if (! empty($cartItem)) {
                     $c=0;
                     $id=[];
 include 'config.php';
-$result = mysqli_query($con,"SELECT category_image,category_id FROM categorys LIMIT 6;");
+$result = mysqli_query($con,"SELECT category_image,category_id FROM categorys LIMIT 5;");
 			while($row = mysqli_fetch_array($result)) {
             $img= $row['category_image'];
             $idc= $row['category_id'];
@@ -603,46 +638,86 @@ $c = $c +1;
                         $image2= $image[2];
                         $image3= $image[3];
                         $image4= $image[4];
-                        $image5= $image[5];
+                        
 
                         $id0= $id[0];
                         $id1= $id[1];
                         $id2= $id[2];
                         $id3= $id[3];
                         $id4= $id[4];
-                        $id5= $id[5];
+                        
 
                         // $image6= $image[6];
                   //      echo $image0,$image1,$image2,$image3,$image4,$image5;
                 //echo $id0,$id1,$id2,$id3,$id4,$id5;
                                     ?>
-                    <div class="col">
-                        <div class="wrapper">
+                <div class="container">
+                    <div class="section">
+                        <div class="row">
+                            <div class="col s12 center-align dt_get_start">
+                        
+                                <div class="center">
+
+                                <a href='qtydynamic.php?id=<?php echo $id0;?>'>
+                                <img src="<?php echo $image0; ?>" class="circle over circ xuser">
+                    </a>
+
+
+                                <a href='qtydynamic.php?id=<?php echo $id1;?>'>
+                                <img src="<?php echo $image1; ?>" class="circle over circ xuser">
+                    </a>
+
+                    <a href='qtydynamic.php?id=<?php echo $id2;?>'>
+                                <img src="<?php echo $image2; ?>" class="circle over circ xuser">
+                    </a>
+
+
+                    <a href='qtydynamic.php?id=<?php echo $id3;?>'>
+                                <img src="<?php echo $image3; ?>" class="circle over circ xuser">
+                    </a>
+
+                    <a href='qtydynamic.php?id=<?php echo $id4;?>'>
+                                <img src="<?php echo $image4; ?>" class="circle over circ xuser">
+                    </a>
+
+                    
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
                         <!-- <div class="tile1-cat" style="background: url(&quot;<?php echo $image0; ?>&quot;);"></div> -->
-                        <div class="tile1-cat" style="background: url(&quot;<?php echo $image0; ?>&quot;);">
-    <a href='qtydynamic.php?id=<?php echo $id0;?>' style="display:block;width:100px;height:20px;">&nbsp;</a>
+                        <!-- <div class="circle over circ xuser tile1-cat" style="background: url(&quot;<?php echo $image0; ?>&quot;);">
+    <a href='qtydynamic.php?id=<?php echo $id0;?>' style="display:block;width:100px;height:20px; ">&nbsp;</a>
 </div>
 
                             <div class="">
                                 <div class="slide">
-                                <a href='qtydynamic.php?id=<?php echo $id1;?>'><img src="<?php echo $image1; ?>"  style="width: 100%; height: auto;">
+                                <a href='qtydynamic.php?id=<?php echo $id1;?>'>
+                                <img src="<?php echo $image1; ?>" class="circle over circ xuser">
                             </div>
                             </div></a>
                             <div class="nested ">
                                 <div class="to-bottom tile3-cat">
-                                <a href='qtydynamic.php?id=<?php echo $id2;?>'><img src="<?php echo $image2; ?>"  style="width: 100%; height: auto;">
+                                <a href='qtydynamic.php?id=<?php echo $id2;?>'>
+                                <img src="<?php echo $image2; ?>" class="circle over circ xuser" >
                                 </div></a>
                                 <div class="to-bottom tile4-cat">
-                                <a href='qtydynamic.php?id=<?php echo $id3;?>'><img src="<?php echo $image3; ?>"  style="width: 100%; height: auto;"></div>
-                            </div></a>
+                                <a href='qtydynamic.php?id=<?php echo $id3;?>'>
+                                <img src="<?php echo $image3; ?>"   class="circle over circ xuser"></div>
+                            </div>
+                        </a>
                             <div class="nested">
                                 <div class="to-bottom tile5-cat">
-                                <a href='qtydynamic.php?id=<?php echo $id4;?>'><img src="<?php echo $image4; ?>"  style="width: 100%; height: auto;"></a></div>
+                                <a href='qtydynamic.php?id=<?php echo $id4;?>'><img src="<?php echo $image4; ?>"  class="circle over circ xuser"></a></div>
                                 
                                 <div class="to-bottom tile6-cat">
-                                <a href='qtydynamic.php?id=<?php echo $id5;?>'><img src="<?php echo $image5; ?>"  style="width: 100%; height: auto;"></a></div>
+                                <a href='qtydynamic.php?id=<?php echo $id5;?>'><img src="<?php echo $image5; ?>" class="circle over circ xuser" ></a></div>
                                 </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="row" style="margin: 0px;">
                         <div class="col-md-10 col-12 offset-md-1">
@@ -657,12 +732,13 @@ $c = $c +1;
                         <div class="p-0 m-0 row">
                             <div class="full-width-bannner-item col-lg-6 col-md-12 col-12">
                                 <div class="slide">
-                                    <img src="https://essstr.blob.core.windows.net/uiimg/BannerSections/BannerSection4A.jpg" style="width: 100%; height: 100%;"></div>
+                                   <a href="storelocator.php"> <img src="https://essstr.blob.core.windows.net/uiimg/BannerSections/BannerSection4A.jpg" style="width: 100%; height: 100%;">
+                    </a></div>
                             </div>
                             <div class="bannerSpace col-12">&nbsp;</div>
                             <div class="full-width-bannner-item col-lg-6 col-md-12 col-12">
                                 <div class="slide">
-                                    <img src="https://essstr.blob.core.windows.net/uiimg/BannerSections/BannerSection4B.jpg" style="width: 100%; height: 100%;">
+                                <a href="regdetails.php">   <img src="https://essstr.blob.core.windows.net/uiimg/BannerSections/BannerSection4B.jpg" style="width: 100%; height: 100%;"> </a>
                                 </div>
                             </div>
                         </div>

@@ -1,34 +1,45 @@
+<form action="subscribe.php" method="post">
 <div class="footer-container">
     <div class="footer-links">
         <div class="col-md-10 col-12 offset-md-1">
             <div class="m-0 align-items-center row">
                 <div class="footer-link-top-row-item col-lg-2 col-md-3 col-12"><img class="img-fluid" src="img/websitelogo.png"></div>
-                <div class="footer-link-top-row-item col"><input id="subscribeMail" name="subscribeMail" placeholder="Enter your email to subscribe to our newsletter" type="text" class="form-control" aria-describedby="UserNameHelpBlock" value=""><button id="buttonDesign" class="new-btn  
-  new-btn-primary float-right btn-append-with-text-box " type="button"> Submit</button></div>
+                <div class="footer-link-top-row-item col">
+                    
+
+                <input id="subscribeMail" name="subscribeMail" placeholder="Enter your email to subscribe to our newsletter" type="text" class="form-control" aria-describedby="UserNameHelpBlock" >
+
+                <button id="buttonDesign" class="new-btn  
+  new-btn-primary float-right btn-append-with-text-box " type="submit" name="submit">Submit</button>
+
+                <!-- <button id="buttonDesign" class="new-btn  
+  new-btn-primary float-right btn-append-with-text-box " type="button"> Submit</button> -->
+
+</div>
                 <div class="footer-link-top-row-item footer-link-social-link-holder pr-0 d-flex justify-content-end col-lg-auto col-md-12 col-sm-12 col-12">
                     <div class="social-link-without-design">
-                        <!-- <a href="https://www.facebook.com/Keells.SL/" target="_blank"> -->
+                    <a href="https://www.facebook.com/gitlankasmart/" target="_blank">
                         <div class="footer-link-social-link"><i class="fab fa-facebook-f"></i></div>
-                        <!-- </a>
-                        <a href="https://twitter.com/keells_sl" target="_blank"> -->
+                        </a>
+                        <a href="https://www.facebook.com/gitlankasmart/" target="_blank"> 
                         <div class="footer-link-social-link"><i class="fab fa-twitter"></i></div>
-                        <!-- </a>
-                        <a href="https://www.youtube.com/channel/UCCu17kGGZjuVITjK4Z_0N0g" target="_blank"> -->
+                         </a>
+                        <a href="https://www.facebook.com/gitlankasmart/" target="_blank">
                         <div class="footer-link-social-link"><i class="fab fa-youtube"></i></div>
-                        <!-- </a> -->
+                         </a>
                     </div>
                 </div>
                 <div class="footer-link-top-row-item footer-link-social-link-holder col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="social-link-design">
-                        <!-- <a href="https://www.facebook.com/Keells.SL/" target="_blank"> -->
+                         <a href="https://www.facebook.com/gitlankasmart/" target="_blank"> 
                         <div class="footer-link-social-link"><i class="fab fa-facebook-f"></i></div>
-                        <!-- </a>
-                        <a href="https://twitter.com/keells_sl" target="_blank"> -->
+                         </a>
+                        <a href="https://www.facebook.com/gitlankasmart/" target="_blank"> 
                         <div class="footer-link-social-link"><i class="fab fa-twitter"></i></div>
-                        <!-- </a>
-                        <a href="https://www.youtube.com/channel/UCCu17kGGZjuVITjK4Z_0N0g" target="_blank"> -->
+                        </a>
+                        <a href="https://www.facebook.com/gitlankasmart/" target="_blank"> 
                         <div class="footer-link-social-link"><i class="fab fa-youtube"></i></div>
-                        <!-- </a> -->
+                         </a> 
                     </div>
                 </div>
             </div>
@@ -70,7 +81,7 @@
                         <div class="tab"><input type="radio" id="rd4" name="rd" class="rd"><label class="footer-link-heading tab-label" for="rd4">Customer Service</label>
                             <div class="tab-content">
                                 <a href="contactus.php">   <div class="footer-link-item">Contact us</div></a>
-                                <a href="aboutus.php">   <div class="footer-link-item">About us </div></a>
+                                <!-- <a href="aboutus.php">   <div class="footer-link-item">About us </div></a> -->
                             </div>
                         </div>
                     </div>
@@ -171,3 +182,4 @@ $c = $c +1;
 <div></div>
 <div></div>
 </div>
+                    </form>

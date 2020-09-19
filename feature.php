@@ -294,7 +294,8 @@ if (! empty($cartItem)) {
                 <div id="page-header">
                     <div class="row" style="margin: 0px;">
                         <div class="col-md-10 col-12 offset-md-1">
-                            <div class="page-header-breadcrumb"><a class="page-header-breadcrumb-link" href="/home">Home</a><i class="fas fa-caret-right"></i>
+                            <div class="page-header-breadcrumb"><a class="page-header-breadcrumb-link" href="/home">Home</a>
+                            <i class="fas fa-caret-right"></i>
                                 <div><a>All Relevant</a></div>
                             </div>
                         </div>

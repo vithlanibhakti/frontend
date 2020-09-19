@@ -429,6 +429,11 @@ if (! empty($cartItem)) {
     <?php
         }
     }
+    else{
+        ?>
+        <div><h1>Product out of stock</h1></div>
+<?php
+    }
     ?>
 </div>
 </div>

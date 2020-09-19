@@ -38,12 +38,38 @@
     <div class="justify-content-center d-flex">
         <div class="registration-container col-lg-10 col-md-10 col-sm-10 col-12">
             <div class="first-section">
-                <div class="col"><img src="img/websitelogo.png"
-               
-                        class="img-fluid"> <br> <br><span class="small-title white">Profile <b>Creation</b></span><br> <br><span class="description green"><div class="mb-3 description white" style="text-align: left;">Please verify your details and update the password.</div><span class="description white">Have trouble logging in? Call us on <a href="tel:+940112303500" style="color: rgb(100, 191, 71);">0112303500</a> (Daily operating hours 8.00a.m to 8.00p.m)</span></span>
+                <div class="col"><img src="img/websitelogo.png" class="img-fluid"> <br> <br><span class="small-title white">Profile <b>Creation</b></span><br> <br><span class="description green"><div class="mb-3 description white" style="text-align: left;">Please verify your details and update the password.</div>
+                <?php 
+        include('config.php');
+
+        //echo "<script>alert('$email');</script>";
+        
+        
+        $fetch="SELECT * FROM `stores`  ";
+        $result = mysqli_query($con,$fetch);
+        
+        if($result === FALSE)
+        {
+        die("Query Failed!".mysqli_error().$result);
+        }
+        while($row=mysqli_fetch_assoc($result))
+        {
+        $firstName=$row['name'];
+        $address=$row['address'];
+        $mobile=$row['mobile'];
+        $email=$row['email'];
+        }
+        
+        ?>
+                        <span class="description white">Have trouble logging in? Call us on 
+                            <a href="<?php echo $mobile; ?>" style="color: rgb(100, 191, 71);"><?php echo $mobile; ?></a> 
+                        
+                        (Daily operating hours 8.00a.m to 8.00p.m)</span></span>
                     <div>
-                        <div class="back-btn mt-5"><i class="fas fa-chevron-circle-left"></i> <span class="ml-2">Back</span></div>
-                    </div><br> <br><span class="registration-bg-color">Important: Note that only the last 5 carts shopped on http://pos.gitl.lk/ in the last 2 years will be reflected on the new site.</span></div>
+                        <div class="back-btn mt-5"><i class="fas fa-chevron-circle-left"></i> 
+                        <span class="ml-2">Back</span></div>
+                    </div><br> 
+                    <br><span class="registration-bg-color">Important: Note that only the last 5 carts shopped on http://pos.gitl.lk/ in the last 2 years will be reflected on the new site.</span></div>
             </div>
             <div class="second-section pr-3 pl-3">
                 <div class="row-view row">

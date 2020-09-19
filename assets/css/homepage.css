@@ -672,7 +672,7 @@ element.style {
 .product-card-container {
     transition: box-shadow .3s;
     background-color: #fff;
-    border-radius: 1.875rem 0;
+    border-radius: 1.875rem ;
     padding: .625rem;
     text-align: center;
     letter-spacing: .01rem;
@@ -705,7 +705,7 @@ element.style {
     position: absolute;
     top: 50%;
     left: 1rem;
-    border-radius: 1.5625rem 0;
+    border-radius: 25px;
     background-color: #41c527;
     color: #fff;
     font-family: foco-bold;
@@ -928,7 +928,7 @@ element.style {
 }
 
 .switcher {
-    border-radius: 5.625rem 0;
+    border-radius: 5.625rem;
     width: 100%;
     height: 19.5625rem;
     background-color: #64bf47;
@@ -971,8 +971,9 @@ body {
 }
 
 .form-control {
-    border-top-right-radius: 1.375rem!important;
-    border-bottom-left-radius: 1.375rem!important;
+    /* border-top-right-radius: 1.375rem!important;
+    border-bottom-left-radius: 1.375rem!important; */
+    border-radius: 25px;
     height: 2.8125rem
 }
 
@@ -990,8 +991,9 @@ body {
 }
 
 .no-right-radius {
-    border-top-right-radius: 0!important;
-    border-bottom-right-radius: 0!important
+    /* border-top-right-radius: 0!important;
+    border-bottom-right-radius: 0!important */
+    border-radius: 25px;
 }
 
 .no-left-border {
@@ -1072,7 +1074,8 @@ html {
     .all-container .product-card-container {
         transition: box-shadow .3s;
         background-color: #fff;
-        border-radius: 1.875rem 0;
+        /* border-radius: 1.875rem; */
+        border-radius: 25px;
         padding: 1.5rem;
         text-align: center;
         letter-spacing: .01rem;
@@ -1094,7 +1097,8 @@ html {
     .all-container .product-card-container {
         transition: box-shadow .3s;
         background-color: #fff;
-        border-radius: 1.875rem 0;
+        /* border-radius: 1.875rem ; */
+        border-radius: 25px;
         padding: .625rem;
         text-align: center;
         letter-spacing: .01rem;
@@ -1161,7 +1165,8 @@ html {
     .all-container .product-card-container {
         transition: box-shadow .3s;
         background-color: #fff;
-        border-radius: 1.875rem 0;
+        /* border-radius: 1.875rem; */
+        border-radius: 25px;
         padding: 1.5rem;
         text-align: center;
         letter-spacing: .01rem;
@@ -1299,8 +1304,9 @@ img {
 .btn-full,
 .new-btn {
     background: #fff;
-    border-top-right-radius: 1.875rem;
-    border-bottom-left-radius: 1.875rem;
+    /* border-top-right-radius: 1.875rem;
+    border-bottom-left-radius: 1.875rem; */
+    border-radius: 25px;
     border: 0;
     height: 2.8125rem;
     font-weight: 700;
@@ -1376,10 +1382,11 @@ img {
 
 .append {
     background-color: #c7f7a0;
-    border-bottom-left-radius: 1.875rem;
+    /* border-bottom-left-radius: 1.875rem;
     border-top-right-radius: 1.875rem;
     border-bottom-right-radius: 0;
-    border-top-left-radius: 0;
+    border-top-left-radius: 0; */
+    border-radius: 25px;
     margin-left: -1.875rem
 }
 
@@ -1462,7 +1469,8 @@ img {
     padding-top: 10px;
     padding-bottom: 2px;
     color: #fff;
-    border-top-right-radius: 1.875rem
+    /* border-top-right-radius: 1.875rem */
+    border-radius: 25px;
 }
 
 .message-box .modal-content {
@@ -1479,7 +1487,7 @@ img {
 
 .message-box .modal-content .modal-body {
     padding: 0!important;
-    border-top-right-radius: 1.875rem
+    /* border-top-right-radius: 1.875rem */
 }
 
 .message-box .modal-content .modal-body .message-box-header-info {
@@ -1587,7 +1595,7 @@ img {
 
 .default-header-container {
     width: 100%;
-    position: fixed;
+    /* position: fixed; */
     z-index: 99
 }
 
@@ -1658,9 +1666,16 @@ img {
 
 .default-header-navbar {
     color: #fff;
-    height: 7.3125rem;
+     /* height: 6.3125rem;  */
     background: #0b2f00
 }
+ .my{
+    background: #0b2f00
+ }
+
+ .my1{
+    background:#051500
+ }
 
 .navbar-items-container {
     letter-spacing: .025rem;
@@ -1782,8 +1797,9 @@ img {
     margin: .125rem;
     display: grid;
     grid-template-columns: 22% 60% 22%;
-    border-bottom-left-radius: 1.875rem;
-    padding-top: 1.25rem
+    /* border-bottom-left-radius: 1.875rem; */
+    border-radius: 25px;
+    
 }
 
 .product-search-button {
@@ -1798,7 +1814,8 @@ img {
     left: -1.25rem;
     position: relative;
     letter-spacing: .0081rem;
-    border-radius: 0 1.875rem;
+    /* border-radius: 0 1.875rem; */
+    border-radius: 25px;
     background-color: #51ac37
 }
 
@@ -1823,9 +1840,10 @@ img {
     text-align: center;
     letter-spacing: .025rem;
     background-color: #fff;
-    border-bottom-left-radius: 1.875rem;
+    /* border-bottom-left-radius: 1.875rem;
     border-bottom: 1px solid hsla(0, 0%, 50.2%, .32);
-    border-right: .0625rem solid hsla(0, 0%, 71%, .32)
+    border-right: .0625rem solid hsla(0, 0%, 71%, .32) */
+    border-radius: 25px;
 }
 
 .category_menu_btn_product_search:hover {
@@ -2376,7 +2394,7 @@ img {
 }
 
 .footer-link-social-link {
-    border-radius: 0 2.0625rem;
+    border-radius: 25px;
     background-color: transparent;
     border: .125rem solid #1d440f;
     padding: .625rem 1.25rem;
@@ -2546,8 +2564,9 @@ body {
 }
 
 .form-control {
-    border-top-right-radius: 1.375rem!important;
-    border-bottom-left-radius: 1.375rem!important;
+    /* border-top-right-radius: 1.375rem!important;
+    border-bottom-left-radius: 1.375rem!important; */
+    border-radius: 25px;
     height: 2.8125rem
 }
 
@@ -2565,8 +2584,8 @@ body {
 }
 
 .no-right-radius {
-    border-top-right-radius: 0!important;
-    border-bottom-right-radius: 0!important
+    /* border-top-right-radius: 0!important;
+    border-bottom-right-radius: 0!important */
 }
 
 .no-left-border {
@@ -2679,5 +2698,3 @@ html {
     margin: 0;
     padding-top: 10px
 }
-
-ho

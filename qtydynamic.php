@@ -47,7 +47,7 @@ class ShoppingCartd extends DBController
         $idc=$_GET['id'];
         //echo $idc;  
                 
-        $query = "SELECT products.*,p2s.quantity_in_stock, p2s.sell_price as sell_price, p2s.purchase_price as purchase_price FROM products LEFT JOIN product_to_store p2s ON (products.p_id = p2s.product_id) GROUP BY products.p_id HAVING  category_id = '$idc' ";
+        $query = "SELECT products.*,p2s.quantity_in_stock, p2s.sell_price as sell_price, p2s.purchase_price as purchase_price FROM products LEFT JOIN product_to_store p2s ON (products.p_id = p2s.product_id) GROUP BY products.p_id HAVING quantity_in_stock != '' AND category_id = '$idc' ";
         
         $productResult = $this->getDBResult($query);
         return $productResult;
@@ -429,6 +429,11 @@ if (! empty($cartItem)) {
     <?php
         }
     }
+    else{
+        ?>
+       <div><h1>Product out of stock</h1></div>
+<?php
+    }
     ?>
 </div>
 </div>
@@ -471,7 +476,7 @@ $(document).ready(function() {
 
 $('input[type=radio]').click(function(e) {
 		var gender = $(this).val(); 
-        alert(gender);
+        //alert(gender);
         
   var url = "branddata.php?id=" + encodeURIComponent(gender);
         window.location.href = url;

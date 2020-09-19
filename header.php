@@ -69,7 +69,7 @@ $city=$row['state'];
 
 <head>
     <meta charset="utf-8">
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+ <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 
     <!-- Including our scripting file. -->
 
@@ -92,14 +92,15 @@ $city=$row['state'];
     </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
-    </script>
+    </script> 
 
     <title>GIT Lanka Online</title>
-    <link rel="stylesheet" href="assets/css/login.css">
+     <link rel="stylesheet" href="assets/css/login.css">
     <link rel="stylesheet" href="assets/css/homepage.css">
-    <link rel="stylesheet" href="assets/css/privacy.css">
+    <link rel="stylesheet" href="assets/css/privacy.css"> 
 </head>
 <style>
+
 .nav-container {
     display: grid;
 
@@ -366,7 +367,7 @@ else{
 
                     <div class="col-md-10 col-12 offset-md-1">
                         <div class="upper-item-container row">
-                            <nav class="navbar navbar-expand-md nav-container navbar-dark bg-dark ">
+                            <nav class="navbar navbar-expand-md nav-container my1">
 
                                 <div class="collapse navbar-collapse" id="nvbarCollapse">
                                     <div class="navbar-nav">
@@ -447,16 +448,17 @@ else{
                                 <a href="utilityPayment.php"><div class="nav-item-navbar nav-item-highlighted"><i class="fas fa-receipt"></i>Utility Bill Payment</div></a>
                                 <div class="nav-item-navbar cart-box"> -->
 
-                                    <nav class="navbar navbar-expand-md nav-container navbar-dark bg-dark ">
+                                    <nav class="navbar navbar-expand-md nav-container my ">
 
                                         <button type="button" class="navbar-toggler" data-toggle="collapse"
-                                            data-target="#navbarCollapse">
-                                            <span class="navbar-toggler-icon"></span> &nbsp;
+                                            data-target="#navbarCollapse"><i class="fas fa-bars">
+                    </button></i>
+                                            <!-- <span class="navbar-toggler-icon black"></span> &nbsp; -->
                                             <button type="button" class="navbar-toggler" data-toggle="collapse"
                                                 data-target="#nvbarCollapse"> <i class="fas fa-user">
                                             </button></i>
                                         </button>
-                                        <div class="collapse navbar-collapse" id="navbarCollapse">
+                                        <div class="collapse navbar-collapse black" id="navbarCollapse">
                                             <div class="navbar-nav">
                                                 <a href="home.php"
                                                     class="nav-item-navbar nav-item-highlighted">Home</a>&nbsp;&nbsp;&nbsp;
@@ -514,7 +516,10 @@ else{
                                         <span id="smart-checkout-count" class="badge">
                                             0 </i></span>
                                     <span id="total-price">RS. 0 </span>
-                                    <?php } ?>
+                                    <?php } 
+                                    include_once("loginpopup.php");?>
+                                   
+
                                 </div>
                             </div>
                         </div>

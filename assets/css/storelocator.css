@@ -84,8 +84,9 @@ body {
 }
 
 .form-control {
-    border-top-right-radius: 1.375rem!important;
-    border-bottom-left-radius: 1.375rem!important;
+    /* border-top-right-radius: 1.375rem!important;
+    border-bottom-left-radius: 1.375rem!important; */
+    border-radius: 25px;
     height: 2.8125rem
 }
 
@@ -103,8 +104,9 @@ body {
 }
 
 .no-right-radius {
-    border-top-right-radius: 0!important;
-    border-bottom-right-radius: 0!important
+    /* border-top-right-radius: 0!important;
+    border-bottom-right-radius: 0!important */
+    border-radius: 25px;
 }
 
 .no-left-border {
@@ -241,7 +243,8 @@ html {
 
 .district-holder {
     border: 1px solid rgba(100, 191, 71, .43);
-    border-radius: 0 1.5625rem 0 1.5625rem;
+    /* border-radius: 0 1.5625rem 0 1.5625rem; */
+    border-radius: 25px;
     margin-bottom: 3rem
 }
 
@@ -270,7 +273,8 @@ html {
 
 .store-card {
     border: .03125rem solid #64bf47;
-    border-radius: 0 1.5625rem 0 1.5625rem;
+    /* border-radius: 0 1.5625rem 0 1.5625rem; */
+    border-radius: 25px;
     padding: 1.5rem;
     margin-bottom: 1rem;
     display: flex;
@@ -304,7 +308,7 @@ html {
     grid-template-rows: 1fr 1fr
 }
 
-<style>.main-content-holder {
+.main-content-holder {
     padding-top: 10.24rem
 }
 
@@ -1011,7 +1015,7 @@ element.style {
     position: absolute;
     top: 50%;
     left: 1rem;
-    border-radius: 1.5625rem 0;
+    border-radius: 25px;
     background-color: #41c527;
     color: #fff;
     font-family: foco-bold;
@@ -1277,8 +1281,9 @@ body {
 }
 
 .form-control {
-    border-top-right-radius: 1.375rem!important;
-    border-bottom-left-radius: 1.375rem!important;
+    /* border-top-right-radius: 1.375rem!important;
+    border-bottom-left-radius: 1.375rem!important; */
+    border-radius: 25px;
     height: 2.8125rem
 }
 
@@ -1296,8 +1301,9 @@ body {
 }
 
 .no-right-radius {
-    border-top-right-radius: 0!important;
-    border-bottom-right-radius: 0!important
+    /* border-top-right-radius: 0!important;
+    border-bottom-right-radius: 0!important */
+    border-radius: 25px;
 }
 
 .no-left-border {
@@ -1378,7 +1384,7 @@ html {
     .all-container .product-card-container {
         transition: box-shadow .3s;
         background-color: #fff;
-        border-radius: 1.875rem 0;
+        border-radius: 1.875rem ;
         padding: 1.5rem;
         text-align: center;
         letter-spacing: .01rem;
@@ -1400,7 +1406,7 @@ html {
     .all-container .product-card-container {
         transition: box-shadow .3s;
         background-color: #fff;
-        border-radius: 1.875rem 0;
+        border-radius: 1.875rem ;
         padding: .625rem;
         text-align: center;
         letter-spacing: .01rem;
@@ -1467,7 +1473,7 @@ html {
     .all-container .product-card-container {
         transition: box-shadow .3s;
         background-color: #fff;
-        border-radius: 1.875rem 0;
+        border-radius: 1.875rem ;
         padding: 1.5rem;
         text-align: center;
         letter-spacing: .01rem;
@@ -1605,8 +1611,8 @@ img {
 .btn-full,
 .new-btn {
     background: #fff;
-    border-top-right-radius: 1.875rem;
-    border-bottom-left-radius: 1.875rem;
+    /* border-top-right-radius: 1.875rem;
+    border-bottom-left-radius: 1.875rem; */
     border: 0;
     height: 2.8125rem;
     font-weight: 700;
@@ -1682,10 +1688,11 @@ img {
 
 .append {
     background-color: #c7f7a0;
-    border-bottom-left-radius: 1.875rem;
+    /* border-bottom-left-radius: 1.875rem;
     border-top-right-radius: 1.875rem;
     border-bottom-right-radius: 0;
-    border-top-left-radius: 0;
+    border-top-left-radius: 0; */
+    border-radius: 25px;
     margin-left: -1.875rem
 }
 
@@ -1768,7 +1775,8 @@ img {
     padding-top: 10px;
     padding-bottom: 2px;
     color: #fff;
-    border-top-right-radius: 1.875rem
+    /* border-top-right-radius: 1.875rem */
+    border-radius: 25px;
 }
 
 .message-box .modal-content {
@@ -1785,7 +1793,8 @@ img {
 
 .message-box .modal-content .modal-body {
     padding: 0!important;
-    border-top-right-radius: 1.875rem
+    /* border-top-right-radius: 1.875rem */
+    border-radius: 25px;
 }
 
 .message-box .modal-content .modal-body .message-box-header-info {
@@ -1964,7 +1973,7 @@ img {
 
 .default-header-navbar {
     color: #fff;
-    height: 7.3125rem;
+    /* height: 7.3125rem; */
     background: #0b2f00
 }
 
@@ -2129,7 +2138,8 @@ img {
     text-align: center;
     letter-spacing: .025rem;
     background-color: #fff;
-    border-bottom-left-radius: 1.875rem;
+    /* border-bottom-left-radius: 1.875rem; */
+    border-radius: 25px;
     border-bottom: 1px solid hsla(0, 0%, 50.2%, .32);
     border-right: .0625rem solid hsla(0, 0%, 71%, .32)
 }
@@ -2209,8 +2219,9 @@ img {
     z-index: 998;
     position: relative;
     background-color: #fff;
-    border-top-right-radius: 1.875rem;
-    border-bottom-left-radius: 1.875rem;
+    /* border-top-right-radius: 1.875rem;
+    border-bottom-left-radius: 1.875rem; */
+    border-radius: 25px;
     box-shadow: 0 .25rem .5rem 0 rgba(0, 0, 0, .2), 0 .375rem 1.25rem 0 rgba(0, 0, 0, .19)
 }
 
@@ -2852,8 +2863,9 @@ body {
 }
 
 .form-control {
-    border-top-right-radius: 1.375rem!important;
-    border-bottom-left-radius: 1.375rem!important;
+    /* border-top-right-radius: 1.375rem!important;
+    border-bottom-left-radius: 1.375rem!important; */
+    border-radius: 25px;
     height: 2.8125rem
 }
 
@@ -2871,8 +2883,9 @@ body {
 }
 
 .no-right-radius {
-    border-top-right-radius: 0!important;
-    border-bottom-right-radius: 0!important
+    /* border-top-right-radius: 0!important;
+    border-bottom-right-radius: 0!important */
+    border-radius: 25px;
 }
 
 .no-left-border {
@@ -2945,7 +2958,8 @@ html {
     padding-top: 10px;
     padding-bottom: 2px;
     color: #fff;
-    border-top-right-radius: 1.875rem
+    /* border-top-right-radius: 1.875rem */
+    border-radius: 25px;
 }
 
 .notification-box .modal-content {
@@ -2962,7 +2976,8 @@ html {
 
 .notification-box .modal-content .modal-body {
     padding: 0!important;
-    border-top-right-radius: 1.875rem
+    /* border-top-right-radius: 1.875rem */
+    border-radius: 25px;
 }
 
 .notification-box .modal-content .modal-body .notification-box-header-info {

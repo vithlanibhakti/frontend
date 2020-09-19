@@ -1,316 +1,111 @@
 <!doctype html>
-<html lang="en">
-
+<html lang="en" class="no-js">
 <head>
-    <meta charset="utf-8" />
-    <meta name="theme-color" content="#000000" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="insight-app-sec-validation" content="6fd81522-d0ed-46d0-8c62-68efaf165c22" />
-    <link rel="shortcut icon" href="/favicon.ico" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="/assets/fontawesome_5.12.0/css/all.css" />
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-9750031-5"></script>
-    <script>
-        function gtag() {
-            dataLayer.push(arguments)
-        }
-        window.dataLayer = window.dataLayer || [], gtag("js", new Date), gtag("config", "UA-9750031-5")
-    </script>
-    <script>
-        ! function(e, t, a, n, g) {
-            e[n] = e[n] || [], e[n].push({
-                "gtm.start": (new Date).getTime(),
-                event: "gtm.js"
-            });
-            var m = t.getElementsByTagName(a)[0],
-                r = t.createElement(a);
-            r.async = !0, r.src = "https://www.googletagmanager.com/gtm.js?id=GTM-K2GKX6M", m.parentNode.insertBefore(r, m)
-        }(window, document, "script", "dataLayer")
-    </script>
-    <title>Keells Online</title>
-    <meta name="title" content="Keells Online">
-    <meta name="description" content="Keellssuper.com | Sri Lanka's Largest Online Shopping Store">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.keellssuper.com/welcome">
-    <meta property="og:title" content="Keells Online">
-    <meta property="og:description" content="Keellssuper.com | Sri Lanka's Largest Online Shopping Store">
-    <meta property="og:image" content="https://essstr.blob.core.windows.net/uiimg/keellslogo.png">
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://www.keellssuper.com/welcome">
-    <meta property="twitter:title" content="Keells Online">
-    <meta property="twitter:description" content="Keellssuper.com | Sri Lanka's Largest Online Shopping Store">
-    <meta property="twitter:image" content="https://essstr.blob.core.windows.net/uiimg/keellslogo.png">
-    <link href="/static/css/20.af3c1da9.chunk.css" rel="stylesheet">
-    <link href="/static/css/main.3640ff48.chunk.css" rel="stylesheet">
+	<link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
+	<link rel="stylesheet" href="css/demo.css"> <!-- Demo style -->
+  	
 </head>
+<body>
+			<ul class="cd-main-nav__list js-signin-modal-trigger">
+				<!-- inser more links here -->
+				<li><a class="cd-main-nav__item cd-main-nav__item--signin" href="#0" data-signin="login">Sign in</a></li>
+				<li><a class="cd-main-nav__item cd-main-nav__item--signup" href="#0" data-signin="signup">Sign up</a></li>
+			</ul>
+	
+	<div class="cd-signin-modal js-signin-modal"> <!-- this is the entire modal form, including the background -->
+		<div class="cd-signin-modal__container"> <!-- this is the container wrapper -->
+			<ul class="cd-signin-modal__switcher js-signin-modal-switcher js-signin-modal-trigger">
+				<li><a href="#0" data-signin="login" data-type="login">Sign in</a></li>
+				<li><a href="#0" data-signin="signup" data-type="signup">New account</a></li>
+			</ul>
 
-<body><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2GKX6M" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <div id="root"></div>
-    <script src="https://www.google.com/recaptcha/api.js" async defer="defer"></script>
-    <script>
-        ! function(e) {
-            function t(t) {
-                for (var n, a, o = t[0], d = t[1], u = t[2], i = 0, s = []; i < o.length; i++) a = o[i], Object.prototype.hasOwnProperty.call(c, a) && c[a] && s.push(c[a][0]), c[a] = 0;
-                for (n in d) Object.prototype.hasOwnProperty.call(d, n) && (e[n] = d[n]);
-                for (l && l(t); s.length;) s.shift()();
-                return f.push.apply(f, u || []), r()
-            }
+			<div class="cd-signin-modal__block js-signin-modal-block" data-type="login"> <!-- log in form -->
+				<form class="cd-signin-modal__form">
+					<p class="cd-signin-modal__fieldset">
+						<label class="cd-signin-modal__label cd-signin-modal__label--email cd-signin-modal__label--image-replace" for="signin-email">E-mail</label>
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signin-email" type="email" placeholder="E-mail">
+						<span class="cd-signin-modal__error">Error message here!</span>
+					</p>
 
-            function r() {
-                for (var e, t = 0; t < f.length; t++) {
-                    for (var r = f[t], n = !0, a = 1; a < r.length; a++) {
-                        var d = r[a];
-                        0 !== c[d] && (n = !1)
-                    }
-                    n && (f.splice(t--, 1), e = o(o.s = r[0]))
-                }
-                return e
-            }
-            var n = {},
-                a = {
-                    14: 0
-                },
-                c = {
-                    14: 0
-                },
-                f = [];
+					<p class="cd-signin-modal__fieldset">
+						<label class="cd-signin-modal__label cd-signin-modal__label--password cd-signin-modal__label--image-replace" for="signin-password">Password</label>
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signin-password" type="text"  placeholder="Password">
+						<a href="#0" class="cd-signin-modal__hide-password js-hide-password">Hide</a>
+						<span class="cd-signin-modal__error">Error message here!</span>
+					</p>
 
-            function o(t) {
-                if (n[t]) return n[t].exports;
-                var r = n[t] = {
-                    i: t,
-                    l: !1,
-                    exports: {}
-                };
-                return e[t].call(r.exports, r, r.exports, o), r.l = !0, r.exports
-            }
-            o.e = function(e) {
-                var t = [];
-                a[e] ? t.push(a[e]) : 0 !== a[e] && {
-                    0: 1,
-                    2: 1,
-                    5: 1,
-                    7: 1,
-                    8: 1,
-                    9: 1,
-                    10: 1,
-                    15: 1,
-                    16: 1,
-                    17: 1,
-                    18: 1,
-                    19: 1,
-                    21: 1,
-                    22: 1,
-                    23: 1,
-                    24: 1,
-                    25: 1,
-                    26: 1,
-                    27: 1,
-                    28: 1,
-                    29: 1,
-                    30: 1,
-                    31: 1,
-                    32: 1,
-                    33: 1,
-                    34: 1,
-                    35: 1,
-                    36: 1,
-                    37: 1,
-                    38: 1,
-                    39: 1,
-                    40: 1,
-                    41: 1,
-                    44: 1
-                }[e] && t.push(a[e] = new Promise((function(t, r) {
-                    for (var n = "static/css/" + ({}[e] || e) + "." + {
-                            0: "39e6ba9e",
-                            1: "31d6cfe0",
-                            2: "65710b43",
-                            3: "31d6cfe0",
-                            4: "31d6cfe0",
-                            5: "a15f48fe",
-                            6: "31d6cfe0",
-                            7: "17c3006e",
-                            8: "d198075c",
-                            9: "73cbf6f1",
-                            10: "fa9b42f9",
-                            11: "31d6cfe0",
-                            12: "31d6cfe0",
-                            15: "7f1e5821",
-                            16: "6b32c9cd",
-                            17: "a1b7a17e",
-                            18: "1e0d1afb",
-                            19: "cb030946",
-                            21: "34fb6b8d",
-                            22: "60eec0d8",
-                            23: "a94d8c7d",
-                            24: "9055e072",
-                            25: "04fe62a1",
-                            26: "be1dba42",
-                            27: "55b550f3",
-                            28: "d34346ea",
-                            29: "67771c82",
-                            30: "1ed2e372",
-                            31: "a1b7a17e",
-                            32: "643c9f0d",
-                            33: "ec3f4333",
-                            34: "e59cb6ae",
-                            35: "94696dcb",
-                            36: "f8513025",
-                            37: "8b6081d4",
-                            38: "afdc085b",
-                            39: "8b6081d4",
-                            40: "a9df6d64",
-                            41: "afdc085b",
-                            42: "31d6cfe0",
-                            43: "31d6cfe0",
-                            44: "e0e017eb",
-                            45: "31d6cfe0",
-                            46: "31d6cfe0",
-                            47: "31d6cfe0"
-                        }[e] + ".chunk.css", c = o.p + n, f = document.getElementsByTagName("link"), d = 0; d < f.length; d++) {
-                        var u = (l = f[d]).getAttribute("data-href") || l.getAttribute("href");
-                        if ("stylesheet" === l.rel && (u === n || u === c)) return t()
-                    }
-                    var i = document.getElementsByTagName("style");
-                    for (d = 0; d < i.length; d++) {
-                        var l;
-                        if ((u = (l = i[d]).getAttribute("data-href")) === n || u === c) return t()
-                    }
-                    var s = document.createElement("link");
-                    s.rel = "stylesheet", s.type = "text/css", s.onload = t, s.onerror = function(t) {
-                        var n = t && t.target && t.target.src || c,
-                            f = new Error("Loading CSS chunk " + e + " failed.\n(" + n + ")");
-                        f.code = "CSS_CHUNK_LOAD_FAILED", f.request = n, delete a[e], s.parentNode.removeChild(s), r(f)
-                    }, s.href = c, document.getElementsByTagName("head")[0].appendChild(s)
-                })).then((function() {
-                    a[e] = 0
-                })));
-                var r = c[e];
-                if (0 !== r)
-                    if (r) t.push(r[2]);
-                    else {
-                        var n = new Promise((function(t, n) {
-                            r = c[e] = [t, n]
-                        }));
-                        t.push(r[2] = n);
-                        var f, d = document.createElement("script");
-                        d.charset = "utf-8", d.timeout = 120, o.nc && d.setAttribute("nonce", o.nc), d.src = function(e) {
-                            return o.p + "static/js/" + ({}[e] || e) + "." + {
-                                0: "07f9c7ea",
-                                1: "a579f0ba",
-                                2: "a9a82d4f",
-                                3: "ad7ec6b5",
-                                4: "1a8e3d54",
-                                5: "f6e79b41",
-                                6: "06326c58",
-                                7: "9757c276",
-                                8: "f7ce9f5b",
-                                9: "2df63c61",
-                                10: "06849f56",
-                                11: "533e33ae",
-                                12: "1c540574",
-                                15: "894d4f5f",
-                                16: "24f48dc3",
-                                17: "cb45cbac",
-                                18: "ffae6853",
-                                19: "36763108",
-                                21: "0c502328",
-                                22: "d41f898e",
-                                23: "749e9c83",
-                                24: "0216ba41",
-                                25: "63fd3f46",
-                                26: "e82b16b8",
-                                27: "9a992feb",
-                                28: "3489e61a",
-                                29: "40a32f27",
-                                30: "a4c50566",
-                                31: "fb79d500",
-                                32: "1de6dbb5",
-                                33: "4cb9b435",
-                                34: "7fc6939c",
-                                35: "0bac3cd5",
-                                36: "6a2a36ef",
-                                37: "9663964c",
-                                38: "8e3bf3cf",
-                                39: "c79f4171",
-                                40: "016e501d",
-                                41: "2b2d5995",
-                                42: "7d066d16",
-                                43: "058084c7",
-                                44: "6d93613a",
-                                45: "2a7f4f87",
-                                46: "22d44ee5",
-                                47: "39146f82"
-                            }[e] + ".chunk.js"
-                        }(e);
-                        var u = new Error;
-                        f = function(t) {
-                            d.onerror = d.onload = null, clearTimeout(i);
-                            var r = c[e];
-                            if (0 !== r) {
-                                if (r) {
-                                    var n = t && ("load" === t.type ? "missing" : t.type),
-                                        a = t && t.target && t.target.src;
-                                    u.message = "Loading chunk " + e + " failed.\n(" + n + ": " + a + ")", u.name = "ChunkLoadError", u.type = n, u.request = a, r[1](u)
-                                }
-                                c[e] = void 0
-                            }
-                        };
-                        var i = setTimeout((function() {
-                            f({
-                                type: "timeout",
-                                target: d
-                            })
-                        }), 12e4);
-                        d.onerror = d.onload = f, document.head.appendChild(d)
-                    }
-                return Promise.all(t)
-            }, o.m = e, o.c = n, o.d = function(e, t, r) {
-                o.o(e, t) || Object.defineProperty(e, t, {
-                    enumerable: !0,
-                    get: r
-                })
-            }, o.r = function(e) {
-                "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, {
-                    value: "Module"
-                }), Object.defineProperty(e, "__esModule", {
-                    value: !0
-                })
-            }, o.t = function(e, t) {
-                if (1 & t && (e = o(e)), 8 & t) return e;
-                if (4 & t && "object" == typeof e && e && e.__esModule) return e;
-                var r = Object.create(null);
-                if (o.r(r), Object.defineProperty(r, "default", {
-                        enumerable: !0,
-                        value: e
-                    }), 2 & t && "string" != typeof e)
-                    for (var n in e) o.d(r, n, function(t) {
-                        return e[t]
-                    }.bind(null, n));
-                return r
-            }, o.n = function(e) {
-                var t = e && e.__esModule ? function() {
-                    return e.default
-                } : function() {
-                    return e
-                };
-                return o.d(t, "a", t), t
-            }, o.o = function(e, t) {
-                return Object.prototype.hasOwnProperty.call(e, t)
-            }, o.p = "/", o.oe = function(e) {
-                throw console.error(e), e
-            };
-            var d = this.webpackJsonpjmsl_keells_online = this.webpackJsonpjmsl_keells_online || [],
-                u = d.push.bind(d);
-            d.push = t, d = d.slice();
-            for (var i = 0; i < d.length; i++) t(d[i]);
-            var l = u;
-            r()
-        }([])
-    </script>
-    <script src="/static/js/20.c4e38281.chunk.js"></script>
-    <script src="/static/js/main.348463fb.chunk.js"></script>
+					<p class="cd-signin-modal__fieldset">
+						<input type="checkbox" id="remember-me" checked class="cd-signin-modal__input ">
+						<label for="remember-me">Remember me</label>
+					</p>
+
+					<p class="cd-signin-modal__fieldset">
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width" type="submit" value="Login">
+					</p>
+				</form>
+				
+				<p class="cd-signin-modal__bottom-message js-signin-modal-trigger"><a href="#0" data-signin="reset">Forgot your password?</a></p>
+			</div> <!-- cd-signin-modal__block -->
+
+			<div class="cd-signin-modal__block js-signin-modal-block" data-type="signup"> <!-- sign up form -->
+				<form class="cd-signin-modal__form">
+					<p class="cd-signin-modal__fieldset">
+						<label class="cd-signin-modal__label cd-signin-modal__label--username cd-signin-modal__label--image-replace" for="signup-username">Username</label>
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-username" type="text" placeholder="Username">
+						<span class="cd-signin-modal__error">Error message here!</span>
+					</p>
+
+					<p class="cd-signin-modal__fieldset">
+						<label class="cd-signin-modal__label cd-signin-modal__label--email cd-signin-modal__label--image-replace" for="signup-email">E-mail</label>
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-email" type="email" placeholder="E-mail">
+						<span class="cd-signin-modal__error">Error message here!</span>
+					</p>
+
+					<p class="cd-signin-modal__fieldset">
+						<label class="cd-signin-modal__label cd-signin-modal__label--password cd-signin-modal__label--image-replace" for="signup-password">Password</label>
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-password" type="text"  placeholder="Password">
+						<a href="#0" class="cd-signin-modal__hide-password js-hide-password">Hide</a>
+						<span class="cd-signin-modal__error">Error message here!</span>
+					</p>
+
+					<p class="cd-signin-modal__fieldset">
+						<input type="checkbox" id="accept-terms" class="cd-signin-modal__input ">
+						<label for="accept-terms">I agree to the <a href="#0">Terms</a></label>
+					</p>
+
+					<p class="cd-signin-modal__fieldset">
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding" type="submit" value="Create account">
+					</p>
+				</form>
+			</div> <!-- cd-signin-modal__block -->
+
+			<div class="cd-signin-modal__block js-signin-modal-block" data-type="reset"> <!-- reset password form -->
+				<p class="cd-signin-modal__message">Lost your password? Please enter your email address. You will receive a link to create a new password.</p>
+
+				<form class="cd-signin-modal__form">
+					<p class="cd-signin-modal__fieldset">
+						<label class="cd-signin-modal__label cd-signin-modal__label--email cd-signin-modal__label--image-replace" for="reset-email">E-mail</label>
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="reset-email" type="email" placeholder="E-mail">
+						<span class="cd-signin-modal__error">Error message here!</span>
+					</p>
+
+					<p class="cd-signin-modal__fieldset">
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding" type="submit" value="Reset password">
+					</p>
+				</form>
+
+				<p class="cd-signin-modal__bottom-message js-signin-modal-trigger"><a href="#0" data-signin="login">Back to log-in</a></p>
+			</div> <!-- cd-signin-modal__block -->
+			<a href="#0" class="cd-signin-modal__close js-close">Close</a>
+		</div> <!-- cd-signin-modal__container -->
+	</div> <!-- cd-signin-modal -->
+<script src="js/placeholders.min.js"></script> <!-- polyfill for the HTML5 placeholder attribute -->
+<script src="js/main.js"></script> <!-- Resource JavaScript -->
 </body>
-
 </html>

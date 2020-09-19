@@ -22,6 +22,7 @@
 <br>
 <?php
 $idc=$_GET['id'];
+$category_id=$_GET['category_id'];
 require_once "header.php";
 require_once "config.php";
 
@@ -325,7 +326,7 @@ if (! empty($cartItem)) {
                         <?php 
                         include 'config.php';
                         //echo "<script>alert('$idc')</script>";                        
-                                    $result1 = mysqli_query($con,"SELECT  `category_name`,`sub_id` FROM `sub_categorys` WHERE `category_id`=$idc;");                                    
+                                    $result1 = mysqli_query($con,"SELECT  `category_name`,`sub_id` FROM `sub_categorys` WHERE `category_id`=$category_id;");                                    
                                     while($row1 = mysqli_fetch_array($result1)) 
                                     {
                                         $category_name= $row1['category_name'];   
@@ -333,11 +334,12 @@ if (! empty($cartItem)) {
                                       
                      ?>
                             <div class="mb-1 category-item">
-                            <span><a href='subdynamic.php?id=<?php echo $sub_id;?>&proid=<?php echo $idc; ?>''>      <?php echo $category_name; ?></a></span>
+                            <span><a href='subdynamic.php?id=<?php echo $sub_id;?>&proid=<?php echo $idc; ?>'><?php echo $category_name; ?></a></span>
                             <i class="fas fa-angle-right"></i></div>
                             <?php } ?>
 
-                        </div><span class="category-title"><strong>Brands</strong>
+                        </div>
+                        <span class="category-title"><strong>Brands</strong>
                         </span>
                            
                         <hr>
@@ -346,16 +348,19 @@ if (! empty($cartItem)) {
                         <?php 
                         include 'config.php';
                         //echo "<script>alert('$idc')</script>";                        
-                                    $result1 = mysqli_query($con,"SELECT  `brand_name` FROM `brands` WHERE `category_id`=$idc;");                                    
+                                    $result1 = mysqli_query($con,"SELECT  `brand_name`,`brand_id` FROM `brands` WHERE `category_id`=$category_id;");                                    
                                     while($row1 = mysqli_fetch_array($result1)) 
                                     {
                                         $brand_name= $row1['brand_name'];   
+                                        $brand_id= $row1['brand_id'];   
                                       
                      ?>
-                            <div class="custom-controls-stacked">
+                           <div class="custom-controls-stacked">
                                 <div class="custom-control custom-radio mb-2">
-                                <input name="rdoBrands" id="ARUNALU" type="radio" class="custom-control-input" value="652">
-                                <label for="ARUNALU" class="custom-control-label"><?php echo $brand_name;?></label>
+                                <!-- <input name="rdoBrands" id="rdoBrands" type="radio" class="custom-control-input" value="<?php echo $brand_name;?>"> -->
+                                <input type='radio' name='radiburdoBrandstton' value='<?php echo $brand_id;?>'>
+                                
+                                 <?php echo $brand_name;?>
                                 </div>
                             </div>
                                     <?php } ?>
@@ -391,7 +396,7 @@ if (! empty($cartItem)) {
 			  
             ?>
     
-        <form method="post" action="subcat.php?action=add&code=<?php echo $product_array[$key]["p_code"]; ?>&id=<?php echo $idc; ?>" onsubmit="myFunction()">
+        <form method="post" action="subcat.php?action=add&code=<?php echo $product_array[$key]["p_code"]; ?>&id=<?php echo $idc; ?>&category_id=<?php echo $category_id; ?>" onsubmit="myFunction()">
         <div class="col" style="padding-bottom: 15px;">
                         <div class="product-card-container">
                                        <div class="row">
@@ -417,6 +422,11 @@ if (! empty($cartItem)) {
     </div>
     <?php
         }
+    }
+    else{
+        ?>
+        <div><h1>Product out of stock</h1></div>
+<?php
     }
     ?>
 </div>
@@ -459,3 +469,23 @@ $(document).ready(function() {
 }, 5000);
 });
 </script> -->
+<script>
+$(document).ready(function() {
+//     setTimeout(function(){
+//    window.location.reload(1);
+// }, 5000);
+
+$('input[type=radio]').click(function(e) {
+		var gender = $(this).val(); 
+        //alert(gender);
+        
+  var url = "branddata.php?id=" + encodeURIComponent(gender);
+        window.location.href = url;
+		
+    });});
+    document.getElementById("foo").onchange = function() {
+        if (this.selectedIndex!==0) {
+            window.location.href = this.value;
+        }        
+    };
+</script> 

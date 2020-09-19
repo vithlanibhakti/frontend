@@ -373,7 +373,7 @@ else
                                 </div>
                                 <hr>
                                 <div class="product-summary-line row">
-                                    <div class="col"><span>Total Nexus Discounts</span></div>
+                                    <div class="col"><span>Total Gift Card Discounts</span></div>
                                     <div class="product-summary-right col"><span>Rs. 0.00</span></div>
                                 </div>
                                 <hr>

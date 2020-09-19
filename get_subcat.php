@@ -19,15 +19,17 @@ while($row = mysqli_fetch_array($result)) {
 <script>
     
 $(document).ready(function() {
-    //  var thisvalue = $("select#category option:selected").text();
-    // alert(thisvalue);
+    var category_id = "<?php echo $category_id ?>"; 
+//   alert(category_id);
+
     $('#sub_category').on('change',function(){
-//    var optionsText = this.options[this.selectedIndex].text;
+        
+  //  var optionsText = this.options[this.selectedIndex].text;
 //    alert(optionsText);
    var getValue=$(this).val();
   //alert(getValue);
   
-  var url = "subcat.php?id=" + encodeURIComponent(getValue);
+  var url = "subcat.php?id=" + encodeURIComponent(getValue) + "&category_id=" + encodeURIComponent(category_id);;
         window.location.href = url;
 
 //debugger;

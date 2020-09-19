@@ -2,20 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78360953-9aa2-4445-b034-e5ad087b5ac2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/DBController.php" beforeDir="false" afterPath="$PROJECT_DIR$/DBController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/homepage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/payment.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/payment.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/shipping.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/shipping.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/css/slide.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/slide.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/best.php" beforeDir="false" afterPath="$PROJECT_DIR$/best.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart1.php" beforeDir="false" afterPath="$PROJECT_DIR$/cart1.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dealdaynamic.php" beforeDir="false" afterPath="$PROJECT_DIR$/dealdaynamic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feature.php" beforeDir="false" afterPath="$PROJECT_DIR$/feature.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/get_subcat.php" beforeDir="false" afterPath="$PROJECT_DIR$/get_subcat.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/increment.php" beforeDir="false" afterPath="$PROJECT_DIR$/increment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qty.php" beforeDir="false" afterPath="$PROJECT_DIR$/qty.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/storelocator.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/storelocator.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/branddata.php" beforeDir="false" afterPath="$PROJECT_DIR$/branddata.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dynamic.php" beforeDir="false" afterPath="$PROJECT_DIR$/dynamic.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gift.php" beforeDir="false" afterPath="$PROJECT_DIR$/gift.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/qtydynamic.php" beforeDir="false" afterPath="$PROJECT_DIR$/qtydynamic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/subdynamic.php" beforeDir="false" afterPath="$PROJECT_DIR$/subdynamic.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sortname.php" beforeDir="false" afterPath="$PROJECT_DIR$/sortname.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sortprice.php" beforeDir="false" afterPath="$PROJECT_DIR$/sortprice.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subcat.php" beforeDir="false" afterPath="$PROJECT_DIR$/subcat.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +62,7 @@
       <workItem from="1599709288383" duration="1550000" />
       <workItem from="1599790071122" duration="2836000" />
       <workItem from="1599882130807" duration="1740000" />
+      <workItem from="1600116744036" duration="3200000" />
     </task>
     <servers />
   </component>

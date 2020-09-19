@@ -98,7 +98,7 @@ $optionalphone=$row['optionalphone'];
                                 <span class="error-span"></span></div>
                             </div> -->
                             <div class="col-lg-6 col-sm-12">
-                                <div class="form-group"><label for="phoneNumber" class="white">Nexus Number or Mobile Number &amp; Click on Verify</label>
+                                <div class="form-group"><label for="phoneNumber" class="white">Gift Card Number or Mobile Number &amp; Click on Verify</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend" style="height: 2.85rem;">
                                             <div class="input-group-text">

@@ -71,7 +71,7 @@
                         <div class="col">
                             <hr><span class="description black no-margin font-weight-bold">Or log in with your mobile number</span><br><br>
                             <div class="row">
-                                <div class="form-group col"><label class="black" for="MobileNumber">Enter your Nexus mobile or Mobile number</label>
+                                <div class="form-group col"><label class="black" for="MobileNumber">Enter your Gift Card mobile or Mobile number</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend set-height-55" style="">
                                             <div class="input-group-text flag-drop-custom">

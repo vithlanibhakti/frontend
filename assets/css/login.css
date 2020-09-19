@@ -179,8 +179,9 @@ button {
 .btn-full,
 .new-btn {
     background: #fff;
-    border-top-right-radius: 1.875rem;
-    border-bottom-left-radius: 1.875rem;
+    /* border-top-right-radius: 1.875rem;
+    border-bottom-left-radius: 1.875rem; */
+    border-radius: 25px;
     border: 0;
     height: 2.8125rem;
     font-weight: 700;
@@ -256,9 +257,10 @@ button {
 
 .append {
     background-color: #c7f7a0;
-    border-bottom-left-radius: 1.875rem;
+    /* border-bottom-left-radius: 1.875rem;
     border-top-right-radius: 1.875rem;
-    border-bottom-right-radius: 0;
+    border-bottom-right-radius: 0; */
+    border-radius: 25px;
     border-top-left-radius: 0;
     margin-left: -1.875rem
 }
@@ -328,7 +330,8 @@ button {
     padding-top: 10px;
     padding-bottom: 2px;
     color: #fff;
-    border-top-right-radius: 1.875rem
+    /* border-top-right-radius: 1.875rem */
+    border-radius: 25px;
 }
 
 .message-box .modal-content {
@@ -380,7 +383,8 @@ button {
     justify-content: flex-end;
     border: .125rem solid #009448;
     background-color: #009448;
-    border-radius: 1.875rem 0 6.25rem 0;
+    /* border-radius: 1.875rem 0 6.25rem 0; */
+    border-radius: 25px;
     transition: .5s
 }
 
@@ -424,7 +428,7 @@ button {
 
 @media screen and (max-width:375px) {
     .welcome-tile {
-        border-radius: 1.875rem 0 1.875rem 0;
+        /* border-radius: 1.875rem 0 1.875rem 0; */
         min-width: 110%
     }
     .welcome-tile i {
@@ -784,8 +788,8 @@ hr {
 
 @media screen and (max-width:375px) {
     .new-btn {
-        border-top-right-radius: .875rem;
-        border-bottom-left-radius: .875rem;
+        /* border-top-right-radius: .875rem;
+        border-bottom-left-radius: .875rem; */
         flex: 0 1;
         display: flex;
         flex-direction: column;
@@ -1158,7 +1162,8 @@ hr {
 .dropdown-toggle {
     background: #fff;
     color: #000;
-    border-radius: 0 1.375rem 0 1.375rem;
+    /* border-radius: 0 1.375rem 0 1.375rem; */
+     border-radius: 25px;
     width: none
 }
 
@@ -1476,8 +1481,7 @@ body {
 }
 
 .form-control {
-    border-top-right-radius: 1.375rem!important;
-    border-bottom-left-radius: 1.375rem!important;
+    border-radius: 25px;
     height: 2.8125rem
 }
 

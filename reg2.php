@@ -26,7 +26,7 @@ $sql="INSERT INTO `users` (`username`,`firstName`, `lastName`,`email`, `title`, 
   {
   header("Location: home.php");
  } else{
- echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
+ echo "ERROR: Could not able to execute $sql. " . mysqli_error($con);
  }
   
 ?>
