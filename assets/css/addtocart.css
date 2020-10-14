@@ -2394,7 +2394,7 @@ pre code {
     background-color: #fff;
     background-clip: padding-box;
     border: 1px solid #ced4da;
-    border-radius: .25rem;
+    border-radius: 25px;
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out
 }
 
@@ -2884,7 +2884,7 @@ textarea.form-control.is-invalid {
     padding: .375rem .75rem;
     font-size: 1rem;
     line-height: 1.5;
-    border-radius: .25rem;
+    border-radius: 25px;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
 }
 
@@ -4345,7 +4345,7 @@ input[type=submit].btn-block {
     vertical-align: middle;
     background: #fff url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right .75rem center/8px 10px;
     border: 1px solid #ced4da;
-    border-radius: .25rem;
+    border-radius: 25px;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none
@@ -5294,8 +5294,9 @@ input[type=submit].btn-block {
         border-left: 0
     }
     .card-group>.card:not(:last-child) {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0
+        /* border-top-right-radius: 0;
+        border-bottom-right-radius: 0 */
+        border-radius: 25px;
     }
     .card-group>.card:not(:last-child) .card-header,
     .card-group>.card:not(:last-child) .card-img-top {
@@ -5493,7 +5494,7 @@ input[type=submit].btn-block {
     text-align: center;
     white-space: nowrap;
     vertical-align: baseline;
-    border-radius: .25rem;
+    border-radius: 25px;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
 }
 

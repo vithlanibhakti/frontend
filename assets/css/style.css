@@ -161,7 +161,7 @@ Login/Signup modal window - by CodyHouse.co
     border: 1px solid rgba(255, 255, 255, 0.6);
   }
   .cd-main-nav__item.cd-main-nav__item--signup {
-    background: #2f889a;
+    background: #51ac37;
   }
   .cd-main-nav__item.cd-main-nav__item--signin {
     padding: .6em 1em;
@@ -169,7 +169,7 @@ Login/Signup modal window - by CodyHouse.co
     border: 1px solid rgba(255, 255, 255, 0.6);
   }
   .cd-main-nav__item.cd-main-nav__item--signin {
-    background: #2f889a;
+    background: #51ac37;
   }
 }
 
@@ -336,6 +336,7 @@ x sigin/signup popup
 
 .cd-signin-modal__input.cd-signin-modal__input--has-border {
   border: 1px solid #d2d8d8;
+  border-radius: 25px;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -355,7 +356,8 @@ x sigin/signup popup
 .cd-signin-modal__input[type=submit] {
   padding: 16px 0;
   cursor: pointer;
-  background: #2f889a;
+  border-radius: 25px;
+  background: #51ac37;
   color: #FFF;
   font-weight: bold;
   border: none;
@@ -367,7 +369,7 @@ x sigin/signup popup
 }
 
 .cd-signin-modal__input[type=submit]:hover, .cd-signin-modal__input[type=submit]:focus {
-  background: #3599ae;
+  background: #51ac37;
   outline: none;
 }
 

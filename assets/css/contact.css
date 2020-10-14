@@ -94,7 +94,9 @@
 .static-content-container>div {
     background: #169748;
     height: 70%;
-    padding: 2rem
+    padding: 2rem;
+    border-radius: 25px
+
 }
 
 .search-background {
@@ -260,7 +262,7 @@ body {
     color: #fff;
     text-align: center;
     background: rgba(81, 172, 55, .95);
-    border-radius: 0 1.875rem!important
+    border-radius: 25px!important
 }
 
 .Toastify__toast i {

@@ -133,7 +133,6 @@ $result = mysqli_query($con, $query);
 			    </td>
 			  </tr>
 			</table>
-		</center>
 								<div class="row">
                     <div class="col">
 					<button class="new-btn  new-btn-primary " id="enter" disabled="true" type="submit" name="submit"> Submit Feedback</button>

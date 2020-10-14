@@ -3,19 +3,25 @@
   <component name="ChangeListManager">
     <list default="true" id="78360953-9aa2-4445-b034-e5ad087b5ac2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/abc.html" beforeDir="false" afterPath="$PROJECT_DIR$/abc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/addtocart.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/addtocart.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/contact.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/contact.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/css/homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/homepage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/payment.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/payment.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/css/shipping.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/shipping.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/slide.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/slide.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/css/storelocator.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/storelocator.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/branddata.php" beforeDir="false" afterPath="$PROJECT_DIR$/branddata.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dynamic.php" beforeDir="false" afterPath="$PROJECT_DIR$/dynamic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gift.php" beforeDir="false" afterPath="$PROJECT_DIR$/gift.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qtydynamic.php" beforeDir="false" afterPath="$PROJECT_DIR$/qtydynamic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sortname.php" beforeDir="false" afterPath="$PROJECT_DIR$/sortname.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sortprice.php" beforeDir="false" afterPath="$PROJECT_DIR$/sortprice.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/subcat.php" beforeDir="false" afterPath="$PROJECT_DIR$/subcat.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/get_subcat.php" beforeDir="false" afterPath="$PROJECT_DIR$/get_subcat.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loginaction.php" beforeDir="false" afterPath="$PROJECT_DIR$/loginaction.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loginpopup.php" beforeDir="false" afterPath="$PROJECT_DIR$/loginpopup.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/logout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reg2.php" beforeDir="false" afterPath="$PROJECT_DIR$/reg2.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/regdetails.php" beforeDir="false" afterPath="$PROJECT_DIR$/regdetails.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shipping.php" beforeDir="false" afterPath="$PROJECT_DIR$/shipping.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shippingadd.php" beforeDir="false" afterPath="$PROJECT_DIR$/shippingadd.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shippingadd2.php" beforeDir="false" afterPath="$PROJECT_DIR$/shippingadd2.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +42,7 @@
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
@@ -63,6 +69,10 @@
       <workItem from="1599790071122" duration="2836000" />
       <workItem from="1599882130807" duration="1740000" />
       <workItem from="1600116744036" duration="3200000" />
+      <workItem from="1602293685286" duration="1315000" />
+      <workItem from="1602295438244" duration="1398000" />
+      <workItem from="1602296994777" duration="1233000" />
+      <workItem from="1602622713639" duration="1247000" />
     </task>
     <servers />
   </component>
@@ -70,18 +80,18 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="232" y="38" key="#Deployment" timestamp="1599709631648">
+    <state x="232" y="38" key="#Deployment" timestamp="1602295871734">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state x="232" y="38" key="#Deployment/0.0.1280.760@0.0.1280.760" timestamp="1599709631648" />
+    <state x="232" y="38" key="#Deployment/0.0.1280.760@0.0.1280.760" timestamp="1602295871734" />
     <state x="216" y="25" key="#SSH_Configurations" timestamp="1599709530957">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
     <state x="216" y="25" key="#SSH_Configurations/0.0.1280.760@0.0.1280.760" timestamp="1599709530957" />
-    <state x="232" y="38" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599883391113">
+    <state x="399" y="38" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602297615677">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state x="232" y="38" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.760@0.0.1280.760" timestamp="1599883391113" />
+    <state x="399" y="38" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.760@0.0.1280.760" timestamp="1602297615677" />
     <state x="420" y="135" key="FileChooserDialogImpl" timestamp="1599709523605">
       <screen x="0" y="0" width="1280" height="760" />
     </state>

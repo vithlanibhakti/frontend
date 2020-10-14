@@ -1,10 +1,10 @@
 .main-content-holder {
-    padding-top: 10.24rem
+    padding-top: 0.24rem
 }
 
 @media screen and (max-width:768px) {
     .main-content-holder {
-        padding-top: 7.3rem
+        padding-top: 0.3rem
     }
 }
 
@@ -484,6 +484,7 @@ element.style {
 
 @media screen and (max-width:425px) {
     .banner-item {
+        
         padding: 1rem
     }
 }
@@ -1004,7 +1005,7 @@ body {
     color: #fff;
     text-align: center;
     background: rgba(81, 172, 55, .95);
-    border-radius: 0 1.875rem!important
+    border-radius: 25px!important
 }
 
 .Toastify__toast i {
@@ -2586,6 +2587,7 @@ body {
 .no-right-radius {
     /* border-top-right-radius: 0!important;
     border-bottom-right-radius: 0!important */
+    border-radius: 25px;
 }
 
 .no-left-border {

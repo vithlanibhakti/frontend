@@ -1,11 +1,12 @@
 <?php 
 session_start();
 include('config.php');
-if(isset($_POST['submit'])) 
- {
+// if(isset($_POST['submit'])) 
+//  {
+
         $email =mysqli_real_escape_string($con, $_POST['UserName']);
         $Password = mysqli_real_escape_string($con,$_POST['Password']);
-	//	ECHO $phn,$Password;
+		//ECHO $email,$Password;
 	$fetch="SELECT * FROM users WHERE email='$email' AND Password='$Password' ";
 	 $result = mysqli_query($con,$fetch);
 	$count=mysqli_num_rows($result);
@@ -18,6 +19,6 @@ if(isset($_POST['submit']))
    header("Location: shipping.php");
 	 }
 	 else{
-	 header("Location: login.php");}
-    	}
+	 header("Location: home.php");}
+//    	}
     ?>

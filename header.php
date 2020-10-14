@@ -517,7 +517,13 @@ else{
                                             0 </i></span>
                                     <span id="total-price">RS. 0 </span>
                                     <?php } 
-                                    include_once("loginpopup.php");?>
+
+if(!isset($_SESSION['email']))
+{
+    include_once("loginpopup.php");
+}
+
+?>
                                    
 
                                 </div>
@@ -548,18 +554,16 @@ $result = mysqli_query($con,"SELECT * FROM categorys");
                                             <?php
 			}
 			?>
-
-                                        </select>
+ </select>
                                     </div>
                                     <div id="dvPassport" style="display: none">
-
                                         <div class="form-group show">
                                             <label for="sel1">Sub Category</label>
                                             <select class="form-control " id="sub_category">
                                             </select>
                                         </div>
                                     </div>
-                                    <!-- <i class="fas fa-angle-down" style="padding-left: 0.9375rem;"></i> -->
+
                                 </div>
                                 <div class="auto-complete-text">
 
@@ -589,13 +593,16 @@ $result = mysqli_query($con,"SELECT * FROM categorys");
 
         <script>
         $(document).ready(function() {
-            $("select").change(function() {
+            $("#category").change(function() {
                 $(this).find("option:selected").each(function() {
                     var optionValue = $(this).attr("value");
-                    if (optionValue) {
+                   
+                    if (optionValue != '') {
                         $("#dvPassport").show();
+                        //alert("show");
                     } else {
                         $("#dvPassport").hide();
+                        //alert("hide");
                     }
                 });
             }).change();
@@ -603,7 +610,8 @@ $result = mysqli_query($con,"SELECT * FROM categorys");
             $('#category').on('change', function() {
 
                 var category_id = this.value;
-                //  alert(category_id);
+                
+                  debugger;
                 $.ajax({
                     url: "get_subcat.php",
                     type: "POST",
@@ -612,10 +620,11 @@ $result = mysqli_query($con,"SELECT * FROM categorys");
                     },
                     cache: false,
                     success: function(dataResult) {
+                        
                         $("#sub_category").html(dataResult);
+                        
                     }
                 });
-
 
             });
         });

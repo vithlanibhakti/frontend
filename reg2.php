@@ -18,7 +18,7 @@ echo $AddressLine1."<br>";
 echo $AddressLine2."<br>";
 echo $City."<br>";
 echo $Email."<br>";
-//echo $ConfirmPassword."<br>";
+echo $ConfirmPassword."<br>";
 echo $Password."<br>";
 $sql="INSERT INTO `users` (`username`,`firstName`, `lastName`,`email`, `title`, `addressline1`, `addressline2`, `city`,  `password`)
  VALUES ('$username', '$FirstName', '$LastName', '$Email', '$title', '$AddressLine1', '$AddressLine2', '$City', '$Password')";
