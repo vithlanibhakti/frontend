@@ -1,10 +1,10 @@
 .main-content-holder {
-    padding-top: 0.24rem
+    padding-top: 10.24rem
 }
 
 @media screen and (max-width:768px) {
     .main-content-holder {
-        padding-top: 0.3rem
+        padding-top: 7.3rem
     }
 }
 
@@ -484,7 +484,6 @@ element.style {
 
 @media screen and (max-width:425px) {
     .banner-item {
-        
         padding: 1rem
     }
 }
@@ -673,7 +672,7 @@ element.style {
 .product-card-container {
     transition: box-shadow .3s;
     background-color: #fff;
-    border-radius: 1.875rem ;
+    border-radius: 25px;
     padding: .625rem;
     text-align: center;
     letter-spacing: .01rem;
@@ -759,7 +758,7 @@ element.style {
 .product-card-button-add {
     background-color: #fff;
     color: #000;
-    border-radius: 1.5625rem 0;
+    border-radius: 25px;
     border: .0625rem solid #ebebeb;
     box-shadow: .4375rem .4375rem .625rem rgba(0, 0, 0, .03)
 }
@@ -929,7 +928,7 @@ element.style {
 }
 
 .switcher {
-    border-radius: 5.625rem;
+    border-radius: 25px;
     width: 100%;
     height: 19.5625rem;
     background-color: #64bf47;
@@ -972,9 +971,7 @@ body {
 }
 
 .form-control {
-    /* border-top-right-radius: 1.375rem!important;
-    border-bottom-left-radius: 1.375rem!important; */
-    border-radius: 25px;
+    border-radius: 25px!important;
     height: 2.8125rem
 }
 
@@ -992,9 +989,8 @@ body {
 }
 
 .no-right-radius {
-    /* border-top-right-radius: 0!important;
-    border-bottom-right-radius: 0!important */
-    border-radius: 25px;
+    border-top-right-radius: 0!important;
+    border-bottom-right-radius: 0!important
 }
 
 .no-left-border {
@@ -1005,7 +1001,7 @@ body {
     color: #fff;
     text-align: center;
     background: rgba(81, 172, 55, .95);
-    border-radius: 25px!important
+    border-radius: 0 1.875rem!important
 }
 
 .Toastify__toast i {
@@ -1075,7 +1071,6 @@ html {
     .all-container .product-card-container {
         transition: box-shadow .3s;
         background-color: #fff;
-        /* border-radius: 1.875rem; */
         border-radius: 25px;
         padding: 1.5rem;
         text-align: center;
@@ -1088,7 +1083,7 @@ html {
 
 @media screen and (max-width:425px) {
     .all-container .switcher {
-        border-radius: 5.625rem 0;
+        border-radius: 25px;
         width: 90%;
         height: 19.5625rem;
         background-color: #64bf47;
@@ -1098,8 +1093,7 @@ html {
     .all-container .product-card-container {
         transition: box-shadow .3s;
         background-color: #fff;
-        /* border-radius: 1.875rem ; */
-        border-radius: 25px;
+        border-radius:25px;
         padding: .625rem;
         text-align: center;
         letter-spacing: .01rem;
@@ -1131,7 +1125,7 @@ html {
 
 @media screen and (max-width:375px) {
     .all-container .switcher {
-        border-radius: 5.625rem 0;
+        border-radius: 25px;
         width: 86%;
         height: 15.5625rem;
         background-color: #64bf47;
@@ -1166,7 +1160,6 @@ html {
     .all-container .product-card-container {
         transition: box-shadow .3s;
         background-color: #fff;
-        /* border-radius: 1.875rem; */
         border-radius: 25px;
         padding: 1.5rem;
         text-align: center;
@@ -1305,9 +1298,8 @@ img {
 .btn-full,
 .new-btn {
     background: #fff;
-    /* border-top-right-radius: 1.875rem;
-    border-bottom-left-radius: 1.875rem; */
-    border-radius: 25px;
+    border-top-right-radius: 1.875rem;
+    border-bottom-left-radius: 1.875rem;
     border: 0;
     height: 2.8125rem;
     font-weight: 700;
@@ -1383,10 +1375,6 @@ img {
 
 .append {
     background-color: #c7f7a0;
-    /* border-bottom-left-radius: 1.875rem;
-    border-top-right-radius: 1.875rem;
-    border-bottom-right-radius: 0;
-    border-top-left-radius: 0; */
     border-radius: 25px;
     margin-left: -1.875rem
 }
@@ -1470,8 +1458,7 @@ img {
     padding-top: 10px;
     padding-bottom: 2px;
     color: #fff;
-    /* border-top-right-radius: 1.875rem */
-    border-radius: 25px;
+    border-top-right-radius: 1.875rem
 }
 
 .message-box .modal-content {
@@ -1488,7 +1475,7 @@ img {
 
 .message-box .modal-content .modal-body {
     padding: 0!important;
-    /* border-top-right-radius: 1.875rem */
+    border-top-right-radius: 1.875rem
 }
 
 .message-box .modal-content .modal-body .message-box-header-info {
@@ -1596,7 +1583,7 @@ img {
 
 .default-header-container {
     width: 100%;
-    /* position: fixed; */
+    position: fixed;
     z-index: 99
 }
 
@@ -1667,16 +1654,9 @@ img {
 
 .default-header-navbar {
     color: #fff;
-     /* height: 6.3125rem;  */
+    height: 7.3125rem;
     background: #0b2f00
 }
- .my{
-    background: #0b2f00
- }
-
- .my1{
-    background:#051500
- }
 
 .navbar-items-container {
     letter-spacing: .025rem;
@@ -1798,9 +1778,8 @@ img {
     margin: .125rem;
     display: grid;
     grid-template-columns: 22% 60% 22%;
-    /* border-bottom-left-radius: 1.875rem; */
-    border-radius: 25px;
-    
+    border-bottom-left-radius: 1.875rem;
+    padding-top: 1.25rem
 }
 
 .product-search-button {
@@ -1815,7 +1794,6 @@ img {
     left: -1.25rem;
     position: relative;
     letter-spacing: .0081rem;
-    /* border-radius: 0 1.875rem; */
     border-radius: 25px;
     background-color: #51ac37
 }
@@ -1841,10 +1819,8 @@ img {
     text-align: center;
     letter-spacing: .025rem;
     background-color: #fff;
-    /* border-bottom-left-radius: 1.875rem;
-    border-bottom: 1px solid hsla(0, 0%, 50.2%, .32);
-    border-right: .0625rem solid hsla(0, 0%, 71%, .32) */
     border-radius: 25px;
+    
 }
 
 .category_menu_btn_product_search:hover {
@@ -2565,9 +2541,8 @@ body {
 }
 
 .form-control {
-    /* border-top-right-radius: 1.375rem!important;
-    border-bottom-left-radius: 1.375rem!important; */
-    border-radius: 25px;
+    border-radius: 25px!important;
+    
     height: 2.8125rem
 }
 
@@ -2585,9 +2560,8 @@ body {
 }
 
 .no-right-radius {
-    /* border-top-right-radius: 0!important;
-    border-bottom-right-radius: 0!important */
-    border-radius: 25px;
+    border-top-right-radius: 0!important;
+    border-bottom-right-radius: 0!important
 }
 
 .no-left-border {
@@ -2700,3 +2674,4 @@ html {
     margin: 0;
     padding-top: 10px
 }
+

@@ -21,7 +21,7 @@
             
 	
 	<div class="cd-signin-modal js-signin-modal"> <!-- this is the entire modal form, including the background -->
-    <BR><BR><BR><BR><BR><BR><BR><BR>
+    <BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>
     <div class="cd-signin-modal__container"> <!-- this is the container wrapper -->
 			<ul class="cd-signin-modal__switcher js-signin-modal-switcher js-signin-modal-trigger">
 				<li><a href="#0" data-signin="login" data-type="login">Sign in</a></li>
@@ -88,7 +88,7 @@
 					<p class="cd-signin-modal__fieldset">
 						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding" type="submit" value="Create account">
 					</p> -->
-<?php include_once("regdetails.php"); ?>
+<?php include_once("gift.php"); ?>
 
 					
 				</form>
