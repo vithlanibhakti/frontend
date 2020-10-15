@@ -620,10 +620,8 @@ $result = mysqli_query($con,"SELECT * FROM categorys");
                     },
                     cache: false,
                     success: function(dataResult) {
-                        
                         $("#sub_category").html(dataResult);
-                        
-                    }
+                       }
                 });
 
             });

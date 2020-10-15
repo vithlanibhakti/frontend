@@ -24,7 +24,10 @@ $sql="INSERT INTO `users` (`username`,`firstName`, `lastName`,`email`, `title`, 
  VALUES ('$username', '$FirstName', '$LastName', '$Email', '$title', '$AddressLine1', '$AddressLine2', '$City', '$Password')";
   if(mysqli_query($con,$sql))
   {
-  header("Location: home.php");
+    echo "<script>
+    alert('Record Inserted Sucessfully');
+    window.location.href='home.php';
+    </script>";
  } else{
  echo "ERROR: Could not able to execute $sql. " . mysqli_error($con);
  }

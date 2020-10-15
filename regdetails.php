@@ -35,16 +35,26 @@
     <link rel="stylesheet" href="assets/css/homepage.css">
 </head>
 <form id="regform" method="post" name="reg" action="reg2.php">
+    <div class="justify-content-center d-flex">
+        <div class="registration-container col-lg-10 col-md-10 col-sm-10 col-12">
+            <div class="first-section">
+                <div class="col"><img src="img/websitelogo.png"
+               
+                        class="img-fluid"> <br> <br><span class="small-title white">Profile <b>Creation</b></span><br> <br><span class="description green"><div class="mb-3 description white" style="text-align: left;">Please verify your details and update the password.</div><span class="description white">Have trouble logging in? Call us on <a href="tel:+940112303500" style="color: rgb(100, 191, 71);">0112303500</a> (Daily operating hours 8.00a.m to 8.00p.m)</span></span>
+                    <div>
+                        <div class="back-btn mt-5"><i class="fas fa-chevron-circle-left"></i> <span class="ml-2">Back</span></div>
+                    </div><br> <br><span class="registration-bg-color">Important: Note that only the last 5 carts shopped on http://pos.gitl.lk/ in the last 2 years will be reflected on the new site.</span></div>
+            </div>
+            <div class="second-section pr-3 pl-3">
                 <div class="row-view row">
                     <div class="col-5 col-5-view">
                         <div class="row">
                             <div class="mb-2 col-md-3 col-sm-12 col-12">
-                                <div class="form-group">
-                                
+                                <div class="form-group"><label for="FirstName" class="white">Title</label>
                                     <div class="dropdown">
-                                <!-- <button aria-haspopup="true" aria-expanded="false" type="button" class="dropdown-toggle btn btn-">Title</button> -->
-                               <select name="title"  id="title" required>
-  <option label="Ms" >Ms</option>
+                                    <!-- <button aria-haspopup="true" aria-expanded="false" type="button" class="dropdown-toggle btn btn-">Title</button> -->
+                                    <select name="title" id="title">
+  <option value="Ms">Ms</option>
   <option value="Mrs">Mrs</option>
   <option value="Miss">Miss</option>
   <option value="Mr">Mr</option>
@@ -54,33 +64,28 @@
                             </div>
                             <div class="col">
                                 <div class="form-group">
-                                  
+                                  <label for="FirstName" class="white" >First Name</label>
                                   <input id="FirstName" name="FirstName" placeholder="First Name" type="text" class="form-control" value="" require></div>
                             </div>
-                        </div>
-                        </div>
+                        </div><span class="form-text text-muted d-none"> First name is required.</span><span class="form-text text-muted d-none"> Please select title.</span></div>
                     <div class="col-5 col-5-view">
-                        <div class="form-group">
-                            
+                        <div class="form-group"><label for="LastName" class="white">Last Name</label>
                           <input id="LastName" name="LastName" placeholder="Last Name" type="text" class="form-control" value=""><span class="form-text text-muted d-none"> Last name is required.</span></div>
                     </div>
                 </div>
                 <div class="row-view row">
                     <div class="col-5 col-5-view">
-                        <div class="form-group">
-                          <input maxlength="100" id="AddressLine1" name="AddressLine1" placeholder="House No or Lane *" type="text" class="form-control" value="">
-                        </div>
-                        </div>
+                        <div class="form-group"><label class="white" for="AddressLine1">House No or Lane *</label>
+                          <input maxlength="100" id="AddressLine1" name="AddressLine1" placeholder="House No or Lane *" type="text" class="form-control" value=""></div>
+                        <span class="form-text text-muted d-none"> House No or Lane is required.</span></div>
                     <div class="col-5 col-5-view">
-                        <div class="form-group">
-                          <input maxlength="100" id="AddressLine2" name="AddressLine2" placeholder="Street Name *" type="text" class="form-control" value="">
-                        </div>
+                        <div class="form-group"><label for="AddressLine2" class="white">Street Name *</label>
+                          <input maxlength="100" id="AddressLine2" name="AddressLine2" placeholder="Street Name *" type="text" class="form-control" value=""><span class="form-text text-muted d-none"> Street Name * is required.</span></div>
                     </div>
                 </div>
-                
                 <div class="row-view row">
                     <div class="col-5 col-5-view">
-                        <div class="form-group">
+                        <div class="form-group"><label for="City" class="white">City *</label>
                           <!-- <input maxlength="100" id="City" name="City" placeholder="City *" type="text" class="form-control" value=""></div><span class="form-text text-muted d-none"> City is required.</span></div> -->
                           <?php 
 include("config.php");
@@ -95,43 +100,41 @@ $result = mysqli_query($con, $query);
 	<?php } ?>
 </select>
 
-
                 </div>
-    </div>
+                
                 
                 <div class="hr col"></div>
-                
                 <div class="row-view row">
                     <div class="col-5 col-5-view">
-                        <div class="form-group">
-                          <input id="Email" maxlength="100" name="Email" placeholder="Email" type="email" class="form-control" required value="">
-                        </div>
-                    </div>
+                        <div class="form-group"><label for="Email" class="white">Email</label>
+                          <input id="Email" name="Email" placeholder="Email" type="email" class="form-control" required value="">
+                        </div><span class="form-text text-muted d-none"> Email is required.</span><span class="form-text text-muted d-none"> Invalid email address.</span></div>
                           <div class="col-5 col-5-view">
-                        <div class="form-group">
-                          <input id="username" name="username" maxlength="100" placeholder="username" type="text" class="form-control" value=""></div>
-                          </div>
+                        <div class="form-group"><label for="username" class="white">Username</label>
+                          <input id="username" name="username" placeholder="username" type="text" class="form-control" value=""></div><span class="form-text text-muted d-none"> Email is required.</span><span class="form-text text-muted d-none"> Invalid username address.</span></div>
                 
                         </div>
                 <div class="row-view row">
                     <div class="col-5 col-5-view">
-                        <div class="form-group">
-                            
-                            <input id="registerConfirmPassword" name="ConfirmPassword" placeholder="Confirm Password" type="password" class="form-control " value="" required>
-                            <a href="javascript:myFunction2();"><i id="register_cpw_visible_icon" class="fas fa-eye-slash"></i>
-                            
-                            </a>
-                        </div>
-                        </div>
+                        <div class="form-group"><label for="Confirm Password" class="white">Confirm Password</label>
+                            <div class="input-group" style="margin-bottom: 0px;">
+                            <input id="registerConfirmPassword" name="ConfirmPassword" placeholder="Confirm Password" type="password" class="form-control" value="" required>
+                            <a href="javascript:myFunction();"><i id="register_cpw_visible_icon" class="fas fa-eye-slash"></i>
+                            </a></div>
+                        </div><span class="form-text text-muted d-none"> Confirm password is required.</span><span class="form-text text-muted d-none"> Confirm password does not match</span></div>
                     <div class="col-5 col-5-view">
-                        <div class="form-group">
-                          
+                        <div class="form-group"><label for="Password" class="white">Password</label>
+                            <div class="input-group" style="margin-bottom: 0px;">
                             <input id="registerPassword" name="Password" placeholder="Password" type="password" class="form-control" value="" required>
                             <a href="javascript:myFunction1();"><i id="register_pw_visible_icon" class="fas fa-eye-slash"></i></a></div>
                         </div><span class="form-text text-muted"></span></div>
-                
+                </div>
                 <!-- <div class="registrationFormAlert" style="color:green;" id="CheckPasswordMatch"> -->
-                
+                <div class="row-view row">
+                    <div class="col-10 col-10-view col">
+                        <div class="form-group text-muted forget-pw-guideline"><i class="fas fa-info-circle"></i> Your password must contain a minimum of 8 characters with 1 Uppercase, Numeric &amp; Special character.</div>
+                    </div>
+                </div>
                 <div class="row-view row">
                     <div class="col-10 col-10-view">
                         <div class="form-group">
@@ -140,10 +143,17 @@ $result = mysqli_query($con, $query);
                                     <div class="accordion">
                                         <div>
                                             <div class="border-0 pt-0 pb-0 card-header" for="checkbox_0" style="background: transparent none repeat scroll 0% 0%;">
-                                            <input name="checkbox" id="checkbox_0"  type="checkbox" class="custom-control-input" value="agreed" >
-                                            <label for="checkbox_0" class="custom-control-label black condition-label">I agree to the terms and conditions</label></div>
+                                            <input name="checkbox" id="checkbox_0"  type="checkbox" class="custom-control-input" value="agreed" ><label for="checkbox_0" class="custom-control-label white condition-label">I agree to the terms and conditions</label></div>
                                             <div for="checkbox_0" class="collapse">
-                                                
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="white conditions col">
+                                                            <p>I confirm that I will be providing you with my personal data and hereby expressly consent to the use of such data for the purpose of the order placed with you.</p>
+                                                            <p>This includes express permission to share the personal data information with your service providers and agents. I also further expressly consent to the use of my personal data to promote products
+                                                                and services of your company or brand. I confirm that I have read through your data policy and have understood my rights in relation to the personal data which I am providing to you.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -151,10 +161,11 @@ $result = mysqli_query($con, $query);
                             </div>
                         </div>
                     </div>
+                </div>
+
                 <div class="row-view row">
                     <div class="col-10 col-10-view">
-                        <div class="form-group">
-                            <button class="new-btn  
+                        <div class="form-group"><button class="new-btn  
   new-btn-primary  mt-2" type="submit" disabled="true" id="btnSignUp"> Submit</button></div>
                     </div>
                 </div>
@@ -181,7 +192,7 @@ $result = mysqli_query($con, $query);
 // }
 
 
-function myFunction2() {
+function myFunction() {
   var x = document.getElementById("registerConfirmPassword");
   if (x.type === "password") {
     x.type = "text";

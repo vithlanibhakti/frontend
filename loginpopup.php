@@ -86,9 +86,9 @@
 					</p>
 
 					<p class="cd-signin-modal__fieldset">
-						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding" type="submit" value="Create account">
+					<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding" type="submit" value="Create account">
 					</p> -->
-<?php include_once("gift.php"); ?>
+<?php include_once("regi.php"); ?>
 
 					
 				</form>
